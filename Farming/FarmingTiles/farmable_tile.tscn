@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhdcmdrktl4xs"]
+
+[ext_resource type="Script" path="res://Farming/FarmingTiles/farmable_tile.gd" id="1_lxn3k"]
+[ext_resource type="Resource" uid="uid://bsd6nhrj5hu07" path="res://Farming/FarmingTiles/Crops/Corn.tres" id="2_pcm15"]
+[ext_resource type="Texture2D" uid="uid://bo66ngiq3rgt7" path="res://Assets/CornPhases.png" id="3_bvftv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i47ax"]
+size = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcg5p"]
+atlas = ExtResource("3_bvftv")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x403"]
+atlas = ExtResource("3_bvftv")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qtnwo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcg5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x403")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource("1_lxn3k")
+crop_data = ExtResource("2_pcm15")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i47ax")
+
+[node name="FarmableTile" type="Node2D" parent="."]
+
+[node name="CropDisplay" type="AnimatedSprite2D" parent="FarmableTile"]
+sprite_frames = SubResource("SpriteFrames_qtnwo")
+speed_scale = 0.0

@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="CropData" load_steps=9 format=3 uid="uid://bsd6nhrj5hu07"]
+
+[ext_resource type="Texture2D" uid="uid://bo66ngiq3rgt7" path="res://Assets/CornPhases.png" id="1_r1rv4"]
+[ext_resource type="Script" path="res://Farming/FarmingTiles/CropData.gd" id="1_th4lg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw8qg"]
+atlas = ExtResource("1_r1rv4")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2iaj"]
+atlas = ExtResource("1_r1rv4")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yqgw"]
+atlas = ExtResource("1_r1rv4")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j376y"]
+atlas = ExtResource("1_r1rv4")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0myw5"]
+atlas = ExtResource("1_r1rv4")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dab15"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw8qg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2iaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yqgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j376y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0myw5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_th4lg")
+name = "Corn"
+days_to_ripen = 2
+days_to_death = 3
+max_drought = -1
+images = SubResource("SpriteFrames_dab15")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwp6k14335tjt"]
+
+[ext_resource type="PackedScene" uid="uid://blp105qoeh1tv" path="res://Farming/Character/character.tscn" id="1_ad3rk"]
+[ext_resource type="Script" path="res://Farming/Character/Player/FarmingInput.gd" id="2_wb3f7"]
+[ext_resource type="Texture2D" uid="uid://dyiai5sjbv81s" path="res://icon.svg" id="3_jokbq"]
+[ext_resource type="Script" path="res://Farming/Character/Player/SpriteTurning.gd" id="4_8l8xa"]
+[ext_resource type="Script" path="res://Farming/Character/Player/FarmInteraction.gd" id="4_d3oh0"]
+
+[node name="Farmer" instance=ExtResource("1_ad3rk")]
+
+[node name="Movement" parent="." index="0" node_paths=PackedStringArray("parent")]
+tile_size = 128.0
+parent = NodePath("..")
+
+[node name="Input" type="Node" parent="." index="2" node_paths=PackedStringArray("movement", "interaction")]
+script = ExtResource("2_wb3f7")
+movement = NodePath("../Movement")
+interaction = NodePath("../Interaction")
+
+[node name="BodySprite" type="Sprite2D" parent="." index="3"]
+texture = ExtResource("3_jokbq")
+script = ExtResource("4_8l8xa")
+
+[node name="Interaction" type="Node" parent="." index="4" node_paths=PackedStringArray("movement")]
+script = ExtResource("4_d3oh0")
+movement = NodePath("../Movement")
