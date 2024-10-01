@@ -17,6 +17,8 @@ func interact():
 	var target = movement.get_collider()
 	if target is FarmTile:
 		target.interact(interaction,crop)
+	if target is Home:
+		target.interact()
 	pass
 
 
