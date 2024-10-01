@@ -1,0 +1,28 @@
+[
+	
+	{
+		"name":"Farmer Joe",
+		"text":"Hello, world",
+		"image":"farmer-joe"
+	},
+	{
+		"name":"",
+		"text":"Hello, farmer Joe. What's up?",
+		"image":"player"
+	},
+	{
+		"name":"Farmer Joe",
+		"text":"How's your farm going Johnny?",
+		"image":"farmer-joe"
+	},
+	{
+		"name":"",
+		"text":"Oh my god, so bad. Like I have no idea what's going on any more. There's a crazy thing growing on my land and it's glowing and freaking me out.",
+		"image":"player"
+	},
+	{
+		"name":"Farmer Joe",
+		"text":"I don't care.",
+		"image":"farmer-joe"
+	},
+]

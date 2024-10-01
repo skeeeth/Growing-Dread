@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://pa4mktnsql81"]
+
+[ext_resource type="Script" path="res://Dialogue/DialogueNode.gd" id="1_trpis"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d0f5r"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4e3gy"]
+width = 256
+height = 256
+noise = SubResource("FastNoiseLite_d0f5r")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="DialogueNode" type="Node2D" parent="."]
+script = ExtResource("1_trpis")
+dataPath = "res://Dialogue/testDialogue.json"
+profile_pictures = {
+"farmer-joe": "res://textures/profile-pictures/farmer-joe.png",
+"player": "res://textures/profile-pictures/player.png"
+}
+
+[node name="DialogueText" type="RichTextLabel" parent="DialogueNode"]
+z_index = 10
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 421.0
+offset_right = 1122.0
+offset_bottom = 613.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "test"
+
+[node name="ColorRect" type="ColorRect" parent="DialogueNode/DialogueText"]
+z_index = -100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.494118, 0.494118, 0.494118, 1)
+
+[node name="SpeakerLabel" type="RichTextLabel" parent="DialogueNode"]
+offset_left = 48.0
+offset_top = 366.0
+offset_right = 374.0
+offset_bottom = 411.0
+text = "Person"
+
+[node name="ColorRect" type="ColorRect" parent="DialogueNode/SpeakerLabel"]
+z_index = -100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.317647, 0.317647, 0.317647, 1)
+
+[node name="PersonPicture" type="TextureRect" parent="DialogueNode"]
+z_index = -190
+offset_left = 81.0
+offset_top = 169.0
+offset_right = 337.0
+offset_bottom = 425.0
+texture = SubResource("NoiseTexture2D_4e3gy")
