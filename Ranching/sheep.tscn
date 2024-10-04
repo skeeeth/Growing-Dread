@@ -1,0 +1,324 @@
+[gd_scene load_steps=16 format=3 uid="uid://clhceljl1ikhu"]
+
+[ext_resource type="Script" path="res://Ranching/sheep.gd" id="1_cqfc8"]
+[ext_resource type="Texture2D" uid="uid://dccs2fh7dkcp2" path="res://Assets/sheep_walk.png" id="1_n4j6q"]
+[ext_resource type="Texture2D" uid="uid://d2sbss6j7k3mv" path="res://Assets/sheep_eat.png" id="3_4b4wa"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vora7"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dwskw"]
+radius = 15.0
+height = 48.0
+
+[sub_resource type="Animation" id="Animation_4iq3i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_n4j6q")]
+}
+
+[sub_resource type="Animation" id="Animation_ff2x6"]
+resource_name = "eating_down"
+length = 1.3
+loop_mode = 1
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.000540882, 0.14, 0.28, 0.42, 0.56, 0.7, 0.84, 0.98, 1.12, 1.26),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 10, 11, 10, 11, 9, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_4b4wa")]
+}
+
+[sub_resource type="Animation" id="Animation_tri5q"]
+resource_name = "eating_left"
+length = 1.3
+loop_mode = 1
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.000540882, 0.138847, 0.28, 0.42, 0.56, 0.7, 0.84, 0.98, 1.11885, 1.26),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 6, 7, 6, 7, 5, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_4b4wa")]
+}
+
+[sub_resource type="Animation" id="Animation_jpw5y"]
+resource_name = "eating_right"
+length = 1.3
+loop_mode = 1
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.000540882, 0.14, 0.28, 0.42, 0.56, 0.7, 0.84, 0.98, 1.12, 1.26),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 14, 15, 14, 15, 13, 12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_4b4wa")]
+}
+
+[sub_resource type="Animation" id="Animation_kcj11"]
+resource_name = "eating_up"
+length = 1.3
+loop_mode = 1
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.000540882, 0.138847, 0.28, 0.42, 0.56, 0.7, 0.84, 0.98, 1.11885, 1.26),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 2, 3, 2, 3, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_4b4wa")]
+}
+
+[sub_resource type="Animation" id="Animation_gk2ux"]
+resource_name = "walk_down"
+length = 0.56
+loop_mode = 1
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.000540882, 0.14, 0.28, 0.42),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_n4j6q")]
+}
+
+[sub_resource type="Animation" id="Animation_wcn8h"]
+resource_name = "walk_left"
+length = 0.56
+loop_mode = 1
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14, 0.28, 0.42),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_n4j6q")]
+}
+
+[sub_resource type="Animation" id="Animation_kr4bc"]
+resource_name = "walk_right"
+length = 0.56
+loop_mode = 1
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14, 0.28, 0.42),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_n4j6q")]
+}
+
+[sub_resource type="Animation" id="Animation_awf07"]
+resource_name = "walk_up"
+length = 0.56
+loop_mode = 1
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.000540882, 0.139459, 0.279459, 0.42),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_n4j6q")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eeteq"]
+_data = {
+"RESET": SubResource("Animation_4iq3i"),
+"eating_down": SubResource("Animation_ff2x6"),
+"eating_left": SubResource("Animation_tri5q"),
+"eating_right": SubResource("Animation_jpw5y"),
+"eating_up": SubResource("Animation_kcj11"),
+"walk_down": SubResource("Animation_gk2ux"),
+"walk_left": SubResource("Animation_wcn8h"),
+"walk_right": SubResource("Animation_kr4bc"),
+"walk_up": SubResource("Animation_awf07")
+}
+
+[node name="Sheep" type="RigidBody2D"]
+position = Vector2(300, 300)
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_vora7")
+gravity_scale = 0.0
+lock_rotation = true
+max_contacts_reported = 20
+contact_monitor = true
+linear_damp = 5.0
+angular_damp_mode = 1
+script = ExtResource("1_cqfc8")
+min_idle_time = 2.0
+max_idle_time = 3.0
+min_wandering_time = 2.0
+max_wandering_time = 5.0
+min_eating_cycles = 1
+max_eating_cycles = 2
+wandering_acceleration = 10000.0
+wandering_speed = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dwskw")
+
+[node name="SheepSprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+texture = ExtResource("1_n4j6q")
+hframes = 4
+vframes = 4
+frame = 12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SheepSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_eeteq")
+}
+
+[node name="WanderIdleEatTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="WanderIdleEatTimer" to="." method="_on_wander_idle_eat_timer_timeout"]

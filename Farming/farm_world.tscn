@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6sw0ygmbddbh"]
+[gd_scene load_steps=5 format=3 uid="uid://b6sw0ygmbddbh"]
 
 [ext_resource type="PackedScene" uid="uid://dwp6k14335tjt" path="res://Farming/Character/Player/Player_F.tscn" id="1_2geav"]
 [ext_resource type="PackedScene" uid="uid://bhdcmdrktl4xs" path="res://Farming/FarmingTiles/farmable_tile.tscn" id="2_xh21w"]
 [ext_resource type="Resource" uid="uid://bxc1cyfbquibd" path="res://Farming/FarmingTiles/Crops/Blank.tres" id="3_3jlqa"]
+[ext_resource type="PackedScene" uid="uid://b0ve77udfgeqv" path="res://Farming/home.tscn" id="4_42kk5"]
 
 [node name="FarmWorld" type="Node2D"]
 
@@ -19,3 +20,6 @@ crop_data = ExtResource("3_3jlqa")
 [node name="StaticBody2D3" parent="." instance=ExtResource("2_xh21w")]
 position = Vector2(256, 512)
 crop_data = ExtResource("3_3jlqa")
+
+[node name="Home" parent="." instance=ExtResource("4_42kk5")]
+position = Vector2(1039, 128)
