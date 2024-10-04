@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c74m3wvoruq3k"]
+
+[ext_resource type="PackedScene" uid="uid://bu7tyogwauew7" path="res://Combat/Player/Player.tscn" id="1_eqtx2"]
+[ext_resource type="PackedScene" uid="uid://c2ft8tpy067rn" path="res://Combat/Enemies/test_enemy.tscn" id="2_c0r61"]
+
+[node name="CombatTest" type="Node2D"]
+
+[node name="Combat_Player" parent="." instance=ExtResource("1_eqtx2")]
+movespeed = 6.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Node2D" parent="." instance=ExtResource("2_c0r61")]
+position = Vector2(367, 92)
+
+[node name="Node2D2" parent="." instance=ExtResource("2_c0r61")]
+position = Vector2(-398, 17)
+scale = Vector2(0.25, 0.25)
+
+[node name="Node2D3" parent="." instance=ExtResource("2_c0r61")]
+position = Vector2(231, -132)

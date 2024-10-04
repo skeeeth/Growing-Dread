@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2ft8tpy067rn"]
+
+[ext_resource type="Script" path="res://Combat/Enemies/test_enemy.gd" id="1_fuiq5"]
+[ext_resource type="Texture2D" uid="uid://ltomfiucvntj" path="res://textures/profile-pictures/farmer-joe.png" id="1_l7qqk"]
+[ext_resource type="PackedScene" uid="uid://duoju8d1x6bam" path="res://Combat/Components/hurtbox/hurtbox.tscn" id="2_kmw27"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwffx"]
+resource_local_to_scene = true
+size = Vector2(273, 260)
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_fuiq5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_l7qqk")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_kmw27")]
+collision_layer = 2
+collision_mask = 0
+health = 150.0
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(3.5, -1)
+shape = SubResource("RectangleShape2D_uwffx")
+
+[editable path="Hurtbox"]
