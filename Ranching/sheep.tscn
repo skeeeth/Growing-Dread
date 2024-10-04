@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://d2sbss6j7k3mv" path="res://Assets/sheep_eat.png" id="3_4b4wa"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vora7"]
+friction = 0.0
+bounce = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dwskw"]
 radius = 15.0
@@ -284,6 +286,10 @@ collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_vora7")
 gravity_scale = 0.0
 lock_rotation = true
+max_contacts_reported = 20
+contact_monitor = true
+linear_damp = 5.0
+angular_damp_mode = 1
 script = ExtResource("1_cqfc8")
 min_idle_time = 2.0
 max_idle_time = 3.0
@@ -300,6 +306,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_dwskw")
 
 [node name="SheepSprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture_filter = 1
 texture = ExtResource("1_n4j6q")
 hframes = 4
@@ -313,4 +320,5 @@ libraries = {
 
 [node name="WanderIdleEatTimer" type="Timer" parent="."]
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="WanderIdleEatTimer" to="." method="_on_wander_idle_eat_timer_timeout"]

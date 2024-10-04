@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://rrg4dt8qnm32" path="res://Assets/fence_256x128.png" id="1_bw0s3"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d23ui"]
+bounce = 0.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8r0aq"]
 size = Vector2(655, 20)
@@ -32,6 +33,7 @@ position = Vector2(0, 190.5)
 shape = SubResource("RectangleShape2D_rf855")
 
 [node name="LineSprite" type="Line2D" parent="."]
+z_index = -1
 texture_repeat = 2
 points = PackedVector2Array(0, 0, 640, 0, 640, 384, 0, 384)
 closed = true

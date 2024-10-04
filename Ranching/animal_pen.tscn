@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://clhceljl1ikhu" path="res://Ranching/sheep.tscn" id="2_gdkjh"]
 
 [node name="AnimalPen" type="Node2D"]
+y_sort_enabled = true
 position = Vector2(250, 150)
 
 [node name="Sheep" parent="." instance=ExtResource("2_gdkjh")]
@@ -36,3 +37,4 @@ position = Vector2(400, 224)
 position = Vector2(593, 47)
 
 [node name="Fence" parent="." instance=ExtResource("2_8kvvs")]
+z_index = -1
