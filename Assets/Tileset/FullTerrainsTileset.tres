@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://ce2qp2mth753u"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://ce2qp2mth753u"]
 
 [ext_resource type="Texture2D" uid="uid://cxbcj6v7c62ak" path="res://Assets/terrain-v7.png" id="1_vhy13"]
+[ext_resource type="PackedScene" uid="uid://bhdcmdrktl4xs" path="res://Farming/FarmingTiles/farmable_tile.tscn" id="2_kneuu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0n2w"]
 texture = ExtResource("1_vhy13")
@@ -5712,5 +5713,9 @@ texture = ExtResource("1_vhy13")
 4:127/0 = 0
 5:127/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_foqky"]
+scenes/1/scene = ExtResource("2_kneuu")
+
 [resource]
 sources/0 = SubResource("TileSetAtlasSource_q0n2w")
+sources/1 = SubResource("TileSetScenesCollectionSource_foqky")

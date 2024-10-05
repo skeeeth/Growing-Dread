@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Farming/Character/GridMovement.gd" id="1_yvisx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oecns"]
+resource_local_to_scene = true
 size = Vector2(56, 56)
 
 [node name="Character" type="Node2D"]

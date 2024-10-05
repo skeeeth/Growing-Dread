@@ -22,6 +22,7 @@ Farming="*res://Farming/farming_globals.gd"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="viewport"
 
 [input]

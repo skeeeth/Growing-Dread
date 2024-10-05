@@ -10,7 +10,7 @@ noise = SubResource("FastNoiseLite_yeomg")
 
 [resource]
 shader = ExtResource("1_mopek")
-shader_parameter/curvature = 1.15
+shader_parameter/curvature = 0.1
 shader_parameter/skip = 0.0
 shader_parameter/image_flicker = 0.0
 shader_parameter/vignette_flicker_speed = 0.05

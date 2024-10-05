@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 @export var movespeed:float
 @export var aiming:Aiming
@@ -8,7 +8,7 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(_delta):
 	var dir:Vector2 = Input.get_vector("left","right","up","down")
 	
 	if dir == Vector2.ZERO:
@@ -16,5 +16,6 @@ func _process(delta):
 	else:
 		aiming.focused = false
 		
-	position += dir * movespeed * delta*60.0;
+	velocity = dir * movespeed
+	move_and_slide()
 	pass

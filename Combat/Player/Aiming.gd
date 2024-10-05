@@ -6,9 +6,10 @@ class_name Aiming #DK Fighting!
 @export var max_range:float
 
 @export var  angle_max = PI/8.0
-const INDICATOR_LENGTH = 200
+const INDICATOR_LENGTH = 100
 @onready var reload = $Reload
 @onready var gunshot = $Gunshot
+@onready var flash:Light2D = $Flash
 
 var aim_angle:float = angle_max
 var focused:bool = false;
@@ -54,15 +55,20 @@ func shoot():
 		return #TODO: Feedback for prevented shots
 	
 	reload.start()
-	
-	#play sound
-	gunshot.play() #NOTE: no sound currently set
-	
+
 	#Target
 	var innaccuracy = randf_range(-aim_angle,aim_angle)
 	var shot_angle = get_local_mouse_position().angle() + innaccuracy
 	target_position = Vector2.from_angle(shot_angle) * max_range
 	force_raycast_update()
+	
+	#play sound
+	gunshot.play() #NOTE: no sound currently set
+	
+	#Flash
+	var flash_tween = create_tween()
+	flash_tween.tween_property(flash,"energy",1.5,0.03)
+	flash_tween.tween_property(flash,"energy",0.0,0.1)
 	
 	#Set Draw Positions
 	_previous_shot_position = global_position
@@ -72,7 +78,7 @@ func shoot():
 		_previous_hit_position = target_position + global_position
 	var hit_object = get_collider()
 	
-	#Fade flash
+	#Fade round tracer
 	_shot_color = Color.WHITE
 	var fade = create_tween()
 	

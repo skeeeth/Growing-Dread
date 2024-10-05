@@ -11,14 +11,17 @@
 
 [node name="StaticBody2D" parent="." instance=ExtResource("2_xh21w")]
 position = Vector2(256, 128)
+scale = Vector2(4, 4)
 crop_data = ExtResource("3_3jlqa")
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("2_xh21w")]
 position = Vector2(384, 128)
+scale = Vector2(4, 4)
 crop_data = ExtResource("3_3jlqa")
 
 [node name="StaticBody2D3" parent="." instance=ExtResource("2_xh21w")]
 position = Vector2(256, 512)
+scale = Vector2(4, 4)
 crop_data = ExtResource("3_3jlqa")
 
 [node name="Home" parent="." instance=ExtResource("4_42kk5")]
