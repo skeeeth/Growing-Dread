@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 
 Farming="*res://Farming/farming_globals.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 up={

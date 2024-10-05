@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dwp6k14335tjt" path="res://Farming/Character/Player/Player_F.tscn" id="1_2geav"]
 [ext_resource type="PackedScene" uid="uid://bhdcmdrktl4xs" path="res://Farming/FarmingTiles/farmable_tile.tscn" id="2_xh21w"]
 [ext_resource type="Resource" uid="uid://bxc1cyfbquibd" path="res://Farming/FarmingTiles/Crops/Blank.tres" id="3_3jlqa"]
-[ext_resource type="PackedScene" uid="uid://b0ve77udfgeqv" path="res://Farming/home.tscn" id="4_42kk5"]
+[ext_resource type="PackedScene" uid="uid://bf8q60mioyqu6" path="res://Farming/home.tscn" id="4_42kk5"]
 
 [node name="FarmWorld" type="Node2D"]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8kxvmw7thupj"
-path="res://.godot/imported/player.png-5bfea71a4fa59faa0a7bd45e0cdce4c2.ctex"
+uid="uid://nsrjbbj6clnd"
+path="res://.godot/imported/plowed_soil.png-4138d927480d72d14f62753b09cb067e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/profile-pictures/player.png"
-dest_files=["res://.godot/imported/player.png-5bfea71a4fa59faa0a7bd45e0cdce4c2.ctex"]
+source_file="res://Assets/plowed_soil.png"
+dest_files=["res://.godot/imported/plowed_soil.png-4138d927480d72d14f62753b09cb067e.ctex"]
 
 [params]
 
