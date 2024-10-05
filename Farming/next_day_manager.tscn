@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmdd5crrbcalb"]
+
+[ext_resource type="Script" path="res://Farming/NextDayManager.gd" id="1_pqoyc"]
+
+[sub_resource type="GDScript" id="GDScript_k2n46"]
+script/source = "extends ColorRect
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_mufbw"]
+font_size = 39
+
+[node name="NextDayManager" type="Node"]
+script = ExtResource("1_pqoyc")
+
+[node name="NextDayCard" type="ColorRect" parent="."]
+visible = false
+offset_right = 1168.0
+offset_bottom = 645.0
+color = Color(0, 0, 0, 1)
+script = SubResource("GDScript_k2n46")
+
+[node name="Label" type="Label" parent="NextDayCard"]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 641.0
+text = "NEXT DAY"
+label_settings = SubResource("LabelSettings_mufbw")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -24,3 +24,9 @@ script = ExtResource("4_8l8xa")
 [node name="Interaction" type="Node" parent="." index="4" node_paths=PackedStringArray("movement")]
 script = ExtResource("4_d3oh0")
 movement = NodePath("../Movement")
+
+[node name="TextEdit" type="TextEdit" parent="." index="5"]
+offset_left = -72.0
+offset_top = 78.0
+offset_right = 73.0
+offset_bottom = 115.0

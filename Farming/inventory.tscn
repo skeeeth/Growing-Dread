@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgtja34u2clw3"]
+
+[ext_resource type="PackedScene" uid="uid://cujtligyj1y65" path="res://Farming/inventory_item.tscn" id="1_bywxi"]
+[ext_resource type="Script" path="res://Farming/inventory.gd" id="1_j6d7j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pi1m5"]
+font_size = 48
+
+[node name="Inventory" type="Node"]
+script = ExtResource("1_j6d7j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = 72.0
+offset_top = 88.0
+offset_right = 1086.0
+offset_bottom = 638.0
+color = Color(0.411765, 0.219608, 0.309804, 1)
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 997.0
+offset_bottom = 535.0
+columns = 4
+
+[node name="InventoryItem" parent="ColorRect/GridContainer" instance=ExtResource("1_bywxi")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect"]
+offset_left = 386.0
+offset_top = -76.0
+offset_right = 685.0
+offset_bottom = -8.0
+text = "INVENTORY"
+label_settings = SubResource("LabelSettings_pi1m5")

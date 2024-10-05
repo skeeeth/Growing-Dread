@@ -26,9 +26,10 @@ func interact(type,data):
 
 func harvest():
 	if state == Farming.states.Ripe:
+		#collect the item into the player's inventory
+		Farming.add_item(crop_data.name)
 		crop_data = BLANK;
 		state = Farming.states.Untilled
-		##TODO:add to inventory based on crop_data
 	pass
 
 func till():
