@@ -8,10 +8,15 @@ signal movement_finished(direction)
 @export var tile_size:float
 @export var parent:Node2D
 var moving:bool = false
+var start_position 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	start_position = parent.position
+	Farming.day_progressed.connect(reset_position)
+
+func reset_position():
+	parent.position = start_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

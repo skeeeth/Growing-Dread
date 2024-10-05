@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cujtligyj1y65"]
+
+[ext_resource type="Texture2D" uid="uid://datvjvj6sgv70" path="res://textures/icons/wheat.jpg" id="1_kpb77"]
+[ext_resource type="Script" path="res://Farming/inventory_item.gd" id="2_7qqw6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ne37"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="InventoryItem" type="TextureRect"]
+texture = ExtResource("1_kpb77")
+script = ExtResource("2_7qqw6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 100.0
+offset_right = 124.0
+offset_bottom = 123.0
+text = "1"
+label_settings = SubResource("LabelSettings_8ne37")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 137.0
+offset_right = 81.0
+offset_bottom = 168.0
+text = "Sell
+"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

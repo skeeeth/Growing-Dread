@@ -20,6 +20,10 @@ func interact():
 	if target is Home:
 		target.interact()
 	pass
+	
+func _process(delta):
+	var interaction_text = $"../TextEdit"
+	interaction_text.text = Farming.interactions.keys()[interaction]
 
 
 ## temporary item selection, intent is to have a rearrangable
