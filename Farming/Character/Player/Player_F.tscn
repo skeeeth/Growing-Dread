@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwp6k14335tjt"]
+[gd_scene load_steps=7 format=3 uid="uid://dwp6k14335tjt"]
 
 [ext_resource type="PackedScene" uid="uid://blp105qoeh1tv" path="res://Farming/Character/character.tscn" id="1_ad3rk"]
+[ext_resource type="Script" path="res://Farming/Character/GridMovement.gd" id="2_gmwma"]
 [ext_resource type="Script" path="res://Farming/Character/Player/FarmingInput.gd" id="2_wb3f7"]
 [ext_resource type="Texture2D" uid="uid://dyiai5sjbv81s" path="res://icon.svg" id="3_jokbq"]
 [ext_resource type="Script" path="res://Farming/Character/Player/SpriteTurning.gd" id="4_8l8xa"]
@@ -9,6 +10,7 @@
 [node name="Farmer" instance=ExtResource("1_ad3rk")]
 
 [node name="Movement" parent="." index="0" node_paths=PackedStringArray("parent")]
+script = ExtResource("2_gmwma")
 tile_size = 128.0
 parent = NodePath("..")
 

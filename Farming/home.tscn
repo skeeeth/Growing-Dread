@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b0ve77udfgeqv"]
 
-[ext_resource type="Texture2D" uid="uid://dsn1llte5yptp" path="res://textures/home.png" id="1_4xlt0"]
+[ext_resource type="Texture2D" uid="uid://dsn1llte5yptp" path="res://Assets/home.png" id="1_4xlt0"]
 [ext_resource type="Script" path="res://Farming/home.gd" id="1_go7s6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pq0lx"]

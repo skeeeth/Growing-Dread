@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://o3ibnm5nobeo"]
+
+[ext_resource type="Texture2D" uid="uid://rrg4dt8qnm32" path="res://Assets/fence_256x128.png" id="1_bw0s3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d23ui"]
+bounce = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8r0aq"]
+size = Vector2(655, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rf855"]
+size = Vector2(20, 399)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 255
+physics_material_override = SubResource("PhysicsMaterial_d23ui")
+
+[node name="TopWall" type="CollisionShape2D" parent="."]
+position = Vector2(317.5, 0)
+shape = SubResource("RectangleShape2D_8r0aq")
+
+[node name="RightWall" type="CollisionShape2D" parent="."]
+position = Vector2(640, 190.5)
+shape = SubResource("RectangleShape2D_rf855")
+
+[node name="BottomWall" type="CollisionShape2D" parent="."]
+position = Vector2(317.5, 384)
+shape = SubResource("RectangleShape2D_8r0aq")
+
+[node name="LeftWall" type="CollisionShape2D" parent="."]
+position = Vector2(0, 190.5)
+shape = SubResource("RectangleShape2D_rf855")
+
+[node name="LineSprite" type="Line2D" parent="."]
+z_index = -1
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 640, 0, 640, 384, 0, 384)
+closed = true
+width = 20.0
+texture = ExtResource("1_bw0s3")
+texture_mode = 1

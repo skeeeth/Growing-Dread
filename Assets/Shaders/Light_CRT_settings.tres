@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cj2ovdkyq2rbt"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/CRT.gdshader" id="1_mopek"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yeomg"]
+frequency = 0.1065
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ti45d"]
+noise = SubResource("FastNoiseLite_yeomg")
+
+[resource]
+shader = ExtResource("1_mopek")
+shader_parameter/curvature = 1.15
+shader_parameter/skip = 0.0
+shader_parameter/image_flicker = 0.0
+shader_parameter/vignette_flicker_speed = 0.05
+shader_parameter/vignette_strength = 0.73
+shader_parameter/small_scanlines_speed = 1.0
+shader_parameter/small_scanlines_proximity = 0.94
+shader_parameter/small_scanlines_opacity = 1.0
+shader_parameter/scanlines_opacity = 0.1
+shader_parameter/scanlines_speed = 0.0
+shader_parameter/scanline_thickness = 0.5
+shader_parameter/scanlines_spacing = 1.0
+shader_parameter/noise_opacity = 0.2
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ti45d")
