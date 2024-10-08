@@ -1,16 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bu7tyogwauew7"]
+[gd_scene load_steps=7 format=3 uid="uid://bu7tyogwauew7"]
 
 [ext_resource type="Script" path="res://Combat/Player/Combat_Control.gd" id="1_8ajpd"]
 [ext_resource type="Script" path="res://Combat/Player/Aiming.gd" id="2_h3mtk"]
 [ext_resource type="Texture2D" uid="uid://bth6efhefr35l" path="res://Assets/npl.webp" id="3_et3yv"]
 [ext_resource type="PackedScene" uid="uid://duoju8d1x6bam" path="res://Combat/Components/hurtbox/hurtbox.tscn" id="3_y4d7k"]
+[ext_resource type="Texture2D" uid="uid://dyiai5sjbv81s" path="res://icon.svg" id="5_b2kst"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2c0l0"]
 
 [node name="RigidBody2D" type="CharacterBody2D" node_paths=PackedStringArray("aiming")]
 collision_mask = 5
 script = ExtResource("1_8ajpd")
-movespeed = 6.0
+movespeed = 200.0
 aiming = NodePath("Aiming")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -37,3 +38,7 @@ texture = ExtResource("3_et3yv")
 texture_scale = 3.3
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_y4d7k")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_b2kst")

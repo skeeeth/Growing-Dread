@@ -3,14 +3,16 @@
 extends Node
 class_name GridInteraction
 
-@export var movement:Grid_Movement
+@export var movement:RayCast2D
 var interaction:int
 var crop:CropData
+
 ## Called when the node enters the scene tree for the first time.
 func _ready():
 	crop = CORN;
 	pass # Replace with function body.
 const CORN = preload("res://Farming/FarmingTiles/Crops/Corn.tres")
+
 func interact():
 	if !movement.is_colliding(): return
 	
@@ -21,7 +23,7 @@ func interact():
 		target.interact()
 	pass
 	
-func _process(delta):
+func _process(_delta):
 	var interaction_text = $"../TextEdit"
 	interaction_text.text = Farming.interactions.keys()[interaction]
 
@@ -36,3 +38,6 @@ func _input(event):
 		crop = CORN
 	if event.is_action_pressed("3"):
 		interaction = Farming.interactions.Harvest
+
+	if event.is_action_pressed("space"):
+		interact()

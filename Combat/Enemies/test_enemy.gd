@@ -1,6 +1,7 @@
 extends Node2D
 class_name Enemy
 
+signal died(id)
 @onready var hurtbox:Hurtbox = $Hurtbox
 
 # Called when the node enters the scene tree for the first time.
@@ -10,4 +11,5 @@ func _ready():
 
 
 func death():
+	died.emit(self)
 	queue_free()

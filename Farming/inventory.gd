@@ -13,8 +13,8 @@ func _input(event):
 		color_rect.visible = !color_rect.visible
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _process(delta):
+	#pass
 	
 func instantiate_image(item_name):
 	var img = load("res://Farming/inventory_item.tscn")

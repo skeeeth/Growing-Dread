@@ -19,8 +19,7 @@ func _input(event):
 	if  event.is_action_pressed("down"):
 		full_move(Vector2.DOWN)
 	
-	if event.is_action_pressed("space"):
-		interaction.interact()
+
 
 
 func full_move(dir:Vector2,buffered:bool=false):

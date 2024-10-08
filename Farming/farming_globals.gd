@@ -2,6 +2,7 @@ extends Node
 
 signal day_progressed
 signal inventory_updated
+signal night_fallen
 var day:int = 0
 enum interactions{Till,Plant,Water,Harvest,}
 enum states{Untilled,Tilled,Growing,Ripe,Dead}
@@ -21,6 +22,8 @@ var inventory: Dictionary = {
 	
 }
 
+func go_to_night():
+	night_fallen.emit()
 
 func next_day():
 	day += 1;

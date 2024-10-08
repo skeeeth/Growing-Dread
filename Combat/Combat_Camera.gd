@@ -1,6 +1,7 @@
 extends Camera2D
+class_name CRT_Cam
 
-@onready var crt_overlay = $ColorRect
+@onready var crt_overlay =$CRT_Filter
 @export var tracked_object:Node2D
 
 # Called when the node enters the scene tree for the first time.

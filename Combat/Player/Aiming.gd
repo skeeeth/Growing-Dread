@@ -5,7 +5,7 @@ class_name Aiming #DK Fighting!
 @export var damage = 100;
 @export var max_range:float
 
-@export var  angle_max = PI/8.0
+@export var  angle_max = PI/6.0
 const INDICATOR_LENGTH = 100
 @onready var reload = $Reload
 @onready var gunshot = $Gunshot
@@ -18,21 +18,23 @@ var _previous_hit_position:Vector2 #in global space
 var _shot_color:Color
 
 func _draw():
+	#Tracer
 	draw_line(_previous_shot_position-global_position,
 			_previous_hit_position-global_position,
 			_shot_color,
 			3)
+	
+	#accuracy indicator
 	var mouse_angle = get_local_mouse_position().angle()
 	var p1 = Vector2.from_angle(mouse_angle+aim_angle) * INDICATOR_LENGTH
 	var p2 = Vector2.from_angle(mouse_angle-aim_angle) * INDICATOR_LENGTH
-	var c = Color.DARK_GRAY
+	var c = Color(Color.DARK_GRAY,0.5)
 	draw_line(Vector2.ZERO,p1,c,2)
 	draw_line(Vector2.ZERO,p2,c,2)
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -77,6 +79,10 @@ func shoot():
 	else:
 		_previous_hit_position = target_position + global_position
 	var hit_object = get_collider()
+	
+	#Recoil
+	var recoil = create_tween()
+	recoil.tween_property(self, "aim_angle", angle_max, 0.03)
 	
 	#Fade round tracer
 	_shot_color = Color.WHITE

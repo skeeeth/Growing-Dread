@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6sw0ygmbddbh"]
+[gd_scene load_steps=7 format=3 uid="uid://b6sw0ygmbddbh"]
 
 [ext_resource type="PackedScene" uid="uid://dwp6k14335tjt" path="res://Farming/Character/Player/Player_F.tscn" id="1_2geav"]
-[ext_resource type="PackedScene" uid="uid://cgtja34u2clw3" path="res://Farming/inventory.tscn" id="1_hnua4"]
 [ext_resource type="PackedScene" uid="uid://bhdcmdrktl4xs" path="res://Farming/FarmingTiles/farmable_tile.tscn" id="2_xh21w"]
-[ext_resource type="Resource" uid="uid://bxc1cyfbquibd" path="res://Farming/FarmingTiles/Crops/Blank.tres" id="3_3jlqa"]
 [ext_resource type="PackedScene" uid="uid://b0ve77udfgeqv" path="res://Farming/home.tscn" id="4_42kk5"]
 [ext_resource type="PackedScene" uid="uid://dmdd5crrbcalb" path="res://Farming/next_day_manager.tscn" id="5_iju4u"]
 [ext_resource type="Script" path="res://Farming/MoneyLabel.gd" id="7_mdsg4"]
@@ -13,24 +11,19 @@ font_size = 32
 
 [node name="FarmWorld" type="Node2D"]
 
-[node name="Inventory" parent="." instance=ExtResource("1_hnua4")]
-
 [node name="Farmer" parent="." instance=ExtResource("1_2geav")]
 
 [node name="StaticBody2D" parent="." instance=ExtResource("2_xh21w")]
 position = Vector2(256, 128)
 scale = Vector2(4, 4)
-crop_data = ExtResource("3_3jlqa")
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("2_xh21w")]
 position = Vector2(384, 128)
 scale = Vector2(4, 4)
-crop_data = ExtResource("3_3jlqa")
 
 [node name="StaticBody2D3" parent="." instance=ExtResource("2_xh21w")]
 position = Vector2(256, 512)
 scale = Vector2(4, 4)
-crop_data = ExtResource("3_3jlqa")
 
 [node name="Home" parent="." instance=ExtResource("4_42kk5")]
 position = Vector2(1039, 128)

@@ -12,7 +12,7 @@ region = Rect2(576, 352, 64.3085, 32.5601)
 resource_local_to_scene = true
 size = Vector2(64, 32)
 
-[node name="Node2D" type="Node2D"]
+[node name="TestEnemy" type="Node2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_fuiq5")
 

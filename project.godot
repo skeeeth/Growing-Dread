@@ -11,10 +11,9 @@ config_version=5
 [application]
 
 config/name="Growing Dread"
-run/main_scene="res://Farming/farm_world.tscn"
+run/main_scene="res://Combat/Combat_Test.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
-run/main_scene="res://Farming/farm_world.tscn"
 
 [autoload]
 
@@ -102,10 +101,14 @@ space={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":48,"key_label":0,"unicode":48,"echo":false,"script":null)
 ]
 }
-
 inventory={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+lmb={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
 
@@ -115,9 +118,5 @@ inventory={
 2d_physics/layer_2="Collision"
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Sheep"
->>>>>>> 2df3d91169111d1dcb9d25493f56e25bed3a6477
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
+">>>>>>>2df3d91169111d1dcb9d25493f56e25bed3a6477[rendering]renderer/rendering_method"="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

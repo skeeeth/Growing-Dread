@@ -1,6 +1,6 @@
 extends TextureRect
 
-var item_type = ''
+@export var item_type = ''
 @onready var img = $"."
 @onready var label = $Label
 
@@ -10,7 +10,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if item_type in Farming.inventory:  
 		label.text = str(Farming.inventory[item_type])
 
@@ -19,6 +19,7 @@ func _process(delta):
 func _on_button_pressed():
 	Farming.sell_crop(item_type)
 	
+
 func set_item(item_name):
 	item_type = item_name
 	var item_img_path = Farming.crop_images[item_name]
