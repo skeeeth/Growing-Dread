@@ -7,11 +7,12 @@ extends Node
 @onready var spawn_point = $"../SpawnPoint"
 @onready var crt_filter = $"../Camera2D/CRT_Filter"
 var timer = 0.0
-const SHOW_CARD_DURATION = 1.0
+const SHOW_CARD_DURATION = 3.0
 @export var cam:CRT_Cam
 @export var player:CharacterBody2D
 var farm_character = preload("res://Farming/Character/Player/Player_F.tscn")
 var night_character = preload("res://Combat/Player/Player_C.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Farming.day_progressed.connect(next_day)

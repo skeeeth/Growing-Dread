@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://je52wfgabdbd"]
+
+[ext_resource type="PackedScene" uid="uid://3w35bn52gyqe" path="res://Combat/Enemies/wolf.tscn" id="1_vcfl3"]
+[ext_resource type="PackedScene" uid="uid://clhceljl1ikhu" path="res://Ranching/sheep.tscn" id="2_krk1c"]
+
+[node name="WolfTest" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Wolf" parent="." node_paths=PackedStringArray("target_sheep") instance=ExtResource("1_vcfl3")]
+position = Vector2(80, 85)
+target_sheep = NodePath("../Sheep")
+
+[node name="Sheep" parent="." instance=ExtResource("2_krk1c")]
+position = Vector2(581, 331)
