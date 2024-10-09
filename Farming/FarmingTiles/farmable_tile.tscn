@@ -34,6 +34,7 @@ resource_local_to_scene = true
 polygon = PackedVector2Array(-6, -7, -6, 5, 7, 5, 8, -7)
 
 [node name="FarmTile" type="StaticBody2D"]
+scale = Vector2(2, 2)
 collision_layer = 4
 script = ExtResource("1_lxn3k")
 crop_data = ExtResource("2_b2nj6")
@@ -45,8 +46,7 @@ shape = SubResource("RectangleShape2D_i47ax")
 
 [node name="CropDisplay" type="AnimatedSprite2D" parent="FarmableTile"]
 z_index = 1
-position = Vector2(0, -16)
-speed_scale = 0.0
+scale = Vector2(0.32, 0.32)
 
 [node name="Dirt" type="AnimatedSprite2D" parent="FarmableTile"]
 sprite_frames = SubResource("SpriteFrames_1d1s0")

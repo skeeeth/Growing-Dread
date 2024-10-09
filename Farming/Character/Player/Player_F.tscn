@@ -19,6 +19,7 @@ movespeed = 200.0
 
 [node name="Movement" type="RayCast2D" parent="."]
 collision_mask = 255
+hit_from_inside = true
 
 [node name="Area2D" type="Area2D" parent="."]
 

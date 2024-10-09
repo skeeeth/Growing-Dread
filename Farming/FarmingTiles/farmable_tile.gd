@@ -56,10 +56,31 @@ func plant(data):
 		state = Farming.states.Growing
 
 func _set_image(value):
-	if value > 1:
-		crop_display.frame = value - 2;
-	else:
-		dirt.frame = value
+	if value == Farming.states.Growing:
+		var age = Farming.day - plant_day
+		#Play Appropriate "Growing-X" animation
+		
+		#Determine how many growing animations this plant has
+		var growing_count:int = 0
+		for s in crop_data.images.get_animation_names():
+			if s.contains("Growing"):
+				growing_count += 1
+		
+		var progress = float(age) / float(crop_data.days_to_ripen)
+		var animation_number = str(round(progress * growing_count))
+		if animation_number == "0":
+			crop_display.play("Planted")
+		else:
+			crop_display.play("Growing-" + animation_number)
+		print("playing growing-" + animation_number + "for " + str(progress) + " progress")
+		
+	if value == Farming.states.Ripe:
+		crop_display.play("Ripe")
+	
+	if value == Farming.states.Tilled:
+		dirt.frame = 1
+	if value == Farming.states.Untilled:
+		dirt.frame = 2
 	#could maybe have multiple frames for the growing phase
 	# which would require more logic involving age
 	pass
@@ -71,13 +92,12 @@ func day_progression(day_overide:int = -1):
 		new_day = day_overide
 		
 	var age:int = new_day - plant_day
-	#if state == Farming.states.Tilled:
-		#crop_display.frame = 1
-	#if state == Farming.states.Untilled:
-		#crop_display.frame = 0
+	
 	if age == crop_data.days_to_ripen:
 		state = Farming.states.Ripe
 		occluder.occluder_light_mask = 1
+
 	if age == crop_data.days_to_death:
 		state = Farming.states.Dead
 		
+	_set_image(state)

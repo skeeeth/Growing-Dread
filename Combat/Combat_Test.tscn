@@ -32,16 +32,16 @@ layer_0/tile_data = PackedInt32Array(2, 1048576, 25, 3, 851968, 24, 65540, 98304
 metadata/_edit_lock_ = true
 
 [node name="FarmTile" parent="Level" instance=ExtResource("7_tdqte")]
-position = Vector2(-80, -112)
+position = Vector2(16, -112)
 
 [node name="FarmTile2" parent="Level" instance=ExtResource("7_tdqte")]
 position = Vector2(-48, -112)
 
 [node name="FarmTile4" parent="Level" instance=ExtResource("7_tdqte")]
-position = Vector2(16, -112)
+position = Vector2(144, -112)
 
 [node name="FarmTile3" parent="Level" instance=ExtResource("7_tdqte")]
-position = Vector2(-16, -112)
+position = Vector2(80, -112)
 
 [node name="Home" parent="Level" instance=ExtResource("9_3c7kn")]
 position = Vector2(400, -80)
