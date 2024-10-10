@@ -2,6 +2,7 @@ extends Node2D
 class_name Enemy
 
 signal died(id)
+
 @onready var hurtbox:Hurtbox = $Hurtbox
 
 # Called when the node enters the scene tree for the first time.
