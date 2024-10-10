@@ -6,6 +6,7 @@ extends Node
 @onready var moonlight = $"../Moonlight"
 @onready var spawn_point = $"../SpawnPoint"
 @onready var crt_filter = $"../Camera2D/ScreenSpace/CRT_Filter"
+@onready var day_layer = $"../Camera2D/ScreenSpace/Day"
 var timer = 0.0
 const SHOW_CARD_DURATION = 3.0
 @export var cam:CRT_Cam
@@ -23,6 +24,7 @@ func _ready():
 
 func next_day():
 	card_text.text = "Day " + str(Farming.day)
+	day_layer.visible = true
 	var fade_out = create_tween()
 	fade_out.set_parallel()
 	
@@ -45,12 +47,14 @@ func _process(delta):
 
 func go_to_night():
 	card_text.text = "Night " + str(Farming.day)
+	day_layer.visible = false
 	var fade_in = create_tween()
 	fade_in.set_parallel()
 	fade_in.tween_property(crt_filter,"modulate:a",1.0,0.5) #TODO: fix this (see next_day())
-	fade_in.tween_property(moonlight,"energy",1.0,5.0)
+	fade_in.tween_property(moonlight,"energy",0.6,3.3)
 	##TODO should probalby have some kinda sound here
 	_replace_player(night_character)
+
 	#_show_card()
 	pass
 

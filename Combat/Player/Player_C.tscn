@@ -42,3 +42,9 @@ texture_scale = 3.3
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_b2kst")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.4, 0.572549, 0, 1)
+energy = 0.5
+texture = ExtResource("3_et3yv")
+texture_scale = 0.5
