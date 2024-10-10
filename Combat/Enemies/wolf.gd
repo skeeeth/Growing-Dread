@@ -40,7 +40,6 @@ func die():
 
 func _ready():
 	hurtbox.died.connect(die)
-	
 	if (target_sheep != null):
 		_start_chasing()
 	else:

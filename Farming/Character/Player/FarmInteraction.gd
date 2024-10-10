@@ -6,6 +6,7 @@ class_name GridInteraction
 @export var movement:RayCast2D
 var interaction:int
 var crop:CropData
+var _previous_target
 
 ## Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +27,15 @@ func interact():
 func _process(_delta):
 	var interaction_text = $"../TextEdit"
 	interaction_text.text = Farming.interactions.keys()[interaction]
+	
+	var target = movement.get_collider()
+	if target is FarmTile:
+		target.get_node("FarmableTile/Border").visible = true
+	
+	if _previous_target is FarmTile:
+		if _previous_target != target:
+			_previous_target.get_node("FarmableTile/Border").visible = false
+	_previous_target = target
 
 
 ## temporary item selection, intent is to have a rearrangable

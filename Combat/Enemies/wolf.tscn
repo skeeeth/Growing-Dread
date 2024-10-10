@@ -1,11 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://3w35bn52gyqe"]
+[gd_scene load_steps=17 format=3 uid="uid://3w35bn52gyqe"]
 
 [ext_resource type="Script" path="res://Combat/Enemies/wolf.gd" id="1_5a6pp"]
 [ext_resource type="Texture2D" uid="uid://r1wuktwimebg" path="res://Combat/Enemies/wolf_run_right.png" id="1_23nlc"]
 [ext_resource type="Texture2D" uid="uid://bmnmsrrgnodoq" path="res://Combat/Enemies/wolf_run_down.png" id="2_182ij"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Lighten.gdshader" id="2_njfm8"]
 [ext_resource type="Texture2D" uid="uid://jcejhmhqnpln" path="res://Combat/Enemies/wolf_bite_right.png" id="4_74msf"]
 [ext_resource type="Texture2D" uid="uid://dmswhj0c6ghkh" path="res://Combat/Enemies/wolf_drag_right.png" id="5_owbej"]
 [ext_resource type="PackedScene" uid="uid://duoju8d1x6bam" path="res://Combat/Components/hurtbox/hurtbox.tscn" id="6_gjofy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flgrv"]
+resource_local_to_scene = true
+shader = ExtResource("2_njfm8")
+shader_parameter/intensity = 1.0
 
 [sub_resource type="Animation" id="Animation_omjfl"]
 length = 0.001
@@ -178,6 +184,7 @@ dragging_speed = 50.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
 texture_filter = 1
+material = SubResource("ShaderMaterial_flgrv")
 texture = ExtResource("1_23nlc")
 hframes = 5
 
@@ -194,12 +201,14 @@ shape = SubResource("CapsuleShape2D_adhy6")
 
 [node name="BitingTimer" type="Timer" parent="."]
 
-[node name="Hurtbox" parent="." instance=ExtResource("6_gjofy")]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("visual") instance=ExtResource("6_gjofy")]
 collision_layer = 2
 collision_mask = 0
 health = 150.0
+visual = NodePath("../Sprite2D")
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
+visible = false
 position = Vector2(5, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_wnwsp")
