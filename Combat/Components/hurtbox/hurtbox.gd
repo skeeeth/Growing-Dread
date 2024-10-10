@@ -23,7 +23,7 @@ func take_damage(amount):
 	#tween_method can only interpolate on on the first argument of a callable, so I have to make a lambda
 	# just to swap the arg order
 	var flash = create_tween()
-	var rssp = func reversed_set_shader_parameter(val,uniform): 
+	var rssp = func reversed_set_shader_parameter(val,uniform): #lambda
 		visual.material.set_shader_parameter(uniform,val)
 	
 	flash.tween_method(rssp.bind("intensity"),1.0,0.0,0.1)

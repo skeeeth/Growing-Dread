@@ -80,9 +80,7 @@ func _set_image(value):
 	if value == Farming.states.Tilled:
 		dirt.frame = 1
 	if value == Farming.states.Untilled:
-		dirt.frame = 2
-	#could maybe have multiple frames for the growing phase
-	# which would require more logic involving age
+		dirt.frame = 0
 	pass
 	
 func day_progression(day_overide:int = -1):

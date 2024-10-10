@@ -68,6 +68,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="CRT_Filter" type="ColorRect" parent="Camera2D/ScreenSpace"]
+visible = false
 z_index = 4096
 material = ExtResource("2_s41ki")
 layout_mode = 1
