@@ -5,7 +5,7 @@ extends Node
 
 @onready var moonlight = $"../Moonlight"
 @onready var spawn_point = $"../SpawnPoint"
-@onready var crt_filter = $"../Camera2D/CRT_Filter"
+@onready var crt_filter = $"../Camera2D/ScreenSpace/CRT_Filter"
 var timer = 0.0
 const SHOW_CARD_DURATION = 3.0
 @export var cam:CRT_Cam
@@ -17,8 +17,8 @@ var night_character = preload("res://Combat/Player/Player_C.tscn")
 func _ready():
 	Farming.day_progressed.connect(next_day)
 	Farming.night_fallen.connect(go_to_night)
-	next_day_card.reparent(cam,false)
-	next_day_card.position = cam.crt_overlay.position
+	#next_day_card.reparent(cam,false)
+	#next_day_card.position = cam.crt_overlay.position
 	
 
 func next_day():
@@ -30,7 +30,7 @@ func next_day():
 	#i guess alterering modulate for a screen_reading shader doesnt actually cause a fade
 	#TODO: I'll have to change this to instead alter the uniforms to get the desired effect
 	
-	fade_out.tween_property(moonlight,"energy",0.0,5.0)
+	fade_out.tween_property(moonlight,"energy",0.0,2.0)
 	_replace_player(farm_character)
 	#_show_card()
 

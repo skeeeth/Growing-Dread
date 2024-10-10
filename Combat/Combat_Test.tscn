@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c74m3wvoruq3k"]
+[gd_scene load_steps=14 format=3 uid="uid://c74m3wvoruq3k"]
 
 [ext_resource type="Script" path="res://Combat/Combat_Test_Scene.gd" id="1_jojhg"]
 [ext_resource type="Material" uid="uid://cj2ovdkyq2rbt" path="res://Assets/Shaders/Light_CRT_settings.tres" id="2_s41ki"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bas4qnp8bdxfc" path="res://Ranching/animal_pen.tscn" id="5_sje8e"]
 [ext_resource type="TileSet" uid="uid://ce2qp2mth753u" path="res://Assets/Tileset/FullTerrainsTileset.tres" id="6_3t5hl"]
 [ext_resource type="PackedScene" uid="uid://bhdcmdrktl4xs" path="res://Farming/FarmingTiles/farmable_tile.tscn" id="7_tdqte"]
+[ext_resource type="PackedScene" uid="uid://quomisubtuvn" path="res://Farming/inventory.tscn" id="8_blqqw"]
 [ext_resource type="PackedScene" uid="uid://b0ve77udfgeqv" path="res://Farming/home.tscn" id="9_3c7kn"]
 [ext_resource type="PackedScene" uid="uid://dwp6k14335tjt" path="res://Farming/Character/Player/Player_F.tscn" id="10_4uhrb"]
 [ext_resource type="PackedScene" uid="uid://dmdd5crrbcalb" path="res://Farming/next_day_manager.tscn" id="11_c1wmv"]
@@ -60,21 +61,20 @@ editor_draw_drag_margin = true
 script = ExtResource("2_ucb8v")
 tracked_object = NodePath("../Farmer")
 
-[node name="CRT_Filter" type="ColorRect" parent="Camera2D"]
-modulate = Color(1, 1, 1, 0)
+[node name="ScreenSpace" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CRT_Filter" type="ColorRect" parent="Camera2D/ScreenSpace"]
 z_index = 4096
 material = ExtResource("2_s41ki")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -609.0
-offset_top = -420.0
-offset_right = 591.0
-offset_bottom = 380.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 1
+offset_right = 1200.0
+offset_bottom = 800.0
+
+[node name="Inventory" parent="Camera2D/ScreenSpace" instance=ExtResource("8_blqqw")]
 
 [node name="Farmer" parent="." instance=ExtResource("10_4uhrb")]
 position = Vector2(208, -48)

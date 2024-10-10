@@ -6,7 +6,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_pi1m5"]
 font_size = 48
 
-[node name="Inventory" type="Node"]
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_j6d7j")
 
 [node name="ColorRect" type="ColorRect" parent="."]
