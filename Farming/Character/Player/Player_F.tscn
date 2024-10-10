@@ -13,7 +13,7 @@ size = Vector2(32, 32)
 size = Vector2(32, 32)
 
 [node name="Farmer" type="CharacterBody2D"]
-z_index = 3
+z_index = 5
 script = ExtResource("2_yxr6k")
 movespeed = 200.0
 

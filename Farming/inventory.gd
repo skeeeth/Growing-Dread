@@ -41,3 +41,10 @@ func on_inventory_update():
 		if child.item_type not in Farming.inventory:
 			# This child's item_type is not in the inventory—remove it
 			child.queue_free()
+
+
+func _on_texture_rect_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.pressed:
+			color_rect.visible = !color_rect.visible
+	pass # Replace with function body.

@@ -1,7 +1,7 @@
 extends Node2D
 class_name FarmTile
 
-var state:int = Farming.states.Untilled:
+@export var state:int = Farming.states.Untilled:
 	set(v):
 		state = v
 		_set_image(state)
@@ -15,9 +15,13 @@ var last_water_day:int = -1
 @onready var occluder = $FarmableTile/Occluder
 
 const BLANK = preload("res://Farming/FarmingTiles/Crops/Blank.tres")
+@onready var animation_player = $AnimationPlayer
 
 func _ready():
 	Farming.day_progressed.connect(day_progression)
+
+
+	
 
 func interact(type,data):
 	match type:
@@ -29,8 +33,10 @@ func interact(type,data):
 
 func harvest():
 	if state == Farming.states.Ripe:
+		animation_player.play("Harvest")
 		#collect the item into the player's inventory
 		Farming.add_item(crop_data.name)
+		await animation_player.animation_finished
 		crop_data = BLANK;
 		state = Farming.states.Untilled
 		crop_display.visible = false
@@ -39,7 +45,7 @@ func harvest():
 
 func till():
 	if state == Farming.states.Untilled:
-		state = Farming.states.Tilled
+		animation_player.play("Till")
 		
 
 func water():
@@ -49,6 +55,8 @@ func water():
 
 func plant(data):
 	if state == Farming.states.Tilled:
+		animation_player.play("Plant")
+		await animation_player.animation_finished
 		crop_data = data
 		crop_display.sprite_frames = crop_data.images
 		crop_display.visible = true

@@ -1,12 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhdcmdrktl4xs"]
+[gd_scene load_steps=18 format=3 uid="uid://bhdcmdrktl4xs"]
 
 [ext_resource type="Script" path="res://Farming/FarmingTiles/farmable_tile.gd" id="1_lxn3k"]
 [ext_resource type="Resource" uid="uid://bxc1cyfbquibd" path="res://Farming/FarmingTiles/Crops/Blank.tres" id="2_b2nj6"]
 [ext_resource type="Texture2D" uid="uid://c87upey770rjx" path="res://Assets/UI-Kenny_Large.png" id="3_8wb04"]
 [ext_resource type="Texture2D" uid="uid://nsrjbbj6clnd" path="res://Assets/plowed_soil.png" id="3_ars1p"]
+[ext_resource type="Texture2D" uid="uid://d20tqsy7twcsj" path="res://Assets/farm tool icons calciumtrice.png" id="5_wlp54"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i47ax"]
 size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75fi6"]
+atlas = ExtResource("5_wlp54")
+region = Rect2(320, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vvumk"]
 atlas = ExtResource("3_ars1p")
@@ -38,6 +43,135 @@ region = Rect2(288, 0, 32, 32)
 resource_local_to_scene = true
 polygon = PackedVector2Array(-6, -7, -6, 5, 7, 5, 8, -7)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rketj"]
+atlas = ExtResource("5_wlp54")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="Animation" id="Animation_x73uo"]
+resource_name = "Harvest"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FarmableTile/Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [0.0, 0.523599, -1.0472]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FarmableTile/Pivot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_mqves"]
+resource_name = "Till"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FarmableTile/Shovel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, -2, -2),
+"update": 0,
+"values": [Vector2(19.975, -19.755), Vector2(30, -30), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FarmableTile/Shovel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:state")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_rxjou"]
+resource_name = "Plant"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FarmableTile/ParticleHolder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-10, 0), Vector2(20, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FarmableTile/ParticleHolder/CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FarmableTile/ParticleHolder/CPUParticles2D2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FarmableTile/ParticleHolder/CPUParticles2D3:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4t07d"]
+_data = {
+"Harvest": SubResource("Animation_x73uo"),
+"Plant": SubResource("Animation_rxjou"),
+"Till": SubResource("Animation_mqves")
+}
+
 [node name="FarmTile" type="StaticBody2D"]
 scale = Vector2(2, 2)
 collision_layer = 4
@@ -48,6 +182,17 @@ crop_data = ExtResource("2_b2nj6")
 shape = SubResource("RectangleShape2D_i47ax")
 
 [node name="FarmableTile" type="Node2D" parent="."]
+
+[node name="Pivot" type="Node2D" parent="FarmableTile"]
+visible = false
+position = Vector2(-9.5, 10.5)
+rotation = -1.0472
+
+[node name="Scythe" type="Sprite2D" parent="FarmableTile/Pivot"]
+z_index = 2
+position = Vector2(9.39231, -7.73205)
+scale = Vector2(0.53, 0.53)
+texture = SubResource("AtlasTexture_75fi6")
 
 [node name="CropDisplay" type="AnimatedSprite2D" parent="FarmableTile"]
 z_index = 1
@@ -64,3 +209,72 @@ texture = SubResource("AtlasTexture_7bw7a")
 [node name="Occluder" type="LightOccluder2D" parent="FarmableTile"]
 occluder = SubResource("OccluderPolygon2D_fhk8u")
 occluder_light_mask = 0
+
+[node name="Shovel" type="Sprite2D" parent="FarmableTile"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(19.975, -19.755)
+rotation = -0.392699
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_rketj")
+
+[node name="ParticleHolder" type="Node2D" parent="FarmableTile"]
+position = Vector2(20, 0)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="FarmableTile/ParticleHolder"]
+position = Vector2(0, -5)
+emitting = false
+amount = 4
+one_shot = true
+direction = Vector2(-0.1, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+angular_velocity_min = -18.0
+angular_velocity_max = 18.0
+linear_accel_min = -56.24
+linear_accel_max = -56.24
+scale_amount_min = 3.3
+scale_amount_max = 3.3
+color = Color(0.0509804, 0.592157, 0, 1)
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="FarmableTile/ParticleHolder"]
+position = Vector2(0, -17.5)
+emitting = false
+amount = 4
+one_shot = true
+direction = Vector2(-0.1, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+angular_velocity_min = -18.0
+angular_velocity_max = 18.0
+linear_accel_min = -56.24
+linear_accel_max = -56.24
+scale_amount_min = 3.3
+scale_amount_max = 3.3
+color = Color(0.0509804, 0.592157, 0, 1)
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="FarmableTile/ParticleHolder"]
+position = Vector2(0, 5)
+emitting = false
+amount = 4
+one_shot = true
+direction = Vector2(-0.1, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+angular_velocity_min = -18.0
+angular_velocity_max = 18.0
+linear_accel_min = -56.24
+linear_accel_max = -56.24
+scale_amount_min = 3.3
+scale_amount_max = 3.3
+color = Color(0.0509804, 0.592157, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4t07d")
+}
