@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$farmer_image.animation = "idle"
+	$farmer_image.animation = "Idle"
 	$farmer_image.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,11 +16,11 @@ func _process(delta):
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		$farmer_image.animation = "walk"
+		$farmer_image.animation = "Walk"
 		$farmer_image.flip_h = velocity.x > 0
 	else:
 		# This might get annoying if we want to emote things like taunt...
-		$farmer_image.animation = "idle"
+		$farmer_image.animation = "Idle"
 
 	velocity = dir * movespeed
 	if dir:
