@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bhdcmdrktl4xs"]
+[gd_scene load_steps=41 format=3 uid="uid://bhdcmdrktl4xs"]
 
 [ext_resource type="Script" path="res://Farming/FarmingTiles/farmable_tile.gd" id="1_lxn3k"]
 [ext_resource type="Resource" uid="uid://bxc1cyfbquibd" path="res://Farming/FarmingTiles/Crops/Blank.tres" id="2_b2nj6"]
@@ -8,59 +8,31 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i47ax"]
 size = Vector2(32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h8rt3"]
-atlas = ExtResource("3_qe3be")
-region = Rect2(0, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_llkpr"]
-atlas = ExtResource("3_qe3be")
-region = Rect2(100, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kruxk"]
-atlas = ExtResource("3_qe3be")
-region = Rect2(200, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gv7pm"]
-atlas = ExtResource("3_qe3be")
-region = Rect2(300, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_olrjo"]
-atlas = ExtResource("3_qe3be")
-region = Rect2(400, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bejev"]
-atlas = ExtResource("3_qe3be")
-region = Rect2(500, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gyis4"]
-atlas = ExtResource("3_qe3be")
-region = Rect2(600, 300, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ne66w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vf6t"]
 atlas = ExtResource("3_qe3be")
 region = Rect2(0, 200, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2nej5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ctl8"]
 atlas = ExtResource("3_qe3be")
 region = Rect2(100, 200, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7hngo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_shb2m"]
 atlas = ExtResource("3_qe3be")
 region = Rect2(200, 200, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g0yj6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir1hk"]
 atlas = ExtResource("3_qe3be")
 region = Rect2(300, 200, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4xen5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_15g1l"]
 atlas = ExtResource("3_qe3be")
 region = Rect2(400, 200, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b5hpv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1qts"]
 atlas = ExtResource("3_qe3be")
 region = Rect2(500, 200, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pa7e7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m1qc"]
 atlas = ExtResource("3_qe3be")
 region = Rect2(600, 200, 100, 100)
 
@@ -160,54 +132,28 @@ region = Rect2(600, 0, 100, 100)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h8rt3")
+"texture": SubResource("AtlasTexture_2vf6t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_llkpr")
+"texture": SubResource("AtlasTexture_4ctl8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kruxk")
+"texture": SubResource("AtlasTexture_shb2m")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gv7pm")
+"texture": SubResource("AtlasTexture_ir1hk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_olrjo")
+"texture": SubResource("AtlasTexture_15g1l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bejev")
+"texture": SubResource("AtlasTexture_x1qts")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gyis4")
+"texture": SubResource("AtlasTexture_5m1qc")
 }],
 "loop": true,
-"name": &"Growing-0",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ne66w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2nej5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7hngo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g0yj6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4xen5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b5hpv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pa7e7")
-}],
-"loop": true,
-"name": &"Growing-1",
+"name": &"Growing",
 "speed": 5.0
 }, {
 "frames": [{
@@ -346,10 +292,10 @@ shape = SubResource("RectangleShape2D_i47ax")
 z_index = 1
 scale = Vector2(0.32, 0.32)
 sprite_frames = SubResource("SpriteFrames_7l7wl")
-animation = &"Wasted"
+animation = &"Growing"
+frame_progress = 0.735787
 
 [node name="Dirt" type="AnimatedSprite2D" parent="FarmableTile"]
-visible = false
 sprite_frames = SubResource("SpriteFrames_1d1s0")
 frame_progress = 0.580835
 

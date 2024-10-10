@@ -4,8 +4,8 @@ signal day_progressed
 signal inventory_updated
 signal night_fallen
 var day:int = 0
-enum interactions{Till,Plant,Water,Harvest,}
-enum states{Untilled,Tilled,Growing,Ripe,Dead}
+enum interactions{ Till, Plant, Water, Harvest, }
+enum states{ Untilled, Tilled, Planted, Growing, Ripe, Dead, }
 var money = 0
 
 var crop_prices: Dictionary = {
@@ -15,7 +15,7 @@ var crop_prices: Dictionary = {
 
 var crop_images: Dictionary = {
 	"Wheat": "res://textures/icons/wheat.jpg",
-	"Corn": "res://textures/icons/corn.png"
+	"Corn": "res://textures/icons/corn.png",
 }
 
 var inventory: Dictionary = {
