@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://o3ibnm5nobeo"]
+[gd_scene load_steps=6 format=3 uid="uid://cf13ry04rj8ri"]
 
-[ext_resource type="Texture2D" uid="uid://nba5hstn5m1u" path="res://Ranching/fence_single_segment_horizontal.png" id="1_7icxu"]
-[ext_resource type="Texture2D" uid="uid://bn54cllwk10op" path="res://Ranching/fence_single_segment_vertical.png" id="2_gqc3e"]
+[ext_resource type="Texture2D" uid="uid://d0gasrwqjoldu" path="res://Ranching/fence_single_segment_horizontal.png" id="1_7icxu"]
+[ext_resource type="Texture2D" uid="uid://cmdsjjtxy6ef2" path="res://Ranching/fence_single_segment_vertical.png" id="2_gqc3e"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d23ui"]
 bounce = 0.5

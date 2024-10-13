@@ -32,11 +32,9 @@ atlas = ExtResource("10_7thpb")
 region = Rect2(0, 0, 64, 64)
 
 [node name="CombatTest" type="Node2D"]
-y_sort_enabled = true
 script = ExtResource("1_jojhg")
 
 [node name="Level" type="Node2D" parent="."]
-y_sort_enabled = true
 
 [node name="AnimalPen" parent="Level" instance=ExtResource("5_sje8e")]
 
@@ -60,7 +58,7 @@ position = Vector2(144, -112)
 position = Vector2(80, -112)
 
 [node name="Home" parent="Level" instance=ExtResource("9_3c7kn")]
-position = Vector2(400, -10)
+position = Vector2(400, -80)
 
 [node name="Tree spawner" parent="Level" instance=ExtResource("6_aaly3")]
 
