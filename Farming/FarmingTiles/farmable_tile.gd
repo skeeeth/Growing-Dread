@@ -35,7 +35,8 @@ func harvest():
 	if state == Farming.states.Ripe:
 		animation_player.play("Harvest")
 		#collect the item into the player's inventory
-		Farming.add_item(crop_data.name)
+		Farming.add_item(crop_data.item_data)
+		Farming.add_item(crop_data.seed_data)
 		await animation_player.animation_finished
 		crop_data = BLANK;
 		state = Farming.states.Untilled

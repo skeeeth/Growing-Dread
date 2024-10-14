@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c4631ouus7yft"]
+
+[ext_resource type="Texture2D" uid="uid://c87upey770rjx" path="res://Assets/UI-Kenny_Large.png" id="1_puym4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8omid"]
+atlas = ExtResource("1_puym4")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0sw0g"]
+texture = SubResource("AtlasTexture_8omid")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[resource]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_0sw0g")

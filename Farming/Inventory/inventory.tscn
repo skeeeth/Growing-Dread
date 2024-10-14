@@ -1,0 +1,100 @@
+[gd_scene load_steps=12 format=3 uid="uid://quomisubtuvn"]
+
+[ext_resource type="Script" path="res://Farming/Inventory/inventory.gd" id="1_j6d7j"]
+[ext_resource type="PackedScene" uid="uid://bh7lfr4sed3c0" path="res://Farming/Inventory/InventorySlot.tscn" id="2_jicc7"]
+[ext_resource type="Texture2D" uid="uid://d20tqsy7twcsj" path="res://Assets/farm tool icons calciumtrice.png" id="3_4qvj2"]
+[ext_resource type="Script" path="res://Farming/Inventory/ItemData.gd" id="4_7jpbf"]
+[ext_resource type="Resource" uid="uid://dsroxdib8h362" path="res://Farming/FarmingTiles/Crops/CornSeed.tres" id="5_12xgg"]
+[ext_resource type="Texture2D" uid="uid://dj88yrxqyimar" path="res://Assets/UI_HOVER.png" id="6_wqby2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pi1m5"]
+font_size = 48
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a785p"]
+atlas = ExtResource("3_4qvj2")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="Resource" id="Resource_xxj83"]
+script = ExtResource("4_7jpbf")
+sellable = false
+money_value = 0
+buy_cost = 0
+interation_type = 0
+inventory_image = SubResource("AtlasTexture_a785p")
+crop_name = ""
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22rrj"]
+atlas = ExtResource("3_4qvj2")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="Resource" id="Resource_li0l0"]
+script = ExtResource("4_7jpbf")
+sellable = false
+money_value = 0
+buy_cost = 0
+interation_type = 3
+inventory_image = SubResource("AtlasTexture_22rrj")
+crop_name = ""
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_j6d7j")
+
+[node name="Shop" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 88.0
+offset_right = 1086.0
+offset_bottom = 638.0
+mouse_filter = 1
+color = Color(0.411765, 0.219608, 0.309804, 1)
+
+[node name="Label" type="Label" parent="Shop"]
+layout_mode = 0
+offset_left = 386.0
+offset_top = -76.0
+offset_right = 685.0
+offset_bottom = -8.0
+mouse_filter = 1
+text = "SHOP"
+label_settings = SubResource("LabelSettings_pi1m5")
+
+[node name="GridContainer" type="GridContainer" parent="Shop"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Slot" parent="Shop/GridContainer" instance=ExtResource("2_jicc7")]
+layout_mode = 2
+is_shop = true
+count = -1
+data = ExtResource("5_12xgg")
+
+[node name="Hotbar" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 72.0
+offset_top = 500.0
+offset_right = 1072.0
+offset_bottom = 628.0
+theme_override_constants/separation = 1
+
+[node name="Slot" parent="Hotbar" instance=ExtResource("2_jicc7")]
+layout_mode = 2
+count = -1
+data = SubResource("Resource_xxj83")
+
+[node name="Slot2" parent="Hotbar" instance=ExtResource("2_jicc7")]
+layout_mode = 2
+count = -1
+data = SubResource("Resource_li0l0")
+
+[node name="Slot3" parent="Hotbar" instance=ExtResource("2_jicc7")]
+layout_mode = 2
+count = 4
+data = ExtResource("5_12xgg")
+
+[node name="HotbarSelection" type="Sprite2D" parent="Hotbar"]
+z_index = 4
+texture = ExtResource("6_wqby2")

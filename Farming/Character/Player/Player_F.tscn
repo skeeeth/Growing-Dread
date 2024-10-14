@@ -216,15 +216,17 @@ shape = SubResource("RectangleShape2D_ew3jx")
 [node name="Input" type="Node" parent="."]
 
 [node name="BodySprite" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_jokbq")
 script = ExtResource("4_8l8xa")
 
-[node name="Interaction" type="Node" parent="." node_paths=PackedStringArray("movement")]
+[node name="Interaction" type="Node" parent="." node_paths=PackedStringArray("movement") groups=["interaction"]]
 script = ExtResource("4_d3oh0")
 movement = NodePath("../Movement")
 
 [node name="TextEdit" type="TextEdit" parent="."]
+visible = false
 offset_left = -72.0
 offset_top = 78.0
 offset_right = 73.0
@@ -235,5 +237,4 @@ shape = SubResource("RectangleShape2D_82par")
 
 [node name="farmer_image" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_683wg")
-animation = &"Walk"
-frame_progress = 0.16847
+animation = &"Idle"

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmkn5jiy54yfv"]
+
+[ext_resource type="Texture2D" uid="uid://dyiai5sjbv81s" path="res://icon.svg" id="1_j2nlv"]
+[ext_resource type="Script" path="res://Farming/Inventory/drag_item.gd" id="2_afqf7"]
+
+[node name="Sprite2D" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.521569)
+texture = ExtResource("1_j2nlv")
+script = ExtResource("2_afqf7")

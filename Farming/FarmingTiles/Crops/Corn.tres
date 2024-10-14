@@ -1,7 +1,23 @@
-[gd_resource type="Resource" script_class="CropData" load_steps=3 format=3 uid="uid://bsd6nhrj5hu07"]
+[gd_resource type="Resource" script_class="CropData" load_steps=8 format=3 uid="uid://bsd6nhrj5hu07"]
 
 [ext_resource type="SpriteFrames" uid="uid://wf1tymjqv7ne" path="res://CornSpriteFrames.tres" id="1_lk682"]
 [ext_resource type="Script" path="res://Farming/FarmingTiles/CropData.gd" id="1_th4lg"]
+[ext_resource type="Texture2D" uid="uid://cnmf35syu2634" path="res://Assets/plants.png" id="2_boigo"]
+[ext_resource type="Script" path="res://Farming/Inventory/ItemData.gd" id="2_utsdt"]
+[ext_resource type="Resource" uid="uid://dsroxdib8h362" path="res://Farming/FarmingTiles/Crops/CornSeed.tres" id="5_p0w2k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awidw"]
+atlas = ExtResource("2_boigo")
+region = Rect2(192, 352, 32, 32)
+
+[sub_resource type="Resource" id="Resource_1pr2x"]
+script = ExtResource("2_utsdt")
+sellable = true
+money_value = 8
+buy_cost = 0
+interation_type = 1
+inventory_image = SubResource("AtlasTexture_awidw")
+crop_name = ""
 
 [resource]
 script = ExtResource("1_th4lg")
@@ -10,3 +26,5 @@ days_to_ripen = 3
 days_to_death = -1
 max_drought = -1
 images = ExtResource("1_lk682")
+item_data = SubResource("Resource_1pr2x")
+seed_data = ExtResource("5_p0w2k")

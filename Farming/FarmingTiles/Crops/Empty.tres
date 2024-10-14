@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://ckk3ia6ag75g2"]
+
+[ext_resource type="Script" path="res://Farming/Inventory/ItemData.gd" id="1_n047x"]
+
+[sub_resource type="Gradient" id="Gradient_tyth7"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k53km"]
+gradient = SubResource("Gradient_tyth7")
+
+[resource]
+script = ExtResource("1_n047x")
+sellable = false
+money_value = 0
+buy_cost = 0
+interation_type = 4
+inventory_image = SubResource("GradientTexture2D_k53km")
+crop_name = ""
