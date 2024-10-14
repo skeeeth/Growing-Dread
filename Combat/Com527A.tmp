@@ -7,7 +7,7 @@
 [ext_resource type="TileSet" uid="uid://ce2qp2mth753u" path="res://Assets/Tileset/FullTerrainsTileset.tres" id="6_3t5hl"]
 [ext_resource type="PackedScene" uid="uid://p7enirvefopd" path="res://Farming/tree_spawner.tscn" id="6_aaly3"]
 [ext_resource type="PackedScene" uid="uid://bhdcmdrktl4xs" path="res://Farming/FarmingTiles/farmable_tile.tscn" id="7_tdqte"]
-[ext_resource type="PackedScene" uid="uid://quomisubtuvn" path="res://Farming/Inventory/inventory.tscn" id="8_blqqw"]
+[ext_resource type="PackedScene" uid="uid://quomisubtuvn" path="res://Farming/inventory.tscn" id="8_blqqw"]
 [ext_resource type="PackedScene" uid="uid://b0ve77udfgeqv" path="res://Farming/home.tscn" id="9_3c7kn"]
 [ext_resource type="Script" path="res://Farming/MoneyLabel.gd" id="9_hhlth"]
 [ext_resource type="PackedScene" uid="uid://dwp6k14335tjt" path="res://Farming/Character/Player/Player_F.tscn" id="10_4uhrb"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dmdd5crrbcalb" path="res://Farming/next_day_manager.tscn" id="11_c1wmv"]
 [ext_resource type="Texture2D" uid="uid://85guflqjgwj4" path="res://Assets/input_prompts-Kenny.png" id="11_d3awp"]
 [ext_resource type="Script" path="res://Combat/Enemy Instancer.gd" id="11_v32kl"]
+[ext_resource type="Script" path="res://Farming/inventory_icon.gd" id="12_6tbna"]
 
 [sub_resource type="Gradient" id="Gradient_17rgn"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -31,11 +32,9 @@ atlas = ExtResource("10_7thpb")
 region = Rect2(0, 0, 64, 64)
 
 [node name="CombatTest" type="Node2D"]
-y_sort_enabled = true
 script = ExtResource("1_jojhg")
 
 [node name="Level" type="Node2D" parent="."]
-y_sort_enabled = true
 
 [node name="AnimalPen" parent="Level" instance=ExtResource("5_sje8e")]
 
@@ -59,14 +58,9 @@ position = Vector2(144, -112)
 position = Vector2(80, -112)
 
 [node name="Home" parent="Level" instance=ExtResource("9_3c7kn")]
-position = Vector2(400, -10)
+position = Vector2(400, -80)
 
 [node name="Tree spawner" parent="Level" instance=ExtResource("6_aaly3")]
-
-[node name="GridContainer" type="GridContainer" parent="Level"]
-offset_right = 40.0
-offset_bottom = 40.0
-columns = 10
 
 [node name="Moonlight" type="PointLight2D" parent="."]
 position = Vector2(-56.9999, -41.5)
@@ -86,7 +80,6 @@ tracked_object = NodePath("../Farmer")
 z_index = 10
 layout_mode = 3
 anchors_preset = 0
-mouse_filter = 1
 
 [node name="CRT_Filter" type="ColorRect" parent="Camera2D/ScreenSpace"]
 modulate = Color(1, 1, 1, 0)
@@ -95,8 +88,6 @@ material = ExtResource("2_s41ki")
 layout_mode = 1
 offset_right = 1200.0
 offset_bottom = 800.0
-mouse_filter = 1
-mouse_force_pass_scroll_events = false
 
 [node name="Day" type="Control" parent="Camera2D/ScreenSpace"]
 layout_mode = 3
@@ -111,7 +102,6 @@ mouse_filter = 1
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 23.0
-mouse_filter = 1
 script = ExtResource("9_hhlth")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/ScreenSpace/Day"]
@@ -129,17 +119,14 @@ layout_mode = 2
 [node name="HSeparator3" type="HSeparator" parent="Camera2D/ScreenSpace/Day/HBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-mouse_filter = 1
 
 [node name="HSeparator" type="HSeparator" parent="Camera2D/ScreenSpace/Day/HBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-mouse_filter = 1
 
 [node name="HSeparator2" type="HSeparator" parent="Camera2D/ScreenSpace/Day/HBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-mouse_filter = 1
 
 [node name="TextureRect2" type="TextureRect" parent="Camera2D/ScreenSpace/Day/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -150,6 +137,7 @@ stretch_mode = 2
 layout_mode = 2
 texture = SubResource("AtlasTexture_40mw2")
 expand_mode = 2
+script = ExtResource("12_6tbna")
 
 [node name="Farmer" parent="." instance=ExtResource("10_4uhrb")]
 position = Vector2(208, -48)

@@ -17,8 +17,10 @@ func _process(delta):
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		$farmer_image.animation = "Walk"
+		$farmer_image.speed_scale = 2.5
 		$farmer_image.flip_h = velocity.x > 0
 	else:
+		$farmer_image.speed_scale = 1.0
 		# This might get annoying if we want to emote things like taunt...
 		$farmer_image.animation = "Idle"
 

@@ -1,26 +1,166 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0ve77udfgeqv"]
+[gd_scene load_steps=19 format=3 uid="uid://b0ve77udfgeqv"]
 
-[ext_resource type="Texture2D" uid="uid://dsn1llte5yptp" path="res://Assets/home.png" id="1_4xlt0"]
 [ext_resource type="Script" path="res://Farming/home.gd" id="1_go7s6"]
+[ext_resource type="Texture2D" uid="uid://c4uv13tx8yqgv" path="res://Assets/house_crop.png" id="2_ewjnk"]
+[ext_resource type="Texture2D" uid="uid://g6ny5tfk480t" path="res://Assets/wood_floor.png" id="3_am8mk"]
+[ext_resource type="Texture2D" uid="uid://d3b5kowal7pdx" path="res://Assets/white_square.png" id="3_j56ey"]
+[ext_resource type="Texture2D" uid="uid://nkmxl87xwaua" path="res://Assets/house_wall.png" id="4_4hyjm"]
+[ext_resource type="Texture2D" uid="uid://dpfkd6skmqhds" path="res://Assets/house_interior_right_wall.png" id="5_c7bvx"]
+[ext_resource type="Texture2D" uid="uid://4n5tpajq6f84" path="res://Assets/house_interior_left_wall.png" id="6_uc2up"]
+[ext_resource type="Script" path="res://Farming/Door.gd" id="8_4780h"]
+[ext_resource type="Texture2D" uid="uid://dii2a8low2u7y" path="res://Farming/country.png" id="8_fio4m"]
+[ext_resource type="Script" path="res://Farming/Bed.gd" id="8_o3c8e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pq0lx"]
-size = Vector2(256, 256)
+size = Vector2(248, 227)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mqkp8"]
-polygon = PackedVector2Array(-127, -128, -128, 124, 126, 126, 129, -133)
+polygon = PackedVector2Array(-126, -215, -126, 15, 124, 14, 123, -214)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54jl0"]
+size = Vector2(61, 82)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5sm5"]
+size = Vector2(46, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ab508"]
+size = Vector2(9, 193.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbmka"]
+size = Vector2(9, 193.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5dml"]
+size = Vector2(254, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jwur"]
+size = Vector2(255, 10)
 
 [node name="Home" type="StaticBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_go7s6")
+interior_start_position = Vector2(0, -5)
+exterior_start_position = Vector2(0, 3)
+player_z_index_inside_adjustment = 14
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="ExteriorCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -99.5)
 shape = SubResource("RectangleShape2D_pq0lx")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -126.0
-offset_top = -127.0
-offset_right = 130.0
-offset_bottom = 129.0
-texture = ExtResource("1_4xlt0")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+scale = Vector2(1.55, 1.55)
+texture = ExtResource("2_ewjnk")
+offset = Vector2(0, -70)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_mqkp8")
+
+[node name="Interior" type="Node2D" parent="."]
+visible = false
+
+[node name="Floor" type="TextureRect" parent="Interior"]
+z_index = 11
+texture_filter = 1
+offset_left = -126.0
+offset_top = -129.0
+offset_right = 122.0
+offset_bottom = 15.0
+texture = ExtResource("3_am8mk")
+stretch_mode = 1
+
+[node name="TopWall" type="NinePatchRect" parent="Interior"]
+z_index = 11
+texture_filter = 1
+offset_left = -126.0
+offset_top = -219.0
+offset_right = 122.0
+offset_bottom = -129.0
+texture = ExtResource("4_4hyjm")
+patch_margin_left = 4
+patch_margin_top = 20
+patch_margin_right = 4
+patch_margin_bottom = 19
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="RightWall" type="NinePatchRect" parent="Interior"]
+z_index = 12
+texture_filter = 1
+offset_left = 121.0
+offset_top = -219.0
+offset_right = 130.0
+offset_bottom = 15.0
+texture = ExtResource("5_c7bvx")
+patch_margin_left = 1
+patch_margin_top = 7
+patch_margin_right = 1
+
+[node name="LeftWall" type="NinePatchRect" parent="Interior"]
+z_index = 12
+texture_filter = 1
+offset_left = -126.0
+offset_top = -219.0
+offset_right = -118.0
+offset_bottom = 15.0
+texture = ExtResource("6_uc2up")
+patch_margin_left = 1
+patch_margin_top = 7
+patch_margin_right = 1
+
+[node name="Interior screen cover" type="Sprite2D" parent="Interior"]
+modulate = Color(0, 0, 0, 1)
+z_index = 10
+scale = Vector2(30, 30)
+texture = ExtResource("3_j56ey")
+
+[node name="Door" type="StaticBody2D" parent="Interior"]
+collision_layer = 4
+script = ExtResource("8_4780h")
+
+[node name="DoorSprite" type="Sprite2D" parent="Interior/Door"]
+modulate = Color(1, 1, 1, 0.6)
+z_index = 17
+texture_filter = 1
+position = Vector2(-1, -23)
+scale = Vector2(1.55, 1.55)
+texture = ExtResource("2_ewjnk")
+region_enabled = true
+region_rect = Rect2(64, 111, 32, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interior/Door"]
+position = Vector2(0.5, -22)
+shape = SubResource("RectangleShape2D_54jl0")
+
+[node name="Bed" type="StaticBody2D" parent="Interior"]
+position = Vector2(94, -99)
+scale = Vector2(1.1, 1.1)
+script = ExtResource("8_o3c8e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interior/Bed"]
+shape = SubResource("RectangleShape2D_o5sm5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Interior/Bed"]
+z_index = 12
+texture_filter = 1
+texture = ExtResource("8_fio4m")
+region_enabled = true
+region_rect = Rect2(7.58869, 15, 48.4113, 81)
+
+[node name="WallsStaticBody" type="StaticBody2D" parent="Interior"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interior/WallsStaticBody"]
+position = Vector2(125.5, -81.625)
+shape = SubResource("RectangleShape2D_ab508")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Interior/WallsStaticBody"]
+position = Vector2(-122, -79.75)
+shape = SubResource("RectangleShape2D_lbmka")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Interior/WallsStaticBody"]
+position = Vector2(2, -142.5)
+shape = SubResource("RectangleShape2D_e5dml")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Interior/WallsStaticBody"]
+position = Vector2(2.5, 20)
+shape = SubResource("RectangleShape2D_0jwur")

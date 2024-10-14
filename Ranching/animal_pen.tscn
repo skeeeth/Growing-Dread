@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bas4qnp8bdxfc"]
 
-[ext_resource type="PackedScene" uid="uid://o3ibnm5nobeo" path="res://Ranching/fence.tscn" id="2_8kvvs"]
+[ext_resource type="PackedScene" uid="uid://cf13ry04rj8ri" path="res://Ranching/fence_better.tscn" id="2_g4xje"]
 [ext_resource type="PackedScene" uid="uid://clhceljl1ikhu" path="res://Ranching/sheep.tscn" id="2_gdkjh"]
 
 [node name="AnimalPen" type="Node2D"]
@@ -8,6 +8,7 @@ y_sort_enabled = true
 position = Vector2(250, 150)
 
 [node name="Sheep" parent="." instance=ExtResource("2_gdkjh")]
+position = Vector2(297, 269)
 
 [node name="Sheep2" parent="." instance=ExtResource("2_gdkjh")]
 position = Vector2(179, 208)
@@ -19,13 +20,13 @@ position = Vector2(493, 110)
 position = Vector2(296, 44)
 
 [node name="Sheep5" parent="." instance=ExtResource("2_gdkjh")]
-position = Vector2(519, 295)
+position = Vector2(512, 264)
 
 [node name="Sheep6" parent="." instance=ExtResource("2_gdkjh")]
 position = Vector2(90, 86)
 
 [node name="Sheep7" parent="." instance=ExtResource("2_gdkjh")]
-position = Vector2(69, 331)
+position = Vector2(77, 289)
 
 [node name="Sheep8" parent="." instance=ExtResource("2_gdkjh")]
 position = Vector2(55, 190)
@@ -34,7 +35,6 @@ position = Vector2(55, 190)
 position = Vector2(400, 224)
 
 [node name="Sheep10" parent="." instance=ExtResource("2_gdkjh")]
-position = Vector2(593, 47)
+position = Vector2(544, 55)
 
-[node name="Fence" parent="." instance=ExtResource("2_8kvvs")]
-z_index = -1
+[node name="StaticBody2D" parent="." instance=ExtResource("2_g4xje")]

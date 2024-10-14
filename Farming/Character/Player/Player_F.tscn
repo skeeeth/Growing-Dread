@@ -8,10 +8,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ew3jx"]
 resource_local_to_scene = true
-size = Vector2(32, 32)
+size = Vector2(22, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82par"]
-size = Vector2(32, 32)
+size = Vector2(23, 9)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t6bsh"]
 atlas = ExtResource("5_v6wbx")
@@ -200,7 +200,7 @@ animations = [{
 }]
 
 [node name="Farmer" type="CharacterBody2D"]
-z_index = 5
+y_sort_enabled = true
 script = ExtResource("2_yxr6k")
 movespeed = 200.0
 
@@ -211,6 +211,7 @@ hit_from_inside = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -2.5)
 shape = SubResource("RectangleShape2D_ew3jx")
 
 [node name="Input" type="Node" parent="."]
@@ -233,8 +234,13 @@ offset_right = 73.0
 offset_bottom = 115.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -2.5)
 shape = SubResource("RectangleShape2D_82par")
 
 [node name="farmer_image" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_683wg")
-animation = &"Idle"
+animation = &"Walk"
+offset = Vector2(0, -80)

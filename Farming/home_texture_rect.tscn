@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://y6vge6p0g0h0"]
+
+[ext_resource type="Script" path="res://Farming/home.gd" id="1_2jylu"]
+[ext_resource type="Texture2D" uid="uid://c4uv13tx8yqgv" path="res://Assets/house_crop.png" id="2_3lgly"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pq0lx"]
+size = Vector2(248, 227)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mqkp8"]
+polygon = PackedVector2Array(-126, -215, -126, 15, 124, 14, 123, -214)
+
+[node name="Home" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_2jylu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10.5)
+shape = SubResource("RectangleShape2D_pq0lx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+offset_left = -126.0
+offset_top = -127.0
+offset_right = 130.0
+offset_bottom = 129.0
+texture = ExtResource("2_3lgly")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_mqkp8")

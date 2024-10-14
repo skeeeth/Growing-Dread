@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://p7enirvefopd"]
+
+[ext_resource type="Script" path="res://Farming/tree_spawner.gd" id="1_yyoio"]
+[ext_resource type="Texture2D" uid="uid://blk52ds0yd4np" path="res://Assets/Outside_B.png" id="2_r5b3a"]
+[ext_resource type="Texture2D" uid="uid://cb5u13d32yiil" path="res://Assets/tree_shadow_1.png" id="3_5kqiq"]
+[ext_resource type="Texture2D" uid="uid://dejfxjyh0lkds" path="res://Assets/tree_trunk_1.png" id="4_g6scu"]
+[ext_resource type="Texture2D" uid="uid://dowdgwqadwrvd" path="res://Assets/tree_foliage_1.png" id="5_3tjyp"]
+[ext_resource type="Script" path="res://Farming/drawing_helper.gd" id="6_uy1io"]
+
+[node name="Tree spawner" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_yyoio")
+tree_texture = ExtResource("2_r5b3a")
+tree_region_rect = Rect2(2.756, 227.623, 87.942, 133.825)
+tree_shadow_texture = ExtResource("3_5kqiq")
+tree_trunk_texture = ExtResource("4_g6scu")
+tree_foliage_texture = ExtResource("5_3tjyp")
+
+[node name="ShadowLayer" type="Node2D" parent="."]
+z_index = -1
+script = ExtResource("6_uy1io")
+texture_to_draw = ExtResource("3_5kqiq")
+
+[node name="TrunkLayer" type="Node2D" parent="."]
+z_index = -1
+y_sort_enabled = true
+script = ExtResource("6_uy1io")
+texture_to_draw = ExtResource("4_g6scu")
+
+[node name="FoliageLayer" type="Node2D" parent="."]
+z_index = 7
+y_sort_enabled = true
+script = ExtResource("6_uy1io")
+texture_to_draw = ExtResource("5_3tjyp")

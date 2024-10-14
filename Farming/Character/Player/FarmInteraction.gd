@@ -31,8 +31,11 @@ func interact():
 		target.interact(type,crop)
 		
 	if target is Home:
+		target.interact(interaction,crop)
+	if target is Door:
+		target.interact($"..")
+	if target is Bed:
 		target.interact()
-	pass
 	
 func _process(_delta):
 	#var interaction_text = $"../TextEdit"
