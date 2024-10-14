@@ -33,7 +33,7 @@ func next_day():
 	#TODO: I'll have to change this to instead alter the uniforms to get the desired effect
 	
 	fade_out.tween_property(moonlight,"energy",0.0,2.0)
-	_replace_player(farm_character)
+	#_replace_player(farm_character)
 	#_show_card()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

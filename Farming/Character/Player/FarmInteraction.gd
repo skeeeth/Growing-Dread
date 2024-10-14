@@ -20,9 +20,10 @@ func interact():
 	var target = movement.get_collider()
 	if target is FarmTile:
 		target.interact(interaction,crop)
-	if target is Home:
+	if target is Door:
+		target.interact($"..")
+	if target is Bed:
 		target.interact()
-	pass
 	
 func _process(_delta):
 	var interaction_text = $"../TextEdit"
