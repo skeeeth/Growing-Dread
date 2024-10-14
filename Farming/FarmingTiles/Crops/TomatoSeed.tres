@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://csekb3htn1cti"]
+
+[ext_resource type="Texture2D" uid="uid://cnmf35syu2634" path="res://Assets/plants.png" id="1_olm0k"]
+[ext_resource type="Script" path="res://Farming/Inventory/ItemData.gd" id="2_ohkc7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oi7n"]
+atlas = ExtResource("1_olm0k")
+region = Rect2(0, 224, 32, 32)
+
+[resource]
+script = ExtResource("2_ohkc7")
+sellable = false
+money_value = 0
+buy_cost = 10
+interation_type = 1
+inventory_image = SubResource("AtlasTexture_8oi7n")
+crop_name = "Tomato"

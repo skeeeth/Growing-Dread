@@ -429,10 +429,10 @@ shape = SubResource("RectangleShape2D_i47ax")
 [node name="FarmableTile" type="Node2D" parent="."]
 
 [node name="Pivot" type="Node2D" parent="FarmableTile"]
-visible = false
 position = Vector2(-9.5, 10.5)
 
 [node name="Scythe" type="Sprite2D" parent="FarmableTile/Pivot"]
+visible = false
 z_index = 2
 position = Vector2(9.39231, -7.73205)
 scale = Vector2(0.53, 0.53)
@@ -441,7 +441,6 @@ texture = SubResource("AtlasTexture_75fi6")
 [node name="CropDisplay" type="AnimatedSprite2D" parent="FarmableTile"]
 visible = false
 z_index = 1
-scale = Vector2(0.32, 0.32)
 sprite_frames = SubResource("SpriteFrames_hci8s")
 animation = &"Dead"
 

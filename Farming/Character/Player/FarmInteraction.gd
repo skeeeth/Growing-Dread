@@ -25,10 +25,11 @@ func interact():
 		var crop
 		if slot.data.crop_name != "":
 			crop = load(Farming.crop_resources[slot.data.crop_name])
-			slot.consume()
 		else:
 			crop = BLANK
-		target.interact(type,crop)
+			assert(type != Farming.interactions.Plant) #seeds should have a crop reference in Farming
+		if target.interact(type,crop):
+			slot.consume()
 		
 	if target is Home:
 		target.interact(get_parent())

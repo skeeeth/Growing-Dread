@@ -19,7 +19,8 @@ var selected_interaction:int
 	#"Corn": "res://textures/icons/corn.png",
 #}
 var crop_resources:Dictionary = {
-	"Corn": "res://Farming/FarmingTiles/Crops/Corn.tres"
+	"Corn": "res://Farming/FarmingTiles/Crops/Corn.tres",
+	"Tomato": "res://Farming/FarmingTiles/Crops/Tomato.tres",
 }
 const EMPTY_ITEM = preload("res://Farming/FarmingTiles/Crops/Empty.tres")
 

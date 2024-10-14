@@ -15,7 +15,7 @@ script = ExtResource("2_utsdt")
 sellable = true
 money_value = 8
 buy_cost = 0
-interation_type = 1
+interation_type = 4
 inventory_image = SubResource("AtlasTexture_awidw")
 crop_name = ""
 

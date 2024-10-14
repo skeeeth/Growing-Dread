@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://quomisubtuvn"]
+[gd_scene load_steps=13 format=3 uid="uid://quomisubtuvn"]
 
 [ext_resource type="Script" path="res://Farming/Inventory/inventory.gd" id="1_j6d7j"]
 [ext_resource type="PackedScene" uid="uid://bh7lfr4sed3c0" path="res://Farming/Inventory/InventorySlot.tscn" id="2_jicc7"]
 [ext_resource type="Texture2D" uid="uid://d20tqsy7twcsj" path="res://Assets/farm tool icons calciumtrice.png" id="3_4qvj2"]
+[ext_resource type="Resource" uid="uid://csekb3htn1cti" path="res://Farming/FarmingTiles/Crops/TomatoSeed.tres" id="4_6go6s"]
 [ext_resource type="Script" path="res://Farming/Inventory/ItemData.gd" id="4_7jpbf"]
 [ext_resource type="Resource" uid="uid://dsroxdib8h362" path="res://Farming/FarmingTiles/Crops/CornSeed.tres" id="5_12xgg"]
 [ext_resource type="Texture2D" uid="uid://dj88yrxqyimar" path="res://Assets/UI_HOVER.png" id="6_wqby2"]
@@ -72,6 +73,12 @@ is_shop = true
 count = -1
 data = ExtResource("5_12xgg")
 
+[node name="InventorySlot" parent="Shop/GridContainer" instance=ExtResource("2_jicc7")]
+layout_mode = 2
+is_shop = true
+count = -1
+data = ExtResource("4_6go6s")
+
 [node name="Hotbar" type="HBoxContainer" parent="."]
 layout_mode = 2
 offset_left = 72.0
@@ -79,6 +86,10 @@ offset_top = 500.0
 offset_right = 1072.0
 offset_bottom = 628.0
 theme_override_constants/separation = 1
+
+[node name="HotbarSelection" type="Sprite2D" parent="Hotbar"]
+z_index = 1
+texture = ExtResource("6_wqby2")
 
 [node name="Slot" parent="Hotbar" instance=ExtResource("2_jicc7")]
 layout_mode = 2
@@ -92,8 +103,5 @@ data = SubResource("Resource_li0l0")
 
 [node name="Slot3" parent="Hotbar" instance=ExtResource("2_jicc7")]
 layout_mode = 2
-count = 4
+count = 2
 data = ExtResource("5_12xgg")
-
-[node name="HotbarSelection" type="Sprite2D" parent="Hotbar"]
-texture = ExtResource("6_wqby2")

@@ -20,15 +20,12 @@ const BLANK = preload("res://Farming/FarmingTiles/Crops/Blank.tres")
 func _ready():
 	Farming.day_progressed.connect(day_progression)
 
-
-	
-
 func interact(type,data):
 	match type:
-		Farming.interactions.Plant: plant(data)
-		Farming.interactions.Till: till()
-		Farming.interactions.Water: water()
-		Farming.interactions.Harvest: harvest()
+		Farming.interactions.Plant:return plant(data)
+		Farming.interactions.Till:return till()
+		Farming.interactions.Water:return water()
+		Farming.interactions.Harvest:return harvest()
 	pass
 
 func harvest():
@@ -37,32 +34,45 @@ func harvest():
 		#collect the item into the player's inventory
 		Farming.add_item(crop_data.item_data)
 		Farming.add_item(crop_data.seed_data)
-		await animation_player.animation_finished
+		#await animation_player.animation_finished
 		crop_data = BLANK;
 		state = Farming.states.Untilled
 		crop_display.visible = false
 		occluder.occluder_light_mask = 0
+		return true
+	return false
 	pass
 
 func till():
 	if state == Farming.states.Untilled:
 		animation_player.play("Till")
-		
+		return true
+	return false
 
 func water():
 	if state == Farming.states.Growing:
 		last_water_day = Farming.day
+		return true
+	return false
 	pass
 
 func plant(data):
 	if state == Farming.states.Tilled:
 		animation_player.play("Plant")
-		await animation_player.animation_finished
+		#await animation_player.animation_finished
 		crop_data = data
 		crop_display.sprite_frames = crop_data.images
+		var dirt_size = dirt.sprite_frames.get_frame_texture(\
+		dirt.animation,dirt.frame).get_size()
+		var frame_size = crop_data.images.get_frame_texture("Planted",0).get_size()
+		crop_display.scale = dirt_size/frame_size
+		#crop_display.scale.y = (frame_size.y/frame_size.x) * crop_display.scale.x
+		#crop_display.offset.y = ((frame_size.y- * crop_display.scale.y))
 		crop_display.visible = true
 		plant_day = Farming.day
 		state = Farming.states.Growing
+		return true
+	return false
 
 func _set_image(value):
 	if value == Farming.states.Growing:
