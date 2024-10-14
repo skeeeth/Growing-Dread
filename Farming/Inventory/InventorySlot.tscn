@@ -36,7 +36,6 @@ layout_mode = 2
 mouse_filter = 1
 
 [node name="img" type="TextureRect" parent="PanelContainer"]
-z_index = 2
 layout_mode = 2
 expand_mode = 2
 

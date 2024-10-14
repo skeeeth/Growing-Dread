@@ -96,5 +96,4 @@ count = 4
 data = ExtResource("5_12xgg")
 
 [node name="HotbarSelection" type="Sprite2D" parent="Hotbar"]
-z_index = 4
 texture = ExtResource("6_wqby2")

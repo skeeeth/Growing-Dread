@@ -34,6 +34,7 @@ size = Vector2(64, 64)
 script = ExtResource("2_60iub")
 sellable = false
 money_value = 0
+buy_cost = 0
 interation_type = 0
 inventory_image = SubResource("PlaceholderTexture2D_gyyif")
 crop_name = ""

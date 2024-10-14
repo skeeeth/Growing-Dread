@@ -31,7 +31,7 @@ func interact():
 		target.interact(type,crop)
 		
 	if target is Home:
-		target.interact(interaction,crop)
+		target.interact(get_parent())
 	if target is Door:
 		target.interact($"..")
 	if target is Bed:
