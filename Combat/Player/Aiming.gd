@@ -52,6 +52,8 @@ func _input(event):
 		pass
 
 func shoot():
+	if !focused:
+		return
 	#only shoot if loaded
 	if reload.time_left > 0:
 		return #TODO: Feedback for prevented shots
