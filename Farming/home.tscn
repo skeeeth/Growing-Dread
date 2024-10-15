@@ -136,6 +136,8 @@ shape = SubResource("RectangleShape2D_54jl0")
 position = Vector2(94, -99)
 scale = Vector2(1.1, 1.1)
 script = ExtResource("8_o3c8e")
+sleep_fade_duration = 1.0
+sleep_duration = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interior/Bed"]
 shape = SubResource("RectangleShape2D_o5sm5")
@@ -146,6 +148,14 @@ texture_filter = 1
 texture = ExtResource("8_fio4m")
 region_enabled = true
 region_rect = Rect2(7.58869, 15, 48.4113, 81)
+
+[node name="SleepingScreenCover" type="Sprite2D" parent="Interior/Bed"]
+modulate = Color(0, 0, 0, 0)
+z_index = 99
+scale = Vector2(30, 30)
+texture = ExtResource("3_j56ey")
+
+[node name="SleepTimer" type="Timer" parent="Interior/Bed"]
 
 [node name="WallsStaticBody" type="StaticBody2D" parent="Interior"]
 

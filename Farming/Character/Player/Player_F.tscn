@@ -200,6 +200,7 @@ animations = [{
 }]
 
 [node name="Farmer" type="CharacterBody2D"]
+z_index = 14
 y_sort_enabled = true
 script = ExtResource("2_yxr6k")
 movespeed = 200.0
@@ -222,9 +223,9 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_jokbq")
 script = ExtResource("4_8l8xa")
 
-[node name="Interaction" type="Node" parent="." node_paths=PackedStringArray("movement") groups=["interaction"]]
+[node name="Interaction" type="Node" parent="." node_paths=PackedStringArray("interaction_raycast") groups=["interaction"]]
 script = ExtResource("4_d3oh0")
-movement = NodePath("../Movement")
+interaction_raycast = NodePath("../Movement")
 
 [node name="TextEdit" type="TextEdit" parent="."]
 visible = false

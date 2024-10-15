@@ -3,7 +3,11 @@ extends Node
 signal day_progressed
 signal inventory_updated
 signal night_fallen
+signal woke_up
+
 var day:int = 0
+var is_nighttime = false
+
 enum interactions{ Till, Plant, Water, Harvest, }
 enum states{ Untilled, Tilled, Planted, Growing, Ripe, Dead, }
 var money = 10
@@ -27,10 +31,25 @@ const EMPTY_ITEM = preload("res://Farming/FarmingTiles/Crops/Empty.tres")
 var inventory:Inventory #probably bad practice to have your autoload reference a specific node
 						#that sets itself in its ready script but it works
 
+
+func go_to_sleep():
+	if (is_nighttime):
+		next_day()
+	else:
+		if (day == 2): #Wolf attack time
+			go_to_night()
+		else:
+			next_day()
+
+func wake_up():
+	woke_up.emit()
+	
 func go_to_night():
+	is_nighttime = true
 	night_fallen.emit()
 
 func next_day():
+	is_nighttime = false
 	day += 1;
 	day_progressed.emit()
 

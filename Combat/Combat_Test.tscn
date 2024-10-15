@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Combat/Combat_Camera.gd" id="2_ucb8v"]
 [ext_resource type="PackedScene" uid="uid://bas4qnp8bdxfc" path="res://Ranching/animal_pen.tscn" id="5_sje8e"]
 [ext_resource type="TileSet" uid="uid://ce2qp2mth753u" path="res://Assets/Tileset/FullTerrainsTileset.tres" id="6_3t5hl"]
-[ext_resource type="PackedScene" path="res://Farming/tree_spawner.tscn" id="6_aaly3"]
+[ext_resource type="PackedScene" uid="uid://p7enirvefopd" path="res://Farming/tree_spawner.tscn" id="6_aaly3"]
 [ext_resource type="PackedScene" uid="uid://bhdcmdrktl4xs" path="res://Farming/FarmingTiles/farmable_tile.tscn" id="7_tdqte"]
 [ext_resource type="PackedScene" uid="uid://quomisubtuvn" path="res://Farming/Inventory/inventory.tscn" id="8_blqqw"]
 [ext_resource type="PackedScene" uid="uid://b0ve77udfgeqv" path="res://Farming/home.tscn" id="9_3c7kn"]
@@ -83,7 +83,7 @@ script = ExtResource("2_ucb8v")
 tracked_object = NodePath("../Farmer")
 
 [node name="ScreenSpace" type="Control" parent="Camera2D"]
-z_index = 10
+z_index = 25
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 1
@@ -152,10 +152,10 @@ texture = SubResource("AtlasTexture_40mw2")
 expand_mode = 2
 
 [node name="Farmer" parent="." instance=ExtResource("10_4uhrb")]
-position = Vector2(208, -48)
+position = Vector2(441, -98)
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(208, -48)
+position = Vector2(211, -3)
 
 [node name="NextDayManager" parent="." node_paths=PackedStringArray("cam", "player") instance=ExtResource("11_c1wmv")]
 cam = NodePath("../Camera2D")

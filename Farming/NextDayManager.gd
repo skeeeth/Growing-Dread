@@ -18,9 +18,13 @@ var night_character = preload("res://Combat/Player/Player_C.tscn")
 func _ready():
 	Farming.day_progressed.connect(next_day)
 	Farming.night_fallen.connect(go_to_night)
+	Farming.woke_up.connect(wake_up_player)
 	#next_day_card.reparent(cam,false)
 	#next_day_card.position = cam.crt_overlay.position
-	
+	wake_up_player()
+
+func wake_up_player():
+	player.is_sleeping = false
 
 func next_day():
 	card_text.text = "Day " + str(Farming.day)
@@ -33,7 +37,7 @@ func next_day():
 	#TODO: I'll have to change this to instead alter the uniforms to get the desired effect
 	
 	fade_out.tween_property(moonlight,"energy",0.0,2.0)
-	#_replace_player(farm_character)
+	_replace_player(farm_character)
 	#_show_card()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,7 +69,8 @@ func _show_card():
 func _replace_player(new_character:PackedScene): #Swaps Player
 	var previous_player = player
 	var new_player:CharacterBody2D = new_character.instantiate()
-	new_player.global_position = spawn_point.global_position
+	#new_player.on_sleeping_screen_cover_finished
+	new_player.global_position = player.global_position #spawn_point.global_position
 	player = new_player
 	cam.tracked_object = player
 	previous_player.queue_free() ##TODO: probably some kind of walk into house animation

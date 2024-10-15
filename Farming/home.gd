@@ -6,10 +6,12 @@ class_name Home
 
 @export var player_z_index_inside_adjustment:int
 
-var is_inside = false
+var is_inside = true
+
+#@onready var player
 
 func _ready():
-	_set_is_inside(false)
+	_set_is_inside(true)
 
 
 

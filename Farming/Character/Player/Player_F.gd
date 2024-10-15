@@ -5,13 +5,19 @@ extends CharacterBody2D
 #@export  var movement:Grid_Movement
 @onready var movement_ray = $Movement
 
-# Called when the node enters the scene tree for the first time.
+var is_sleeping = true
+
+
 func _ready():
 	$farmer_image.animation = "Idle"
 	$farmer_image.play()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
+	if (is_sleeping):
+		velocity = Vector2.ZERO
+		return
+
 	var dir:Vector2 = Input.get_vector("left","right","up","down")
 	
 	if velocity.length() > 0:

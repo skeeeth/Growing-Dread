@@ -11,19 +11,6 @@ func _ready():
 	Farming.night_fallen.connect(begin_night)
 
 
-func _process(delta):
-	if !night_active:
-		return
-	
-	if num_queued_enemies > 0:
-		return
-		
-	if enemies.size() > 0:
-		return
-	
-	end_night()
-
-
 func begin_night():
 	night_active = true
 	num_queued_enemies = Farming.day

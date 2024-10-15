@@ -44,6 +44,7 @@ mouse_filter = 1
 script = ExtResource("1_j6d7j")
 
 [node name="Shop" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 72.0
 offset_top = 88.0
@@ -80,6 +81,7 @@ count = -1
 data = ExtResource("4_6go6s")
 
 [node name="Hotbar" type="HBoxContainer" parent="."]
+texture_filter = 1
 layout_mode = 2
 offset_left = 72.0
 offset_top = 500.0

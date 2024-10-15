@@ -1,9 +1,9 @@
 ##Calls for interaction based on held item on tile infront of
-## Player, as determined by movement raycast
+## Player, as determined by interaction_raycast raycast
 extends Node
 class_name GridInteraction
 
-@export var movement:RayCast2D
+@export var interaction_raycast:RayCast2D
 #var interaction:int = 2
 #var crop:CropData
 var _previous_target
@@ -16,9 +16,9 @@ func _ready():
 #const CORN = preload("res://Farming/FarmingTiles/Crops/Corn.tres")
 const BLANK = preload("res://Farming/FarmingTiles/Crops/Blank.tres")
 func interact():
-	if !movement.is_colliding(): return
+	if !interaction_raycast.is_colliding(): return
 	
-	var target = movement.get_collider()
+	var target = interaction_raycast.get_collider()
 	if target is FarmTile:
 		var slot = inventory.slots[inventory.selected_slot_index]
 		var type = slot.data.interation_type
@@ -36,13 +36,13 @@ func interact():
 	if target is Door:
 		target.interact($"..")
 	if target is Bed:
-		target.interact()
+		target.interact($"..")
 	
 func _process(_delta):
 	#var interaction_text = $"../TextEdit"
 	#interaction_text.text = Farming.interactions.keys()[interaction]
 	
-	var target = movement.get_collider()
+	var target = interaction_raycast.get_collider()
 	if target is FarmTile:
 		target.get_node("FarmableTile/Border").visible = true
 	
