@@ -1,6 +1,8 @@
 extends RayCast2D
 class_name Aiming #DK Fighting!
 
+signal shot_fired
+
 @export var aim_time = 0.5;
 @export var damage = 100;
 @export var max_range:float
@@ -57,6 +59,8 @@ func shoot():
 	#only shoot if loaded
 	if reload.time_left > 0:
 		return #TODO: Feedback for prevented shots
+	
+	shot_fired.emit()
 	
 	reload.start()
 

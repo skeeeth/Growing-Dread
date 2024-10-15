@@ -107,3 +107,5 @@ data = SubResource("Resource_li0l0")
 layout_mode = 2
 count = 2
 data = ExtResource("5_12xgg")
+
+[node name="Selected" type="AudioStreamPlayer" parent="."]

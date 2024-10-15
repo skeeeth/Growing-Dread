@@ -22,7 +22,7 @@ var selected_interaction:int
 	#"Wheat": "res://textures/icons/wheat.jpg",
 	#"Corn": "res://textures/icons/corn.png",
 #}
-var crop_resources:Dictionary = {
+var crop_resources:Dictionary = { #getting these in this way seems wrong but idk
 	"Corn": "res://Farming/FarmingTiles/Crops/Corn.tres",
 	"Tomato": "res://Farming/FarmingTiles/Crops/Tomato.tres",
 }

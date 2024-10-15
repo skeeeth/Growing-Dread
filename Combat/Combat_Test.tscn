@@ -164,4 +164,7 @@ player = NodePath("../Farmer")
 [node name="Enemy Instancer" type="Node" parent="."]
 script = ExtResource("11_v32kl")
 
+[node name="Static" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
 [connection signal="gui_input" from="Camera2D/ScreenSpace/Day/HBoxContainer/TextureRect" to="Camera2D/ScreenSpace/Day/Inventory" method="_on_texture_rect_gui_input"]

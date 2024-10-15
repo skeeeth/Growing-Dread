@@ -87,4 +87,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 
+[node name="Buy" type="AudioStreamPlayer" parent="."]
+
+[node name="Sell" type="AudioStreamPlayer" parent="."]
+
 [connection signal="button_down" from="ButtonHolder/Button" to="." method="button_down"]

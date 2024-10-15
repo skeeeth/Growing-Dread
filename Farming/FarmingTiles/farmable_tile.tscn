@@ -429,10 +429,11 @@ shape = SubResource("RectangleShape2D_i47ax")
 [node name="FarmableTile" type="Node2D" parent="."]
 
 [node name="Pivot" type="Node2D" parent="FarmableTile"]
+visible = false
 position = Vector2(-9.5, 10.5)
+rotation = -1.0472
 
 [node name="Scythe" type="Sprite2D" parent="FarmableTile/Pivot"]
-visible = false
 z_index = 2
 position = Vector2(9.39231, -7.73205)
 scale = Vector2(0.53, 0.53)
@@ -524,3 +525,11 @@ color = Color(0.0509804, 0.592157, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_4t07d")
 }
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Till" type="AudioStreamPlayer2D" parent="Sounds"]
+
+[node name="Plant" type="AudioStreamPlayer2D" parent="Sounds"]
+
+[node name="Harvest" type="AudioStreamPlayer2D" parent="Sounds"]

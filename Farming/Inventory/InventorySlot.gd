@@ -1,6 +1,8 @@
 extends VBoxContainer
 class_name InventorySlot
 
+signal transaction_completed
+
 @export var is_shop:bool
 @export var count:int:
 	set(v):
@@ -17,6 +19,10 @@ var interation_type:int
 	set(v):
 		data = v
 		update()
+
+@onready var buy_sound = $Buy
+@onready var sell_sound = $Sell
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update() 	#we're using @export in a a ton of spots where @onready
@@ -31,11 +37,14 @@ func _ready():
 func button_down():
 	if is_shop:
 		if Farming.money >= data.buy_cost:
+			buy_sound.play()
 			Farming.money -= data.buy_cost
 			Farming.add_item(data)
 	else:
+		sell_sound.play()
 		Farming.money += data.money_value
 		consume()
+	transaction_completed.emit()
 
 func consume():
 	count -= 1

@@ -1,6 +1,10 @@
 extends Node2D
 class_name FarmTile
 
+signal planted(source, crop)
+signal tilled(source)
+signal harvested(source)
+
 @export var state:int = Farming.states.Untilled:
 	set(v):
 		state = v
@@ -16,6 +20,9 @@ var last_water_day:int = -1
 
 const BLANK = preload("res://Farming/FarmingTiles/Crops/Blank.tres")
 @onready var animation_player = $AnimationPlayer
+@onready var till_sound = $Sounds/Till
+@onready var plant_sound = $Sounds/Plant
+@onready var harvest_sound = $Sounds/Harvest
 
 func _ready():
 	Farming.day_progressed.connect(day_progression)
@@ -30,7 +37,9 @@ func interact(type,data):
 
 func harvest():
 	if state == Farming.states.Ripe:
+		harvested.emit(self)
 		animation_player.play("Harvest")
+		harvest_sound.play()
 		#collect the item into the player's inventory
 		Farming.add_item(crop_data.item_data)
 		Farming.add_item(crop_data.seed_data)
@@ -45,7 +54,9 @@ func harvest():
 
 func till():
 	if state == Farming.states.Untilled:
+		tilled.emit(self)
 		animation_player.play("Till")
+		till_sound.play()
 		return true
 	return false
 
@@ -58,6 +69,8 @@ func water():
 
 func plant(data):
 	if state == Farming.states.Tilled:
+		planted.emit(self,data)
+		plant_sound.play()
 		animation_player.play("Plant")
 		#await animation_player.animation_finished
 		crop_data = data
