@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Combat/Combat_Camera.gd" id="2_ucb8v"]
 [ext_resource type="PackedScene" uid="uid://bas4qnp8bdxfc" path="res://Ranching/animal_pen.tscn" id="5_sje8e"]
 [ext_resource type="TileSet" uid="uid://ce2qp2mth753u" path="res://Assets/Tileset/FullTerrainsTileset.tres" id="6_3t5hl"]
-[ext_resource type="PackedScene" path="res://Farming/tree_spawner.tscn" id="6_aaly3"]
+[ext_resource type="PackedScene" uid="uid://p7enirvefopd" path="res://Farming/tree_spawner.tscn" id="6_aaly3"]
 [ext_resource type="PackedScene" uid="uid://bhdcmdrktl4xs" path="res://Farming/FarmingTiles/farmable_tile.tscn" id="7_tdqte"]
 [ext_resource type="PackedScene" uid="uid://quomisubtuvn" path="res://Farming/Inventory/inventory.tscn" id="8_blqqw"]
 [ext_resource type="PackedScene" uid="uid://b0ve77udfgeqv" path="res://Farming/home.tscn" id="9_3c7kn"]

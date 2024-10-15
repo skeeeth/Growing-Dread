@@ -9,7 +9,7 @@ var is_sleeping = true
 
 
 func _ready():
-	$farmer_image.animation = "Idle"
+	$farmer_image.animation = "Walk"
 	$farmer_image.play()
 
 
