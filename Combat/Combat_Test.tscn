@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c74m3wvoruq3k"]
+[gd_scene load_steps=25 format=3 uid="uid://c74m3wvoruq3k"]
 
 [ext_resource type="Script" path="res://Combat/Combat_Test_Scene.gd" id="1_jojhg"]
 [ext_resource type="Material" uid="uid://cj2ovdkyq2rbt" path="res://Assets/Shaders/Light_CRT_settings.tres" id="2_s41ki"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://Farming/Stamina.gd" id="13_fwdep"]
 [ext_resource type="Theme" uid="uid://c4631ouus7yft" path="res://Assets/UI_Theme.tres" id="13_le53j"]
 [ext_resource type="Script" path="res://Events/ShopFiddling.gd" id="18_g8vc3"]
+[ext_resource type="Script" path="res://Events/FarmEvents.gd" id="19_rnumv"]
 
 [sub_resource type="Gradient" id="Gradient_17rgn"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -218,5 +219,11 @@ inv = NodePath("../../Camera2D/ScreenSpace/Day/Inventory")
 requirement = 3
 texts = Array[String](["Please", "Help", "Stop", "No more", "Get Out"])
 next = Vector2(3, 6)
+
+[node name="FarmFiddling" type="Node" parent="Events"]
+script = ExtResource("19_rnumv")
+blood_req = 13
+blood_repeat = Vector2(8, 13)
+modulate_color = Color(0.807843, 0, 0, 1)
 
 [connection signal="gui_input" from="Camera2D/ScreenSpace/Day/HBoxContainer/TextureRect" to="Camera2D/ScreenSpace/Day/Inventory" method="_on_texture_rect_gui_input"]

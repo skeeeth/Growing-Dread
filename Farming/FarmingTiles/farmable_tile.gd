@@ -5,6 +5,7 @@ signal planted(source, crop)
 signal tilled(source)
 signal harvested(source)
 signal cleared(source)
+signal watered(source)
 @export var state:int = Farming.states.Untilled:
 	set(v):
 		state = v
@@ -69,12 +70,12 @@ func till():
 
 func water():
 	if state == Farming.states.Growing:
+		watered.emit(self)
 		dirt.modulate = Color(0.9,0.85,0.9)
 		$FarmableTile/ParticleHolder/Watering.emitting = true
 		last_water_day = Farming.day
 		return true
 	return false
-
 func plant(data):
 	if state == Farming.states.Tilled:
 		planted.emit(self,data)
