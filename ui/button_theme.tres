@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bs5i8ohcegc4y"]
+
+[ext_resource type="FontFile" uid="uid://bstrhadw2lysp" path="res://Fonts/Lato-Regular.ttf" id="1_wwnrm"]
+
+[resource]
+default_font = ExtResource("1_wwnrm")
+default_font_size = 32
