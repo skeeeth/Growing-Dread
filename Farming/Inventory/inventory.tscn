@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://quomisubtuvn"]
+[gd_scene load_steps=15 format=3 uid="uid://quomisubtuvn"]
 
 [ext_resource type="Script" path="res://Farming/Inventory/inventory.gd" id="1_j6d7j"]
 [ext_resource type="PackedScene" uid="uid://bh7lfr4sed3c0" path="res://Farming/Inventory/InventorySlot.tscn" id="2_jicc7"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Farming/Inventory/ItemData.gd" id="4_7jpbf"]
 [ext_resource type="Resource" uid="uid://dsroxdib8h362" path="res://Farming/FarmingTiles/Crops/CornSeed.tres" id="5_12xgg"]
 [ext_resource type="Texture2D" uid="uid://dj88yrxqyimar" path="res://Assets/UI_HOVER.png" id="6_wqby2"]
+[ext_resource type="AudioStream" uid="uid://bbvnca6pnrro3" path="res://Assets/Sounds/click.wav" id="8_ce8x7"]
+[ext_resource type="AudioStream" uid="uid://d3sltb3rrg3sb" path="res://Assets/Sounds/cloth-inventory.wav" id="9_ff6wy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pi1m5"]
 font_size = 48
@@ -109,3 +111,7 @@ count = 2
 data = ExtResource("5_12xgg")
 
 [node name="Selected" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ce8x7")
+
+[node name="OpenClose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ff6wy")

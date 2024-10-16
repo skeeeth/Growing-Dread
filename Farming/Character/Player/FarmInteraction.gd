@@ -8,6 +8,7 @@ class_name GridInteraction
 #var crop:CropData
 var _previous_target
 var inventory:Inventory
+@onready var error_sound = $"../Error"
 
 ## Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,8 +29,11 @@ func interact():
 		else:
 			crop = BLANK
 			assert(type != Farming.interactions.Plant) #seeds should have a crop reference in Farming
-		if target.interact(type,crop):
-			slot.consume()
+		if target.interact(type,crop): #interact is called here regardless
+			slot.consume() #will put non-consumables "count" to lower negatives
+		else:
+			#if interacting with wrong type
+			error_sound.play()
 		
 	if target is Home:
 		target.interact(get_parent())
@@ -37,6 +41,7 @@ func interact():
 		target.interact($"..")
 	if target is Bed:
 		target.interact($"..")
+	
 	
 func _process(_delta):
 	#var interaction_text = $"../TextEdit"

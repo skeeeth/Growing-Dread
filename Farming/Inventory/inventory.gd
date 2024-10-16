@@ -2,6 +2,7 @@ extends Control
 class_name Inventory
 
 signal slot_selected(slot)
+signal inventory_toggled(offon)
 #@onready var inventory_base = $ColorRect/GridContainer
 @onready var shop = $Shop
 var slots:Array[InventorySlot]
@@ -9,6 +10,8 @@ var slots:Array[InventorySlot]
 var selected_slot_index:int = 0
 @onready var selection_indicator = $Hotbar/HotbarSelection
 @onready var selected_sound = $Selected
+@onready var inventory_sound = $OpenClose
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Farming.inventory = self
@@ -38,10 +41,11 @@ func _input(event):
 	var i = int(event.as_text())
 	#print(i)
 	if i > 0 and  i <= 9:
-		selected_slot_index = i-1
 		if i-1 != selected_slot_index:
 			selected_sound.play()
 			slot_selected.emit(i)
+		selected_slot_index = i-1
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -85,4 +89,6 @@ func _on_texture_rect_gui_input(event):
 
 func toggle_expand():
 	shop.visible = !shop.visible
+	inventory_toggled.emit(shop.visible)
+	inventory_sound.play()
 	pass

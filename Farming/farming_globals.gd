@@ -53,9 +53,9 @@ func next_day():
 	day += 1;
 	day_progressed.emit()
 
-func _input(event):
-	if event.is_action_pressed("0"):
-		next_day()
+#func _input(event):
+	#if event.is_action_pressed("0"):
+		#next_day()
 
 func add_item(item_data):
 	for slot in inventory.slots:

@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bh7lfr4sed3c0"]
+[gd_scene load_steps=7 format=3 uid="uid://bh7lfr4sed3c0"]
 
 [ext_resource type="Theme" uid="uid://c4631ouus7yft" path="res://Assets/UI_Theme.tres" id="1_onjbn"]
 [ext_resource type="Script" path="res://Farming/Inventory/InventorySlot.gd" id="2_phx30"]
+[ext_resource type="AudioStream" uid="uid://pwqn6po41dma" path="res://Assets/Sounds/Buy.wav" id="3_jx2qs"]
+[ext_resource type="AudioStream" uid="uid://db8nk0ef8llcl" path="res://Assets/Sounds/Sell.wav" id="4_fnbp6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p2806"]
 font_color = Color(0, 0, 0, 1)
@@ -88,7 +90,10 @@ size_flags_horizontal = 3
 mouse_filter = 1
 
 [node name="Buy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jx2qs")
+max_polyphony = 3
 
 [node name="Sell" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fnbp6")
 
 [connection signal="button_down" from="ButtonHolder/Button" to="." method="button_down"]

@@ -33,7 +33,7 @@ func interact(type,data):
 		Farming.interactions.Till:return till()
 		Farming.interactions.Water:return water()
 		Farming.interactions.Harvest:return harvest()
-	pass
+	
 
 func harvest():
 	if state == Farming.states.Ripe:
