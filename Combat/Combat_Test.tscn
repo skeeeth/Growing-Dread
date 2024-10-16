@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c74m3wvoruq3k"]
+[gd_scene load_steps=24 format=3 uid="uid://c74m3wvoruq3k"]
 
 [ext_resource type="Script" path="res://Combat/Combat_Test_Scene.gd" id="1_jojhg"]
 [ext_resource type="Material" uid="uid://cj2ovdkyq2rbt" path="res://Assets/Shaders/Light_CRT_settings.tres" id="2_s41ki"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Combat/Enemy Instancer.gd" id="11_v32kl"]
 [ext_resource type="Script" path="res://Farming/Stamina.gd" id="13_fwdep"]
 [ext_resource type="Theme" uid="uid://c4631ouus7yft" path="res://Assets/UI_Theme.tres" id="13_le53j"]
+[ext_resource type="Script" path="res://Events/ShopFiddling.gd" id="18_g8vc3"]
 
 [sub_resource type="Gradient" id="Gradient_17rgn"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -208,5 +209,14 @@ script = ExtResource("11_v32kl")
 
 [node name="Static" type="AudioStreamPlayer" parent="."]
 autoplay = true
+
+[node name="Events" type="Node" parent="."]
+
+[node name="ShopFiddling" type="Node" parent="Events" node_paths=PackedStringArray("inv")]
+script = ExtResource("18_g8vc3")
+inv = NodePath("../../Camera2D/ScreenSpace/Day/Inventory")
+requirement = 3
+texts = Array[String](["Please", "Help", "Stop", "No more", "Get Out"])
+next = Vector2(3, 6)
 
 [connection signal="gui_input" from="Camera2D/ScreenSpace/Day/HBoxContainer/TextureRect" to="Camera2D/ScreenSpace/Day/Inventory" method="_on_texture_rect_gui_input"]

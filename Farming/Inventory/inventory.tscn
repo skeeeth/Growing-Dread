@@ -75,18 +75,18 @@ mouse_filter = 1
 text = "SHOP"
 label_settings = SubResource("LabelSettings_pi1m5")
 
-[node name="GridContainer" type="GridContainer" parent="Shop"]
+[node name="Grid" type="GridContainer" parent="Shop"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Slot" parent="Shop/GridContainer" instance=ExtResource("2_jicc7")]
+[node name="Slot" parent="Shop/Grid" instance=ExtResource("2_jicc7")]
 layout_mode = 2
 is_shop = true
 count = -1
 data = ExtResource("5_12xgg")
 
-[node name="InventorySlot" parent="Shop/GridContainer" instance=ExtResource("2_jicc7")]
+[node name="InventorySlot" parent="Shop/Grid" instance=ExtResource("2_jicc7")]
 layout_mode = 2
 is_shop = true
 count = -1
@@ -130,3 +130,4 @@ stream = ExtResource("8_ce8x7")
 
 [node name="OpenClose" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_ff6wy")
+volume_db = -20.558

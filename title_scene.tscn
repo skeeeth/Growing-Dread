@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://u6lxgaybto1j"]
+[gd_scene load_steps=6 format=3 uid="uid://dkxacrwd0ikwe"]
 
 [ext_resource type="Script" path="res://TitleScene.gd" id="1_yfln6"]
 [ext_resource type="FontFile" uid="uid://c13qxlsitq200" path="res://Fonts/RockSalt-Regular.ttf" id="2_r7t8n"]
