@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://u6lxgaybto1j"]
+
+[ext_resource type="Script" path="res://TitleScene.gd" id="1_yfln6"]
+[ext_resource type="FontFile" uid="uid://c13qxlsitq200" path="res://Fonts/RockSalt-Regular.ttf" id="2_r7t8n"]
+[ext_resource type="Theme" uid="uid://bs5i8ohcegc4y" path="res://ui/button_theme.tres" id="3_be0qv"]
+[ext_resource type="Texture2D" uid="uid://cvc6otnavgr7d" path="res://Assets/menu_background.png" id="4_2k33f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2i1sf"]
+font = ExtResource("2_r7t8n")
+font_size = 64
+font_color = Color(0.960784, 0.960784, 0.960784, 1)
+
+[node name="TitleScene" type="Node2D"]
+script = ExtResource("1_yfln6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -4096
+offset_right = 1190.0
+offset_bottom = 664.0
+texture = ExtResource("4_2k33f")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1157.0
+offset_bottom = 186.0
+text = "Growing Dread"
+label_settings = SubResource("LabelSettings_2i1sf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 281.0
+offset_top = 201.0
+offset_right = 871.0
+offset_bottom = 568.0
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PlayButton" type="Button" parent="VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 60)
+layout_mode = 2
+theme = ExtResource("3_be0qv")
+text = "Play"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(2.08165e-12, 60)
+layout_mode = 2
+theme = ExtResource("3_be0qv")
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/QuitButton" to="." method="_on_quit_button_pressed"]
