@@ -50,7 +50,8 @@ y_sort_enabled = true
 texture_filter = 1
 scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("3_vweaf")
-animation = &"Walk"
+animation = &"Aim_Up"
+frame_progress = 0.00977119
 offset = Vector2(0, -80)
 
 [node name="Error" type="AudioStreamPlayer2D" parent="."]
