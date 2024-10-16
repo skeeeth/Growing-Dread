@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Farming/Character/Player/Player_F.gd" id="2_yxr6k"]
 [ext_resource type="SpriteFrames" uid="uid://dttvx0fgkcw43" path="res://Assets/Player_Sprite_Animation.tres" id="3_vweaf"]
-[ext_resource type="AudioStream" uid="uid://ech5qoaky5f1" path="res://Assets/Sounds/misc_menu.wav" id="4_1dtnm"]
 [ext_resource type="Script" path="res://Farming/Character/Player/FarmInteraction.gd" id="4_d3oh0"]
+[ext_resource type="AudioStream" uid="uid://ech5qoaky5f1" path="res://Assets/Sounds/ERR.wav" id="4_eugfp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ew3jx"]
 resource_local_to_scene = true
@@ -55,4 +55,4 @@ frame_progress = 0.00977119
 offset = Vector2(0, -80)
 
 [node name="Error" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_1dtnm")
+stream = ExtResource("4_eugfp")

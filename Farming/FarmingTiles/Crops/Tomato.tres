@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="CropData" load_steps=12 format=3 uid="uid://bqdr6fvoa3klg"]
+[gd_resource type="Resource" script_class="CropData" load_steps=13 format=3 uid="uid://bqdr6fvoa3klg"]
 
 [ext_resource type="Texture2D" uid="uid://cnmf35syu2634" path="res://Assets/plants.png" id="1_ux6ik"]
 [ext_resource type="Script" path="res://Farming/FarmingTiles/CropData.gd" id="2_blc8i"]
 [ext_resource type="Script" path="res://Farming/Inventory/ItemData.gd" id="2_cylb8"]
 [ext_resource type="Resource" uid="uid://csekb3htn1cti" path="res://Farming/FarmingTiles/Crops/TomatoSeed.tres" id="4_ae1ti"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgomw"]
+atlas = ExtResource("1_ux6ik")
+region = Rect2(0, 280, 32, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_apsd0"]
 atlas = ExtResource("1_ux6ik")
@@ -23,6 +27,14 @@ region = Rect2(0, 192, 32, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8mh80"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgomw")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_apsd0")
@@ -65,16 +77,16 @@ script = ExtResource("2_cylb8")
 sellable = true
 money_value = 25
 buy_cost = 0
-interation_type = 4
+interation_type = 5
 inventory_image = SubResource("AtlasTexture_3d82a")
 crop_name = ""
 
 [resource]
 script = ExtResource("2_blc8i")
 name = "Tomato"
-days_to_ripen = 5
+days_to_ripen = 3
 days_to_death = -1
-max_drought = -1
+max_drought = 2
 images = SubResource("SpriteFrames_8mh80")
 item_data = SubResource("Resource_1rcet")
 seed_data = ExtResource("4_ae1ti")

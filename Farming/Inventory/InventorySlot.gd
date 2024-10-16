@@ -22,11 +22,15 @@ var interation_type:int
 
 @onready var buy_sound = $Buy
 @onready var sell_sound = $Sell
+@export var name_label:Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update() 	#we're using @export in a a ton of spots where @onready
 				#would normally go because @onready doesnt resolve in time
+	name_label.text = data.crop_name
+	if data.interation_type == Farming.interactions.Plant:
+		name_label.text += " Seed"
 	pass # Replace with function body.
 
 
@@ -60,9 +64,11 @@ func update():
 	if is_shop:
 		button.text = "Buy\n$" + str(data.buy_cost)
 		hotkey_label.visible = false
+		name_label.visible = true
 	else:
 		button.text = "Sell"
 		button.visible = data.sellable
+		name_label.visible = false
 
 const _DRAG_ITEM = preload("res://Farming/Inventory/drag_item.tscn")
 

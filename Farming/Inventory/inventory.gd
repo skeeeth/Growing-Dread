@@ -43,7 +43,7 @@ func _input(event):
 	if i > 0 and  i <= 9:
 		if i-1 != selected_slot_index:
 			selected_sound.play()
-			slot_selected.emit(i)
+			slot_selected.emit(i-1)
 		selected_slot_index = i-1
 
 

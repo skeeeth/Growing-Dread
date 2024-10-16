@@ -15,16 +15,16 @@ script = ExtResource("2_utsdt")
 sellable = true
 money_value = 8
 buy_cost = 0
-interation_type = 4
+interation_type = 5
 inventory_image = SubResource("AtlasTexture_awidw")
 crop_name = ""
 
 [resource]
 script = ExtResource("1_th4lg")
 name = "Corn"
-days_to_ripen = 3
+days_to_ripen = 2
 days_to_death = -1
-max_drought = -1
+max_drought = 2
 images = ExtResource("1_lk682")
 item_data = SubResource("Resource_1pr2x")
 seed_data = ExtResource("5_p0w2k")

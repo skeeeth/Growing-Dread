@@ -8,7 +8,7 @@ signal woke_up
 var day:int = 0
 var is_nighttime = false
 
-enum interactions{ Till, Plant, Water, Harvest, }
+enum interactions{ Till, Plant, Water, Harvest, Eat}
 enum states{ Untilled, Tilled, Planted, Growing, Ripe, Dead, }
 var money = 10
 var selected_interaction:int
@@ -37,7 +37,8 @@ func go_to_sleep():
 		next_day()
 	else:
 		if (day == 2): #Wolf attack time
-			go_to_night()
+			next_day()
+			#go_to_night() #disabled for now to test stamina farminga
 		else:
 			next_day()
 

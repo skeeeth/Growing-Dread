@@ -1,11 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://c74m3wvoruq3k"]
+[gd_scene load_steps=23 format=3 uid="uid://c74m3wvoruq3k"]
 
 [ext_resource type="Script" path="res://Combat/Combat_Test_Scene.gd" id="1_jojhg"]
 [ext_resource type="Material" uid="uid://cj2ovdkyq2rbt" path="res://Assets/Shaders/Light_CRT_settings.tres" id="2_s41ki"]
 [ext_resource type="Script" path="res://Combat/Combat_Camera.gd" id="2_ucb8v"]
 [ext_resource type="PackedScene" uid="uid://bas4qnp8bdxfc" path="res://Ranching/animal_pen.tscn" id="5_sje8e"]
 [ext_resource type="TileSet" uid="uid://ce2qp2mth753u" path="res://Assets/Tileset/FullTerrainsTileset.tres" id="6_3t5hl"]
-[ext_resource type="PackedScene" uid="uid://p7enirvefopd" path="res://Farming/tree_spawner.tscn" id="6_aaly3"]
+[ext_resource type="PackedScene" path="res://Farming/tree_spawner.tscn" id="6_aaly3"]
 [ext_resource type="PackedScene" uid="uid://bhdcmdrktl4xs" path="res://Farming/FarmingTiles/farmable_tile.tscn" id="7_tdqte"]
 [ext_resource type="PackedScene" uid="uid://quomisubtuvn" path="res://Farming/Inventory/inventory.tscn" id="8_blqqw"]
 [ext_resource type="PackedScene" uid="uid://b0ve77udfgeqv" path="res://Farming/home.tscn" id="9_3c7kn"]
@@ -15,7 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://dmdd5crrbcalb" path="res://Farming/next_day_manager.tscn" id="11_c1wmv"]
 [ext_resource type="Texture2D" uid="uid://85guflqjgwj4" path="res://Assets/input_prompts-Kenny.png" id="11_d3awp"]
 [ext_resource type="Script" path="res://Combat/Enemy Instancer.gd" id="11_v32kl"]
-[ext_resource type="PackedScene" uid="uid://bdo8p07h56fnc" path="res://Combat/Enemies/coyote.tscn" id="16_m3x0w"]
+[ext_resource type="Script" path="res://Farming/Stamina.gd" id="13_fwdep"]
+[ext_resource type="Theme" uid="uid://c4631ouus7yft" path="res://Assets/UI_Theme.tres" id="13_le53j"]
 
 [sub_resource type="Gradient" id="Gradient_17rgn"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -30,6 +31,11 @@ region = Rect2(304, 32, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_40mw2"]
 atlas = ExtResource("10_7thpb")
 region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nfdgi"]
+font_size = 15
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [node name="CombatTest" type="Node2D"]
 y_sort_enabled = true
@@ -48,16 +54,16 @@ layer_0/tile_data = PackedInt32Array(2, 1048576, 25, 3, 851968, 24, 65540, 98304
 metadata/_edit_lock_ = true
 
 [node name="FarmTile" parent="Level" instance=ExtResource("7_tdqte")]
-position = Vector2(16, -112)
+position = Vector2(0, -128)
 
 [node name="FarmTile2" parent="Level" instance=ExtResource("7_tdqte")]
-position = Vector2(-48, -112)
+position = Vector2(-64, -128)
 
 [node name="FarmTile4" parent="Level" instance=ExtResource("7_tdqte")]
-position = Vector2(144, -112)
+position = Vector2(128, -128)
 
 [node name="FarmTile3" parent="Level" instance=ExtResource("7_tdqte")]
-position = Vector2(80, -112)
+position = Vector2(64, -128)
 
 [node name="Home" parent="Level" instance=ExtResource("9_3c7kn")]
 position = Vector2(400, -10)
@@ -68,6 +74,18 @@ position = Vector2(400, -10)
 offset_right = 40.0
 offset_bottom = 40.0
 columns = 10
+
+[node name="FarmTile5" parent="Level" instance=ExtResource("7_tdqte")]
+position = Vector2(608, -128)
+
+[node name="FarmTile6" parent="Level" instance=ExtResource("7_tdqte")]
+position = Vector2(672, -128)
+
+[node name="FarmTile7" parent="Level" instance=ExtResource("7_tdqte")]
+position = Vector2(736, -128)
+
+[node name="FarmTile8" parent="Level" instance=ExtResource("7_tdqte")]
+position = Vector2(800, -128)
 
 [node name="Moonlight" type="PointLight2D" parent="."]
 position = Vector2(-56.9999, -41.5)
@@ -152,6 +170,29 @@ layout_mode = 2
 texture = SubResource("AtlasTexture_40mw2")
 expand_mode = 2
 
+[node name="PanelContainer" type="PanelContainer" parent="Camera2D/ScreenSpace/Day"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.5
+offset_right = 320.5
+offset_bottom = 40.0
+grow_horizontal = 2
+theme = ExtResource("13_le53j")
+
+[node name="Stam" type="HBoxContainer" parent="Camera2D/ScreenSpace/Day/PanelContainer" node_paths=PackedStringArray("inventory") groups=["Stamina"]]
+layout_mode = 2
+theme_override_constants/separation = 1
+script = ExtResource("13_fwdep")
+inventory = NodePath("../../Inventory")
+bar_color = Color(0.894118, 0.74902, 0.482353, 1)
+
+[node name="Label" type="Label" parent="Camera2D/ScreenSpace/Day/PanelContainer"]
+layout_mode = 2
+text = "Stamina"
+label_settings = SubResource("LabelSettings_nfdgi")
+
 [node name="Farmer" parent="." instance=ExtResource("10_4uhrb")]
 position = Vector2(441, -98)
 
@@ -167,7 +208,5 @@ script = ExtResource("11_v32kl")
 
 [node name="Static" type="AudioStreamPlayer" parent="."]
 autoplay = true
-
-[node name="Coyote" parent="." instance=ExtResource("16_m3x0w")]
 
 [connection signal="gui_input" from="Camera2D/ScreenSpace/Day/HBoxContainer/TextureRect" to="Camera2D/ScreenSpace/Day/Inventory" method="_on_texture_rect_gui_input"]

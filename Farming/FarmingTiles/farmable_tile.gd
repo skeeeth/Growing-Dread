@@ -4,7 +4,7 @@ class_name FarmTile
 signal planted(source, crop)
 signal tilled(source)
 signal harvested(source)
-
+signal cleared(source)
 @export var state:int = Farming.states.Untilled:
 	set(v):
 		state = v
@@ -40,17 +40,24 @@ func harvest():
 		harvested.emit(self)
 		animation_player.play("Harvest")
 		harvest_sound.play()
+		state = Farming.states.Untilled
+		crop_display.visible = false
+		occluder.occluder_light_mask = 0
 		#collect the item into the player's inventory
 		Farming.add_item(crop_data.item_data)
 		Farming.add_item(crop_data.seed_data)
+		crop_data = BLANK;
+		return true
+	if state == Farming.states.Dead:
+		cleared.emit(self)
+		animation_player.play("Harvest")
+		harvest_sound.play()
 		#await animation_player.animation_finished
 		crop_data = BLANK;
 		state = Farming.states.Untilled
 		crop_display.visible = false
 		occluder.occluder_light_mask = 0
-		return true
 	return false
-	pass
 
 func till():
 	if state == Farming.states.Untilled:
@@ -62,10 +69,11 @@ func till():
 
 func water():
 	if state == Farming.states.Growing:
+		dirt.modulate = Color(0.9,0.85,0.9)
+		$FarmableTile/ParticleHolder/Watering.emitting = true
 		last_water_day = Farming.day
 		return true
 	return false
-	pass
 
 func plant(data):
 	if state == Farming.states.Tilled:
@@ -83,6 +91,7 @@ func plant(data):
 		#crop_display.offset.y = ((frame_size.y- * crop_display.scale.y))
 		crop_display.visible = true
 		plant_day = Farming.day
+		last_water_day = Farming.day
 		state = Farming.states.Growing
 		return true
 	return false
@@ -113,10 +122,12 @@ func _set_image(value):
 		dirt.frame = 1
 	if value == Farming.states.Untilled:
 		dirt.frame = 0
-	pass
+	
+	if value == Farming.states.Dead:
+		crop_display.play("Dead")
 	
 func day_progression(day_overide:int = -1):
-	
+	dirt.modulate = Color.WHITE
 	var new_day = Farming.day
 	if day_overide >= 0:
 		new_day = day_overide
@@ -130,4 +141,6 @@ func day_progression(day_overide:int = -1):
 	if age == crop_data.days_to_death:
 		state = Farming.states.Dead
 		
+	if (new_day - last_water_day) == crop_data.max_drought:
+		state = Farming.states.Dead
 	_set_image(state)

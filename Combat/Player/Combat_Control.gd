@@ -34,7 +34,7 @@ func set_aim_animation():
 		sprite.play("Aim_Horizontal")
 		sprite.flip_h = mouse_r.x > 0
 		sprite.flip_v = false
-	else:
-		sprite.play("Aim_Up")
-		sprite.flip_h = false
-		sprite.flip_v = mouse_r.y > 0
+	#else:
+		#sprite.play("Aim_Up")
+		#sprite.flip_h = false
+		#sprite.flip_v = mouse_r.y > 0

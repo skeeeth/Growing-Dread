@@ -9,20 +9,28 @@ class_name GridInteraction
 var _previous_target
 var inventory:Inventory
 @onready var error_sound = $"../Error"
+var stamina:Stamina
 
 ## Called when the node enters the scene tree for the first time.
 func _ready():
 	inventory = Farming.inventory
+	stamina = get_tree().get_first_node_in_group("Stamina")
 	pass # Replace with function body.
 #const CORN = preload("res://Farming/FarmingTiles/Crops/Corn.tres")
 const BLANK = preload("res://Farming/FarmingTiles/Crops/Blank.tres")
 func interact():
 	if !interaction_raycast.is_colliding(): return
+	var slot = inventory.slots[inventory.selected_slot_index]
+	var type = slot.data.interation_type
+	if type == Farming.interactions.Eat:
+		slot.consume()
+		stamina.current += stamina.costs[type]
 	
 	var target = interaction_raycast.get_collider()
 	if target is FarmTile:
-		var slot = inventory.slots[inventory.selected_slot_index]
-		var type = slot.data.interation_type
+		if !stamina.try_use():
+			error_sound.play()
+			return
 		var crop
 		if slot.data.crop_name != "":
 			crop = load(Farming.crop_resources[slot.data.crop_name])
@@ -31,6 +39,7 @@ func interact():
 			assert(type != Farming.interactions.Plant) #seeds should have a crop reference in Farming
 		if target.interact(type,crop): #interact is called here regardless
 			slot.consume() #will put non-consumables "count" to lower negatives
+			stamina.current -= stamina.cost
 		else:
 			#if interacting with wrong type
 			error_sound.play()
