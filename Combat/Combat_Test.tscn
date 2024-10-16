@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c74m3wvoruq3k"]
+[gd_scene load_steps=21 format=3 uid="uid://c74m3wvoruq3k"]
 
 [ext_resource type="Script" path="res://Combat/Combat_Test_Scene.gd" id="1_jojhg"]
 [ext_resource type="Material" uid="uid://cj2ovdkyq2rbt" path="res://Assets/Shaders/Light_CRT_settings.tres" id="2_s41ki"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dmdd5crrbcalb" path="res://Farming/next_day_manager.tscn" id="11_c1wmv"]
 [ext_resource type="Texture2D" uid="uid://85guflqjgwj4" path="res://Assets/input_prompts-Kenny.png" id="11_d3awp"]
 [ext_resource type="Script" path="res://Combat/Enemy Instancer.gd" id="11_v32kl"]
+[ext_resource type="PackedScene" uid="uid://bdo8p07h56fnc" path="res://Combat/Enemies/coyote.tscn" id="16_m3x0w"]
 
 [sub_resource type="Gradient" id="Gradient_17rgn"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -166,5 +167,7 @@ script = ExtResource("11_v32kl")
 
 [node name="Static" type="AudioStreamPlayer" parent="."]
 autoplay = true
+
+[node name="Coyote" parent="." instance=ExtResource("16_m3x0w")]
 
 [connection signal="gui_input" from="Camera2D/ScreenSpace/Day/HBoxContainer/TextureRect" to="Camera2D/ScreenSpace/Day/Inventory" method="_on_texture_rect_gui_input"]

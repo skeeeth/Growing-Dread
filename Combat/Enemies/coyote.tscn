@@ -1,0 +1,224 @@
+[gd_scene load_steps=29 format=3 uid="uid://bdo8p07h56fnc"]
+
+[ext_resource type="Script" path="res://Combat/Enemies/wolf.gd" id="1_5a6pp"]
+[ext_resource type="Texture2D" uid="uid://7ky738u33r10" path="res://Assets/coyote.png" id="3_m1ydv"]
+[ext_resource type="PackedScene" uid="uid://duoju8d1x6bam" path="res://Combat/Components/hurtbox/hurtbox.tscn" id="6_gjofy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_adhy6"]
+radius = 8.0
+height = 70.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wnwsp"]
+radius = 25.0
+height = 80.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30rli"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(0, 100, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8ylo"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(200, 100, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa07d"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(400, 100, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84hjb"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(600, 100, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7r4l"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(800, 100, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsybj"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(0, 200, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwing"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(200, 200, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvyxc"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(400, 200, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc4p8"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(600, 200, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmtmd"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(800, 200, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sorxi"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(1000, 200, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm38t"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(1200, 200, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_on0qg"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(0, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho633"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(200, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_010qx"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(400, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nmlx"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(600, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c3vu"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(800, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuklw"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(1000, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul370"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(1200, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi75e"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(1400, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7xl0"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(1600, 0, 200, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwb3b"]
+atlas = ExtResource("3_m1ydv")
+region = Rect2(0, 332, 225, 166)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ot8x1"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_30rli")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_k8ylo")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_aa07d")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_84hjb")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_y7r4l")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_hsybj")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_xwing")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_uvyxc")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_uc4p8")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_xmtmd")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_sorxi")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_fm38t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_on0qg")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_ho633")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_010qx")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_2nmlx")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_7c3vu")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_yuklw")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_ul370")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_bi75e")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_t7xl0")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwb3b")
+}],
+"loop": true,
+"name": &"uhhhhhh....",
+"speed": 5.0
+}]
+
+[node name="Coyote" type="CharacterBody2D" groups=["enemies"]]
+collision_mask = 0
+script = ExtResource("1_5a6pp")
+bite_distance = 2.0
+chasing_speed = 150.0
+dragging_speed = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -13)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_adhy6")
+
+[node name="BitingTimer" type="Timer" parent="."]
+
+[node name="Hurtbox" parent="." instance=ExtResource("6_gjofy")]
+collision_layer = 2
+collision_mask = 0
+health = 150.0
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(0, -21)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_wnwsp")
+
+[node name="coyote_image" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -32)
+scale = Vector2(0.474375, 0.544375)
+sprite_frames = SubResource("SpriteFrames_ot8x1")
+animation = &"idle"
+frame_progress = 0.657455
+speed_scale = 2.0
+
+[editable path="Hurtbox"]
