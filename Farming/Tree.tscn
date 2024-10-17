@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://d3dlgcphivw45"]
+
+[ext_resource type="Script" path="res://Farming/Tree.gd" id="1_u0fcb"]
+[ext_resource type="Texture2D" uid="uid://ntfm0q8cx2ir" path="res://Assets/birch_tree.png" id="1_wy6xc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3xye"]
+size = Vector2(20, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btff6"]
+atlas = ExtResource("1_wy6xc")
+region = Rect2(0, 600, 200, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xte78"]
+atlas = ExtResource("1_wy6xc")
+region = Rect2(400, 600, 200, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xb5y1"]
+atlas = ExtResource("1_wy6xc")
+region = Rect2(0, 300, 200, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ci1m8"]
+atlas = ExtResource("1_wy6xc")
+region = Rect2(400, 300, 200, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efr0u"]
+atlas = ExtResource("1_wy6xc")
+region = Rect2(0, 0, 200, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1buy"]
+atlas = ExtResource("1_wy6xc")
+region = Rect2(400, 0, 200, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2mkf5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btff6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xte78")
+}],
+"loop": true,
+"name": &"Look_Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xb5y1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ci1m8")
+}],
+"loop": true,
+"name": &"Look_Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efr0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1buy")
+}],
+"loop": true,
+"name": &"Look_Straight",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1ia2"]
+size = Vector2(9, 82)
+
+[node name="Tree" type="Area2D"]
+script = ExtResource("1_u0fcb")
+
+[node name="walk_collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 98.5)
+shape = SubResource("RectangleShape2D_t3xye")
+
+[node name="tree_image" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2mkf5")
+animation = &"Look_Straight"
+frame_progress = 0.969404
+speed_scale = 0.1
+
+[node name="shoot_collision" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 71)
+shape = SubResource("RectangleShape2D_t1ia2")
+debug_color = Color(0.995767, 0, 0.199341, 0.42)
