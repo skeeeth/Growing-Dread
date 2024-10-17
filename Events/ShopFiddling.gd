@@ -24,7 +24,7 @@ func toggled(opened):
 
 func replace_text():
 	var shop_slots:Array[InventorySlot]
-	for node in inv.shop.get_node("Grid").get_children():
+	for node in inv.shop.get_node("ShopBack/Grid").get_children():
 		if node is InventorySlot:
 			shop_slots.append(node)
 	

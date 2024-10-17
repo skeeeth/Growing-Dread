@@ -1,6 +1,8 @@
 extends Node
 
 @export var melt_filter:ColorRect
+@onready var bgm = $"../../BGM"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -17,6 +19,9 @@ func _on_melt_timeout():
 		melt_filter.material.set_shader_parameter(uniform,val)
 		
 	melt_tween.tween_method(rssp.bind("melt_p"),0.0,0.15,1.5)
+	melt_tween.parallel().tween_property(bgm,"pitch_scale",0.3,1.5)
 	melt_tween.tween_method(rssp.bind("melt_p"),0.1,-0.03,0.03)
+	melt_tween.parallel().tween_property(bgm,"pitch_scale",1.0,0.2)
 	melt_tween.tween_method(rssp.bind("melt_p"),-0.03,0.0,0.01)
+	
 	pass # Replace with function body.

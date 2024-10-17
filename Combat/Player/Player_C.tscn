@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bu7tyogwauew7"]
+[gd_scene load_steps=10 format=3 uid="uid://bu7tyogwauew7"]
 
 [ext_resource type="Script" path="res://Combat/Player/Combat_Control.gd" id="1_8ajpd"]
 [ext_resource type="Script" path="res://Combat/Player/Aiming.gd" id="2_h3mtk"]
+[ext_resource type="AudioStream" uid="uid://c1npr0xuiwbt5" path="res://Assets/Sounds/pistol.wav" id="3_dtfrl"]
 [ext_resource type="Texture2D" uid="uid://bth6efhefr35l" path="res://Assets/npl.webp" id="3_et3yv"]
 [ext_resource type="PackedScene" uid="uid://duoju8d1x6bam" path="res://Combat/Components/hurtbox/hurtbox.tscn" id="3_y4d7k"]
 [ext_resource type="SpriteFrames" uid="uid://dttvx0fgkcw43" path="res://Assets/Player_Sprite_Animation.tres" id="6_cf8sl"]
@@ -31,6 +32,7 @@ max_range = 1000.0
 one_shot = true
 
 [node name="Gunshot" type="AudioStreamPlayer2D" parent="Aiming"]
+stream = ExtResource("3_dtfrl")
 
 [node name="Flash" type="PointLight2D" parent="Aiming"]
 color = Color(1, 0.678431, 0, 1)
