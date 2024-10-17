@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bhdcmdrktl4xs"]
+[gd_scene load_steps=52 format=3 uid="uid://bhdcmdrktl4xs"]
 
 [ext_resource type="Script" path="res://Farming/FarmingTiles/farmable_tile.gd" id="1_lxn3k"]
 [ext_resource type="Resource" uid="uid://bxc1cyfbquibd" path="res://Farming/FarmingTiles/Crops/Blank.tres" id="2_b2nj6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c87upey770rjx" path="res://Assets/UI-Kenny_Large.png" id="3_8wb04"]
 [ext_resource type="Texture2D" uid="uid://nsrjbbj6clnd" path="res://Assets/plowed_soil.png" id="3_ars1p"]
 [ext_resource type="Texture2D" uid="uid://d20tqsy7twcsj" path="res://Assets/farm tool icons calciumtrice.png" id="5_wlp54"]
+[ext_resource type="AudioStream" uid="uid://c4ddqiq3xiavh" path="res://Assets/Sounds/Slice.wav" id="7_er4ss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i47ax"]
 size = Vector2(32, 32)
@@ -435,6 +436,7 @@ shape = SubResource("RectangleShape2D_i47ax")
 [node name="Pivot" type="Node2D" parent="FarmableTile"]
 visible = false
 position = Vector2(-9.5, 10.5)
+rotation = -1.0472
 
 [node name="Scythe" type="Sprite2D" parent="FarmableTile/Pivot"]
 z_index = 2
@@ -551,5 +553,6 @@ libraries = {
 [node name="Plant" type="AudioStreamPlayer2D" parent="Sounds"]
 
 [node name="Harvest" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("7_er4ss")
 
 [node name="Water" type="AudioStreamPlayer" parent="Sounds"]

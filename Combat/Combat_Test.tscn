@@ -225,5 +225,7 @@ script = ExtResource("19_rnumv")
 blood_req = 13
 blood_repeat = Vector2(8, 13)
 modulate_color = Color(0.807843, 0, 0, 1)
+squelch_req = 5
+squelch_repeat = Vector2(9, 11)
 
 [connection signal="gui_input" from="Camera2D/ScreenSpace/Day/HBoxContainer/TextureRect" to="Camera2D/ScreenSpace/Day/Inventory" method="_on_texture_rect_gui_input"]

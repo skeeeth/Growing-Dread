@@ -95,6 +95,7 @@ mouse_filter = 1
 
 [node name="Buy" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_jx2qs")
+volume_db = -10.082
 max_polyphony = 3
 
 [node name="Sell" type="AudioStreamPlayer" parent="."]

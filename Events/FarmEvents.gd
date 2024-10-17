@@ -8,6 +8,7 @@ var farm_tiles:Array[FarmTile]
 @export_group("HarvestSquelch","squelch_")
 @export var squelch_req:int
 @export var squelch_repeat:Vector2
+const SQUISH_SOUND = preload("res://Assets/Sounds/Squish.wav")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var level = $"../../Level"
@@ -25,7 +26,11 @@ func on_harvest(source):
 	squelch_req -= 1
 	if squelch_req == 0:
 		squelch_req = randi_range(squelch_repeat.x,squelch_repeat.y)
-		#do the thing
+		var previous_sound = tile.harvest_sound.stream
+		tile.harvest_sound.stream = SQUISH_SOUND
+		await tile.harvest_sound.finished
+		tile.harvest_sound.stream = previous_sound
+		
 	pass
 	
 	
