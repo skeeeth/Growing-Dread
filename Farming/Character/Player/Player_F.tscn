@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwp6k14335tjt"]
+[gd_scene load_steps=9 format=3 uid="uid://dwp6k14335tjt"]
 
 [ext_resource type="Script" path="res://Farming/Character/Player/Player_F.gd" id="2_yxr6k"]
 [ext_resource type="SpriteFrames" uid="uid://dttvx0fgkcw43" path="res://Assets/Player_Sprite_Animation.tres" id="3_vweaf"]
@@ -12,6 +12,8 @@ size = Vector2(22, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82par"]
 size = Vector2(23, 9)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bda5f"]
 
 [node name="Farmer" type="CharacterBody2D"]
 z_index = 14
@@ -49,6 +51,7 @@ shape = SubResource("RectangleShape2D_82par")
 [node name="farmer_image" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 texture_filter = 1
+material = SubResource("ShaderMaterial_bda5f")
 scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("3_vweaf")
 animation = &"Aim_Up"
@@ -58,4 +61,5 @@ offset = Vector2(0, -80)
 [node name="Error" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_eugfp")
 
-[node name="Footsteps" parent="." instance=ExtResource("5_y7xqs")]
+[node name="Footsteps" parent="." node_paths=PackedStringArray("character") instance=ExtResource("5_y7xqs")]
+character = NodePath("..")

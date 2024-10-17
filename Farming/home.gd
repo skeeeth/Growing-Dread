@@ -9,6 +9,7 @@ class_name Home
 var is_inside = true
 
 #@onready var player
+@onready var door_sound = $Door
 
 func _ready():
 	_set_is_inside(true)
@@ -16,6 +17,7 @@ func _ready():
 
 
 func interact(player):
+	door_sound.play()
 	if (is_inside):
 		move_player_outside(player)
 	else:

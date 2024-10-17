@@ -36,7 +36,7 @@ region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="LabelSettings" id="LabelSettings_nfdgi"]
 font_size = 15
-outline_size = 2
+outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [node name="CombatTest" type="Node2D"]
@@ -191,6 +191,7 @@ inventory = NodePath("../../Inventory")
 bar_color = Color(0.894118, 0.74902, 0.482353, 1)
 
 [node name="Label" type="Label" parent="Camera2D/ScreenSpace/Day/PanelContainer"]
+use_parent_material = true
 layout_mode = 2
 text = "Stamina"
 label_settings = SubResource("LabelSettings_nfdgi")

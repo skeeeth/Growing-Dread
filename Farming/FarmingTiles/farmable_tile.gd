@@ -24,6 +24,7 @@ const BLANK = preload("res://Farming/FarmingTiles/Crops/Blank.tres")
 @onready var till_sound = $Sounds/Till
 @onready var plant_sound = $Sounds/Plant
 @onready var harvest_sound = $Sounds/Harvest
+@onready var water_sound = $Sounds/Water
 
 func _ready():
 	Farming.day_progressed.connect(day_progression)
@@ -71,6 +72,7 @@ func till():
 func water():
 	if state == Farming.states.Growing:
 		watered.emit(self)
+		water_sound.play()
 		dirt.modulate = Color(0.9,0.85,0.9)
 		$FarmableTile/ParticleHolder/Watering.emitting = true
 		last_water_day = Farming.day

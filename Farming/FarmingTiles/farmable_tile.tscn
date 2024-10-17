@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bhdcmdrktl4xs"]
+[gd_scene load_steps=55 format=3 uid="uid://bhdcmdrktl4xs"]
 
 [ext_resource type="Script" path="res://Farming/FarmingTiles/farmable_tile.gd" id="1_lxn3k"]
 [ext_resource type="Resource" uid="uid://bxc1cyfbquibd" path="res://Farming/FarmingTiles/Crops/Blank.tres" id="2_b2nj6"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://d20tqsy7twcsj" path="res://Assets/farm tool icons calciumtrice.png" id="5_wlp54"]
 [ext_resource type="AudioStream" uid="uid://edled642havl" path="res://Assets/Sounds/shovel.ogg" id="7_06ho1"]
 [ext_resource type="AudioStream" uid="uid://c4ddqiq3xiavh" path="res://Assets/Sounds/Slice.wav" id="7_er4ss"]
+[ext_resource type="AudioStream" uid="uid://ibpr3t6uyvtq" path="res://Assets/Sounds/thorns.ogg" id="8_jmkgk"]
+[ext_resource type="AudioStream" uid="uid://dao1aktoy3n0y" path="res://Assets/Sounds/Water.ogg" id="10_b8ath"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i47ax"]
 size = Vector2(32, 32)
@@ -565,8 +567,10 @@ stream = ExtResource("7_06ho1")
 volume_db = -5.0
 
 [node name="Plant" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("8_jmkgk")
 
 [node name="Harvest" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("7_er4ss")
 
 [node name="Water" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("10_b8ath")

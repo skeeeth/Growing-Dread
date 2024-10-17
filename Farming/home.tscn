@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b0ve77udfgeqv"]
+[gd_scene load_steps=20 format=3 uid="uid://b0ve77udfgeqv"]
 
 [ext_resource type="Script" path="res://Farming/home.gd" id="1_go7s6"]
 [ext_resource type="Texture2D" uid="uid://c4uv13tx8yqgv" path="res://Assets/house_crop.png" id="2_ewjnk"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Farming/Door.gd" id="8_4780h"]
 [ext_resource type="Texture2D" uid="uid://dii2a8low2u7y" path="res://Farming/country.png" id="8_fio4m"]
 [ext_resource type="Script" path="res://Farming/Bed.gd" id="8_o3c8e"]
+[ext_resource type="AudioStream" uid="uid://dhnwgg6a7ec1w" path="res://Assets/Sounds/open.ogg" id="11_7jpyj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pq0lx"]
 size = Vector2(248, 227)
@@ -174,3 +175,6 @@ shape = SubResource("RectangleShape2D_e5dml")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Interior/WallsStaticBody"]
 position = Vector2(2.5, 20)
 shape = SubResource("RectangleShape2D_0jwur")
+
+[node name="Door" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_7jpyj")
