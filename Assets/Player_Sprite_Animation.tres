@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=33 format=3 uid="uid://dttvx0fgkcw43"]
+[gd_resource type="SpriteFrames" load_steps=36 format=3 uid="uid://dttvx0fgkcw43"]
 
 [ext_resource type="Texture2D" uid="uid://cnmtujh6thu7k" path="res://Assets/character.png" id="1_k56ig"]
 
@@ -62,9 +62,21 @@ region = Rect2(300, 800, 100, 200)
 atlas = ExtResource("1_k56ig")
 region = Rect2(400, 800, 100, 200)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hdoxi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikvxn"]
 atlas = ExtResource("1_k56ig")
-region = Rect2(300, 1200, 100, 200)
+region = Rect2(400, 1000, 100, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa30n"]
+atlas = ExtResource("1_k56ig")
+region = Rect2(0, 1200, 100, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guiw5"]
+atlas = ExtResource("1_k56ig")
+region = Rect2(100, 1200, 100, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evx52"]
+atlas = ExtResource("1_k56ig")
+region = Rect2(200, 1200, 100, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fxgcs"]
 atlas = ExtResource("1_k56ig")
@@ -86,21 +98,21 @@ region = Rect2(300, 0, 100, 200)
 atlas = ExtResource("1_k56ig")
 region = Rect2(400, 0, 100, 200)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vt2gp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_iha1w"]
 atlas = ExtResource("1_k56ig")
-region = Rect2(200, 1200, 100, 200)
+region = Rect2(300, 1000, 100, 200)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w4g0j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2p43"]
 atlas = ExtResource("1_k56ig")
-region = Rect2(0, 1200, 100, 200)
+region = Rect2(300, 1200, 100, 200)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o1vlw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1jh2"]
 atlas = ExtResource("1_k56ig")
-region = Rect2(100, 1200, 100, 200)
+region = Rect2(400, 1200, 100, 200)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p1046"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsslv"]
 atlas = ExtResource("1_k56ig")
-region = Rect2(500, 1200, 100, 200)
+region = Rect2(500, 800, 100, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8lvhs"]
 atlas = ExtResource("1_k56ig")
@@ -122,9 +134,9 @@ region = Rect2(300, 200, 100, 200)
 atlas = ExtResource("1_k56ig")
 region = Rect2(400, 200, 100, 200)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uc84r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ong4j"]
 atlas = ExtResource("1_k56ig")
-region = Rect2(400, 1200, 100, 200)
+region = Rect2(500, 1000, 100, 200)
 
 [resource]
 animations = [{
@@ -190,10 +202,24 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hdoxi")
+"texture": SubResource("AtlasTexture_ikvxn")
 }],
 "loop": true,
 "name": &"Angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_xa30n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guiw5")
+}, {
+"duration": 1.7,
+"texture": SubResource("AtlasTexture_evx52")
+}],
+"loop": true,
+"name": &"Farming",
 "speed": 5.0
 }, {
 "frames": [{
@@ -217,8 +243,8 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_vt2gp")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iha1w")
 }],
 "loop": true,
 "name": &"Scared",
@@ -226,10 +252,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w4g0j")
+"texture": SubResource("AtlasTexture_j2p43")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o1vlw")
+"texture": SubResource("AtlasTexture_a1jh2")
 }],
 "loop": true,
 "name": &"Taunt",
@@ -237,7 +263,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p1046")
+"texture": SubResource("AtlasTexture_vsslv")
 }],
 "loop": true,
 "name": &"Thinking",
@@ -265,7 +291,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uc84r")
+"texture": SubResource("AtlasTexture_ong4j")
 }],
 "loop": true,
 "name": &"Worried",
