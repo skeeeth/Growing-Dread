@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmc455i33nld7"]
+
+[ext_resource type="Script" path="res://Combat/monster_spawner.gd" id="1_chm8e"]
+
+[node name="MonsterSpawner" type="Node2D"]
+script = ExtResource("1_chm8e")
+num_monsters_per_second_initial = 50
+spawn_duration = 2.0
+spawn_radius = 100.0

@@ -7,6 +7,7 @@ enum SheepState {
 	Sleeping,
 	Fleeing,
 	Immobilized,
+	Infested,
 	Dead,
 }
 
@@ -47,6 +48,20 @@ func on_immobilizer_died():
 func die():
 	state = SheepState.Dead
 	$WanderIdleEatTimer.stop()
+
+func become_infested():
+	state = SheepState.Infested
+	$WanderIdleEatTimer.stop()
+	
+	$SheepSprite/AnimationPlayer.play("walk_right")
+	desired_movement_velocity = Vector2.RIGHT * fleeing_speed
+	_change_facing(desired_movement_velocity)
+	
+	#Disable collisions with fence
+	collision_mask = collision_mask | (1 << 2)
+	collision_mask = collision_mask & ~(1 << 1)
+	
+	#Increase health
 
 func _ready():
 	state = SheepState.Idle
@@ -137,7 +152,7 @@ func _physics_process(delta):
 		else:
 			pass#print("Fleeing, but couldn't figure out where to run")
 	
-	if (state == SheepState.Fleeing or state == SheepState.Wandering):
+	if (state == SheepState.Fleeing or state == SheepState.Wandering or state == SheepState.Infested):
 		if ((linear_velocity-desired_movement_velocity).length() > 0.1):
 			apply_force(desired_movement_velocity.normalized() * movement_acceleration * delta)
 
@@ -158,7 +173,7 @@ func _on_threat_detector_body_entered(body):
 		if (nearby_enemies.is_empty()):
 			state = SheepState.Fleeing
 			$WanderIdleEatTimer.stop()
-			print("Run for your life!!!")
+			#print("Run for your life!!!")
 			desired_movement_velocity = (global_position - body.global_position).normalized() * fleeing_speed
 			_change_facing(desired_movement_velocity)
 			$SheepSprite/AnimationPlayer.play("walk_" + facing_direction, -1, 2.0)

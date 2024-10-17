@@ -1,20 +1,21 @@
 extends Control
-class_name Inventory_old
+class_name Inventory
 
 signal slot_selected(slot)
 signal inventory_toggled(offon)
-#@onready var inventory_base = $ColorRect/GridContainer
-@onready var shop = $Shop
+
+@export var shop_contents:Control
+
 var slots:Array[InventorySlot]
-@onready var hotbar =$Hotbar
+@onready var hotbar = $VBoxContainer/Hotbar
 var selected_slot_index:int = 0
-@onready var selection_indicator = $Hotbar/HotbarSelection
+
+@onready var selection_indicator = $VBoxContainer/Hotbar/HotbarSelection
 @onready var selected_sound = $Selected
 @onready var inventory_sound = $OpenClose
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	#Farming.inventory = self
+	Farming.inventory = self
 	#Farming.inventory_updated.connect(on_inventory_update)
 	var slot_scene:PackedScene = load("res://Farming/Inventory/InventorySlot.tscn")
 	
@@ -22,7 +23,7 @@ func _ready():
 		if s is InventorySlot:
 			slots.append(s)
 	
-	for i in range(0,7):
+	for i in range(0,5):
 		var new_slot:InventorySlot = slot_scene.instantiate()
 
 		new_slot.data = Farming.EMPTY_ITEM
@@ -46,39 +47,13 @@ func _input(event):
 			slot_selected.emit(i-1)
 		selected_slot_index = i-1
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var slot_w = slots[0].panel.size.x + 1.0
-	selection_indicator.position.x = slot_w * (selected_slot_index + 0.5)
+	var slot0_position = slots[0].position
+	selection_indicator.position.x = slot0_position.x + slot_w * (selected_slot_index + 0.5)
 	selection_indicator.position.y = slots[0].panel.size.y/2.0
-	pass
-	
-#func instantiate_image(item_name):
-	#var img = load("res://Farming/inventory_item.tscn")
-	#var inst = img.instantiate()
-	#
-	#inventory_base.add_child(inst)
-	#inst.set_item(item_name)
 
-	#
-#func on_inventory_update():
-	## Iterate over each item in the inventory dictionary
-	#for item_name in Farming.inventory.keys():
-		#var has_existing = false
-		#for existing in inventory_base.get_children():
-			#if(existing.item_type == item_name):
-				#has_existing = true
-				#
-		#if not has_existing:
-			## The item doesn't exist as a child, so let's create it
-			#instantiate_image(item_name)
-#
-	## Now, let's check for any orphaned children (items not in the inventory)
-	#for child in inventory_base.get_children():
-		#if child.item_type not in Farming.inventory:
-			## This child's item_type is not in the inventory—remove it
-			#child.queue_free()
 
 
 func _on_texture_rect_gui_input(event):
@@ -88,7 +63,6 @@ func _on_texture_rect_gui_input(event):
 	pass # Replace with function body.
 
 func toggle_expand():
-	shop.visible = !shop.visible
-	inventory_toggled.emit(shop.visible)
+	shop_contents.visible = !shop_contents.visible
+	inventory_toggled.emit(shop_contents.visible)
 	inventory_sound.play()
-	pass

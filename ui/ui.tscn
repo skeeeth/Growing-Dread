@@ -1,0 +1,310 @@
+[gd_scene load_steps=28 format=3 uid="uid://b0ero8lhdl2h3"]
+
+[ext_resource type="Script" path="res://ui/inventory_new.gd" id="1_u8a8f"]
+[ext_resource type="PackedScene" uid="uid://bh7lfr4sed3c0" path="res://Farming/Inventory/InventorySlot.tscn" id="2_btjd0"]
+[ext_resource type="Script" path="res://Farming/MoneyLabel.gd" id="3_5lkj1"]
+[ext_resource type="Theme" uid="uid://c4631ouus7yft" path="res://Assets/UI_Theme.tres" id="3_75ss5"]
+[ext_resource type="Resource" uid="uid://dsroxdib8h362" path="res://Farming/FarmingTiles/Crops/CornSeed.tres" id="3_nr8qd"]
+[ext_resource type="Script" path="res://Farming/Stamina.gd" id="4_4vfyc"]
+[ext_resource type="Texture2D" uid="uid://85guflqjgwj4" path="res://Assets/input_prompts-Kenny.png" id="4_fh3jj"]
+[ext_resource type="Resource" uid="uid://csekb3htn1cti" path="res://Farming/FarmingTiles/Crops/TomatoSeed.tres" id="4_qd61h"]
+[ext_resource type="Texture2D" uid="uid://d20tqsy7twcsj" path="res://Assets/farm tool icons calciumtrice.png" id="5_5dsrr"]
+[ext_resource type="Texture2D" uid="uid://dj88yrxqyimar" path="res://Assets/UI_HOVER.png" id="5_dcibv"]
+[ext_resource type="Texture2D" uid="uid://c87upey770rjx" path="res://Assets/UI-Kenny_Large.png" id="7_vxfo4"]
+[ext_resource type="Script" path="res://Farming/Inventory/ItemData.gd" id="7_xlf6u"]
+[ext_resource type="AudioStream" uid="uid://bbvnca6pnrro3" path="res://Assets/Sounds/click.wav" id="12_dlxju"]
+[ext_resource type="Texture2D" uid="uid://y75wb0ijxwl0" path="res://Assets/WateringCan.png" id="12_smgeb"]
+[ext_resource type="AudioStream" uid="uid://d3sltb3rrg3sb" path="res://Assets/Sounds/cloth-inventory.wav" id="13_4wceb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6x251"]
+font_size = 15
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8shlf"]
+atlas = ExtResource("4_fh3jj")
+region = Rect2(304, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sf25b"]
+atlas = ExtResource("5_5dsrr")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24wk4"]
+atlas = ExtResource("7_vxfo4")
+region = Rect2(128, 128, 96, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pi1m5"]
+font_size = 48
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i57hj"]
+atlas = ExtResource("7_vxfo4")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l63ul"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_right = 32.0
+content_margin_bottom = 32.0
+texture = SubResource("AtlasTexture_i57hj")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a785p"]
+atlas = ExtResource("5_5dsrr")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="Resource" id="Resource_xxj83"]
+script = ExtResource("7_xlf6u")
+sellable = false
+money_value = 0
+buy_cost = 0
+interation_type = 0
+inventory_image = SubResource("AtlasTexture_a785p")
+crop_name = ""
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22rrj"]
+atlas = ExtResource("5_5dsrr")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="Resource" id="Resource_li0l0"]
+script = ExtResource("7_xlf6u")
+sellable = false
+money_value = 0
+buy_cost = 0
+interation_type = 3
+inventory_image = SubResource("AtlasTexture_22rrj")
+crop_name = ""
+
+[sub_resource type="Resource" id="Resource_h0yc4"]
+script = ExtResource("7_xlf6u")
+sellable = false
+money_value = 0
+buy_cost = 0
+interation_type = 2
+inventory_image = ExtResource("12_smgeb")
+crop_name = ""
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="ScreenSpace" type="Control" parent="."]
+z_index = 25
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenSpace"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Day" type="Control" parent="ScreenSpace/MarginContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Inventory" type="Control" parent="ScreenSpace/MarginContainer" node_paths=PackedStringArray("shop_contents")]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("1_u8a8f")
+shop_contents = NodePath("VBoxContainer/Shop/ShopContents")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScreenSpace/MarginContainer/Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Money and bag icon" type="HBoxContainer" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer"]
+layout_mode = 2
+
+[node name="Money" type="Label" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Money and bag icon"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 1
+script = ExtResource("3_5lkj1")
+
+[node name="PanelContainer" type="PanelContainer" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Money and bag icon"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_75ss5")
+
+[node name="Stam" type="HBoxContainer" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Money and bag icon/PanelContainer" node_paths=PackedStringArray("inventory") groups=["Stamina"]]
+layout_mode = 2
+theme_override_constants/separation = 1
+script = ExtResource("4_4vfyc")
+inventory = NodePath("../../../..")
+bar_color = Color(0.894118, 0.74902, 0.482353, 1)
+
+[node name="Label" type="Label" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Money and bag icon/PanelContainer"]
+use_parent_material = true
+layout_mode = 2
+text = "Stamina"
+label_settings = SubResource("LabelSettings_6x251")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Money and bag icon"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Money and bag icon/HBoxContainer"]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Money and bag icon/HBoxContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="HSeparator" type="HSeparator" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Money and bag icon/HBoxContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="HSeparator2" type="HSeparator" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Money and bag icon/HBoxContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="TextureRect2" type="TextureRect" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Money and bag icon/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_8shlf")
+stretch_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Money and bag icon/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_sf25b")
+expand_mode = 2
+
+[node name="Shop" type="Control" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="ShopContents" type="ColorRect" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Shop"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.411765, 0.219608, 0.309804, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Shop/ShopContents"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Shop/ShopContents/VBoxContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+texture = SubResource("AtlasTexture_24wk4")
+
+[node name="Label" type="Label" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Shop/ShopContents/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -33.5
+offset_right = 65.0
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 1
+text = "SHOP"
+label_settings = SubResource("LabelSettings_pi1m5")
+horizontal_alignment = 1
+
+[node name="ShopBack" type="PanelContainer" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Shop/ShopContents/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_l63ul")
+
+[node name="Grid" type="GridContainer" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Shop/ShopContents/VBoxContainer/ShopBack"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 30
+columns = 2
+
+[node name="Slot" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Shop/ShopContents/VBoxContainer/ShopBack/Grid" instance=ExtResource("2_btjd0")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+is_shop = true
+count = -1
+data = ExtResource("3_nr8qd")
+
+[node name="InventorySlot" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Shop/ShopContents/VBoxContainer/ShopBack/Grid" instance=ExtResource("2_btjd0")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+is_shop = true
+count = -1
+data = ExtResource("4_qd61h")
+
+[node name="Hotbar" type="HBoxContainer" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="HotbarSelection" type="Sprite2D" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar"]
+z_index = 1
+texture = ExtResource("5_dcibv")
+
+[node name="Slot" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar" instance=ExtResource("2_btjd0")]
+layout_mode = 2
+count = -1
+data = SubResource("Resource_xxj83")
+
+[node name="Slot2" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar" instance=ExtResource("2_btjd0")]
+layout_mode = 2
+count = -1
+data = SubResource("Resource_li0l0")
+
+[node name="Can" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar" instance=ExtResource("2_btjd0")]
+layout_mode = 2
+count = -1
+data = SubResource("Resource_h0yc4")
+
+[node name="Slot3" parent="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar" instance=ExtResource("2_btjd0")]
+layout_mode = 2
+count = 2
+data = ExtResource("3_nr8qd")
+
+[node name="Selected" type="AudioStreamPlayer" parent="ScreenSpace/MarginContainer/Inventory"]
+stream = ExtResource("12_dlxju")
+
+[node name="OpenClose" type="AudioStreamPlayer" parent="ScreenSpace/MarginContainer/Inventory"]
+stream = ExtResource("13_4wceb")
+volume_db = -20.558
+
+[connection signal="gui_input" from="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Money and bag icon/HBoxContainer/TextureRect" to="ScreenSpace/MarginContainer/Inventory" method="_on_texture_rect_gui_input"]
+
+[editable path="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar/Can"]

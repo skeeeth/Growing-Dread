@@ -16,7 +16,8 @@ var bars:Array[ColorRect]
 @export var bar_color:Color
 var cost:int
 var hover_progress:float = 0
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready():
 	for i in range(0,max_stam):
 		var bar = ColorRect.new()
@@ -26,11 +27,11 @@ func _ready():
 		add_child(bar)
 	inventory.slot_selected.connect(on_slot_selected)
 	Farming.day_progressed.connect(on_day_start)
+	
+	await get_tree().process_frame #hack - wait a frame because the inventory slots might not be ready yet
 	on_slot_selected(0)
-	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if bars.size() <= 0: return
 	hover_progress += delta

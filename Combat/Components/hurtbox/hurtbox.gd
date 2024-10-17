@@ -5,6 +5,7 @@ class_name Hurtbox
 
 signal died #parent should connect death behavior to this
 signal hit(remaining_health)
+signal took_damage
 @export var health:float
 @export var visual:Sprite2D
 
@@ -18,6 +19,7 @@ signal hit(remaining_health)
 
 func take_damage(amount):
 	health -= amount
+	took_damage.emit()
 	
 	#hitflash
 	#tween_method can only interpolate on on the first argument of a callable, so I have to make a lambda
