@@ -5,10 +5,12 @@ class_name CRT_Cam
 @onready var screen_space = $ScreenSpace
 @onready var crt_overlay = $ScreenSpace/CRT_Filter
 @onready var day = $ScreenSpace/Day
+@onready var meltfilter = $ScreenSpace/Meltfilter
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	crt_overlay.size = get_viewport_rect().size
+	meltfilter.size = get_viewport_rect().size
 	screen_space.position = -get_viewport_rect().size/2.0
 	day.size = get_viewport_rect().size
 	pass # Replace with function body.
