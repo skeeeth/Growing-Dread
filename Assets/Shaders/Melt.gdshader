@@ -9,7 +9,7 @@ void vertex() {
 
 void fragment() {
 	float y_change = texture(noise,vec2(UV.x,0.0)).g * melt_p;
-	vec2 read_uv = (vec2(UV.x,UV.y + y_change));
+	vec2 read_uv = (vec2(SCREEN_UV.x,SCREEN_UV.y + y_change));
 	COLOR = texture(screen_texture,read_uv);
 	// Called for every pixel the material is visible on.
 }

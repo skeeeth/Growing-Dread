@@ -19,7 +19,7 @@ region = Rect2(128, 128, 96, 32)
 [sub_resource type="LabelSettings" id="LabelSettings_hbwsj"]
 font_size = 26
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i57hj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3ov7"]
 atlas = ExtResource("2_5vk3u")
 region = Rect2(32, 64, 32, 32)
 
@@ -28,7 +28,7 @@ content_margin_left = 32.0
 content_margin_top = 32.0
 content_margin_right = 32.0
 content_margin_bottom = 32.0
-texture = SubResource("AtlasTexture_i57hj")
+texture = SubResource("AtlasTexture_o3ov7")
 texture_margin_left = 16.0
 texture_margin_top = 16.0
 texture_margin_right = 16.0

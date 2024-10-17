@@ -120,3 +120,7 @@ lmb={
 2d_physics/layer_4="Sheep"
 ">>>>>>>2df3d91169111d1dcb9d25493f56e25bed3a6477[rendering]renderer/rendering_method"="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

@@ -1,6 +1,7 @@
 extends Node
 
 @export var inv:Inventory
+@export var shop_grid:GridContainer
 @export var requirement:int
 @export var texts:Array[String]
 @export var next:Vector2
@@ -24,7 +25,7 @@ func toggled(opened):
 
 func replace_text():
 	var shop_slots:Array[InventorySlot]
-	for node in inv.shop.get_node("ShopBack/Grid").get_children():
+	for node in shop_grid.get_children():
 		if node is InventorySlot:
 			shop_slots.append(node)
 	

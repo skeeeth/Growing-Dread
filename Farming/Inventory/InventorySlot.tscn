@@ -16,7 +16,6 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 72.0
 offset_bottom = 72.0
-size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_phx30")
 count_label = NodePath("PanelContainer/img/Count")

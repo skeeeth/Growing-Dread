@@ -7,16 +7,13 @@ class_name CRT_Cam
 @onready var day = $ScreenSpace/Day
 @onready var meltfilter = $ScreenSpace/Meltfilter
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	crt_overlay.size = get_viewport_rect().size
-	meltfilter.size = get_viewport_rect().size
-	screen_space.position = -get_viewport_rect().size/2.0
-	day.size = get_viewport_rect().size
-	pass # Replace with function body.
+	crt_overlay.size = get_viewport_rect().size / scale
+	meltfilter.size = get_viewport_rect().size / scale
+	screen_space.position = -(get_viewport_rect().size / scale)/2.0
+	day.size = get_viewport_rect().size / scale
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	global_position = ((tracked_object.global_position * 3.0) + get_global_mouse_position())/4.0;
 	screen_space.global_position = get_screen_center_position() - get_viewport_rect().size/2.0

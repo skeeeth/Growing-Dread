@@ -11,14 +11,16 @@ var inventory:Inventory
 @onready var error_sound = $"../Error"
 var stamina:Stamina
 
-## Called when the node enters the scene tree for the first time.
-func _ready():
-	inventory = Farming.inventory
+
+func _ready():	
 	stamina = get_tree().get_first_node_in_group("Stamina")
-	pass # Replace with function body.
-#const CORN = preload("res://Farming/FarmingTiles/Crops/Corn.tres")
+
+
 const BLANK = preload("res://Farming/FarmingTiles/Crops/Blank.tres")
+
 func interact():
+	inventory = Farming.inventory
+	
 	if !interaction_raycast.is_colliding(): return
 	var slot = inventory.slots[inventory.selected_slot_index]
 	var type = slot.data.interation_type
