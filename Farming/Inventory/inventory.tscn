@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://quomisubtuvn"]
+[gd_scene load_steps=21 format=3 uid="uid://quomisubtuvn"]
 
 [ext_resource type="Script" path="res://Farming/Inventory/inventory.gd" id="1_j6d7j"]
+[ext_resource type="Texture2D" uid="uid://c87upey770rjx" path="res://Assets/UI-Kenny_Large.png" id="2_5vk3u"]
 [ext_resource type="PackedScene" uid="uid://bh7lfr4sed3c0" path="res://Farming/Inventory/InventorySlot.tscn" id="2_jicc7"]
 [ext_resource type="Texture2D" uid="uid://d20tqsy7twcsj" path="res://Assets/farm tool icons calciumtrice.png" id="3_4qvj2"]
 [ext_resource type="Resource" uid="uid://csekb3htn1cti" path="res://Farming/FarmingTiles/Crops/TomatoSeed.tres" id="4_6go6s"]
@@ -11,8 +12,27 @@
 [ext_resource type="Texture2D" uid="uid://y75wb0ijxwl0" path="res://Assets/WateringCan.png" id="8_iyost"]
 [ext_resource type="AudioStream" uid="uid://d3sltb3rrg3sb" path="res://Assets/Sounds/cloth-inventory.wav" id="9_ff6wy"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_pi1m5"]
-font_size = 48
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ttai"]
+atlas = ExtResource("2_5vk3u")
+region = Rect2(128, 128, 96, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hbwsj"]
+font_size = 26
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i57hj"]
+atlas = ExtResource("2_5vk3u")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_codul"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_right = 32.0
+content_margin_bottom = 32.0
+texture = SubResource("AtlasTexture_i57hj")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a785p"]
 atlas = ExtResource("3_4qvj2")
@@ -56,38 +76,71 @@ mouse_filter = 1
 script = ExtResource("1_j6d7j")
 
 [node name="Shop" type="ColorRect" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 72.0
 offset_top = 88.0
 offset_right = 1086.0
 offset_bottom = 638.0
 mouse_filter = 1
-color = Color(0.411765, 0.219608, 0.309804, 1)
+color = Color(0.862745, 0.658824, 0.745098, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Shop"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.0
+offset_top = 5.0
+offset_right = -2.0
+offset_bottom = 37.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_6ttai")
 
 [node name="Label" type="Label" parent="Shop"]
 layout_mode = 0
-offset_left = 386.0
-offset_top = -76.0
-offset_right = 685.0
-offset_bottom = -8.0
-mouse_filter = 1
-text = "SHOP"
-label_settings = SubResource("LabelSettings_pi1m5")
+offset_left = 472.0
+offset_top = 16.0
+offset_right = 535.0
+offset_bottom = 52.0
+text = "Shop"
+label_settings = SubResource("LabelSettings_hbwsj")
 
-[node name="Grid" type="GridContainer" parent="Shop"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ShopBack" type="PanelContainer" parent="Shop"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -103.5
+offset_right = 116.0
+offset_bottom = 103.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_codul")
 
-[node name="Slot" parent="Shop/Grid" instance=ExtResource("2_jicc7")]
+[node name="Grid" type="GridContainer" parent="Shop/ShopBack"]
 layout_mode = 2
+columns = 3
+
+[node name="Slot" parent="Shop/ShopBack/Grid" instance=ExtResource("2_jicc7")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 is_shop = true
 count = -1
 data = ExtResource("5_12xgg")
 
-[node name="InventorySlot" parent="Shop/Grid" instance=ExtResource("2_jicc7")]
+[node name="Control" type="Control" parent="Shop/ShopBack/Grid"]
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InventorySlot" parent="Shop/ShopBack/Grid" instance=ExtResource("2_jicc7")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 is_shop = true
 count = -1
 data = ExtResource("4_6go6s")
