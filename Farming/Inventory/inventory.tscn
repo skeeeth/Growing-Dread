@@ -76,6 +76,7 @@ mouse_filter = 1
 script = ExtResource("1_j6d7j")
 
 [node name="Shop" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 72.0
 offset_top = 88.0

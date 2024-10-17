@@ -1,12 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://c74m3wvoruq3k"]
+[gd_scene load_steps=32 format=3 uid="uid://c74m3wvoruq3k"]
 
-[ext_resource type="Script" path="res://Combat/Combat_Test_Scene.gd" id="1_jojhg"]
 [ext_resource type="Material" uid="uid://cj2ovdkyq2rbt" path="res://Assets/Shaders/Light_CRT_settings.tres" id="2_s41ki"]
 [ext_resource type="Script" path="res://Combat/Combat_Camera.gd" id="2_ucb8v"]
 [ext_resource type="PackedScene" uid="uid://bas4qnp8bdxfc" path="res://Ranching/animal_pen.tscn" id="5_sje8e"]
 [ext_resource type="TileSet" uid="uid://ce2qp2mth753u" path="res://Assets/Tileset/FullTerrainsTileset.tres" id="6_3t5hl"]
 [ext_resource type="PackedScene" path="res://Farming/tree_spawner.tscn" id="6_aaly3"]
 [ext_resource type="PackedScene" uid="uid://bhdcmdrktl4xs" path="res://Farming/FarmingTiles/farmable_tile.tscn" id="7_tdqte"]
+[ext_resource type="PackedScene" uid="uid://udx0mfx073jq" path="res://Farming/Tree.tscn" id="7_w3uqa"]
 [ext_resource type="PackedScene" uid="uid://quomisubtuvn" path="res://Farming/Inventory/inventory.tscn" id="8_blqqw"]
 [ext_resource type="PackedScene" uid="uid://b0ve77udfgeqv" path="res://Farming/home.tscn" id="9_3c7kn"]
 [ext_resource type="Script" path="res://Farming/MoneyLabel.gd" id="9_hhlth"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://Events/FarmEvents.gd" id="19_rnumv"]
 [ext_resource type="Script" path="res://Events/TimedEvents.gd" id="21_bwdph"]
 [ext_resource type="AudioStream" uid="uid://c6hivghn2rok2" path="res://Assets/Sounds/forest_song.ogg" id="22_ik5tm"]
+[ext_resource type="Script" path="res://Events/DayEvents.gd" id="23_04s1v"]
 
 [sub_resource type="Gradient" id="Gradient_17rgn"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -54,7 +55,6 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="CombatTest" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_jojhg")
 
 [node name="Level" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -102,6 +102,30 @@ position = Vector2(736, -128)
 [node name="FarmTile8" parent="Level" instance=ExtResource("7_tdqte")]
 position = Vector2(800, -128)
 
+[node name="Tree" parent="Level" instance=ExtResource("7_w3uqa")]
+position = Vector2(-128, 0)
+
+[node name="Tree2" parent="Level" instance=ExtResource("7_w3uqa")]
+position = Vector2(32, 288)
+
+[node name="Tree3" parent="Level" instance=ExtResource("7_w3uqa")]
+position = Vector2(928, 32)
+
+[node name="Tree4" parent="Level" instance=ExtResource("7_w3uqa")]
+position = Vector2(832, -320)
+
+[node name="Tree5" parent="Level" instance=ExtResource("7_w3uqa")]
+position = Vector2(512, -256)
+
+[node name="Tree6" parent="Level" instance=ExtResource("7_w3uqa")]
+position = Vector2(160, 192)
+
+[node name="Tree7" parent="Level" instance=ExtResource("7_w3uqa")]
+position = Vector2(192, -160)
+
+[node name="Tree8" parent="Level" instance=ExtResource("7_w3uqa")]
+position = Vector2(896, 480)
+
 [node name="Moonlight" type="PointLight2D" parent="."]
 position = Vector2(-56.9999, -41.5)
 scale = Vector2(51.75, 30.5469)
@@ -130,8 +154,6 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 1440.0
-offset_bottom = 768.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -264,6 +286,13 @@ melt_filter = NodePath("../../Camera2D/ScreenSpace/Meltfilter")
 [node name="Melt" type="Timer" parent="Events/TimedEvents"]
 wait_time = 200.0
 autostart = true
+
+[node name="DayEvents" type="Node" parent="Events"]
+script = ExtResource("23_04s1v")
+tree_wakeup_day = 4
+crop_death_day = 13
+crop_swap_day = 6
+extra_plant_day = 4
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_ik5tm")
