@@ -35,7 +35,7 @@ size = Vector2(254, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jwur"]
 size = Vector2(255, 10)
 
-[node name="Home" type="StaticBody2D"]
+[node name="Home" type="StaticBody2D" groups=["Home"]]
 y_sort_enabled = true
 script = ExtResource("1_go7s6")
 interior_start_position = Vector2(0, -5)

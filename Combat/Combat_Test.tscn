@@ -224,7 +224,7 @@ next = Vector2(3, 6)
 script = ExtResource("19_rnumv")
 blood_req = 13
 blood_repeat = Vector2(8, 13)
-modulate_color = Color(0.807843, 0, 0, 1)
+blood_modulate_color = Color(1, 0.176471, 0.0784314, 1)
 squelch_req = 5
 squelch_repeat = Vector2(9, 11)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bu7tyogwauew7"]
+[gd_scene load_steps=9 format=3 uid="uid://bu7tyogwauew7"]
 
 [ext_resource type="Script" path="res://Combat/Player/Combat_Control.gd" id="1_8ajpd"]
 [ext_resource type="Script" path="res://Combat/Player/Aiming.gd" id="2_h3mtk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://duoju8d1x6bam" path="res://Combat/Components/hurtbox/hurtbox.tscn" id="3_y4d7k"]
 [ext_resource type="SpriteFrames" uid="uid://dttvx0fgkcw43" path="res://Assets/Player_Sprite_Animation.tres" id="6_cf8sl"]
 [ext_resource type="Script" path="res://Farming/Character/Player/FarmInteraction.gd" id="6_yxubt"]
+[ext_resource type="PackedScene" uid="uid://b3de1d32umx1b" path="res://Farming/Character/Player/footsteps.tscn" id="7_piajw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2c0l0"]
 
@@ -58,3 +59,6 @@ hit_from_inside = true
 scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("6_cf8sl")
 animation = &"Aim_Up"
+
+[node name="Footsteps" parent="." node_paths=PackedStringArray("character") instance=ExtResource("7_piajw")]
+character = NodePath("..")

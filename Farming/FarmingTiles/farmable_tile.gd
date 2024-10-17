@@ -64,7 +64,7 @@ func till():
 	if state == Farming.states.Untilled:
 		tilled.emit(self)
 		animation_player.play("Till")
-		till_sound.play()
+	#	till_sound.play()
 		return true
 	return false
 
