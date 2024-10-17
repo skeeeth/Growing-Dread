@@ -11,8 +11,6 @@ const CORN = preload("res://Farming/FarmingTiles/Crops/Corn.tres")
 			#n.plant(CORN)
 			#Farming.next_day() #note this is the global call, will affect all planted crops
 
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
