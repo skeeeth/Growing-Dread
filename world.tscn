@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ddee77dyus1fw"]
+[gd_scene load_steps=29 format=3 uid="uid://ddee77dyus1fw"]
 
 [ext_resource type="Script" path="res://Combat/Combat_Test_Scene.gd" id="1_dt8f2"]
 [ext_resource type="PackedScene" uid="uid://bas4qnp8bdxfc" path="res://Ranching/animal_pen.tscn" id="2_6aqwp"]
@@ -16,9 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://dwp6k14335tjt" path="res://Farming/Character/Player/Player_F.tscn" id="15_x2t57"]
 [ext_resource type="PackedScene" uid="uid://dmdd5crrbcalb" path="res://Farming/next_day_manager.tscn" id="16_c1l12"]
 [ext_resource type="Script" path="res://DayNightEvents.gd" id="16_s7lhr"]
-[ext_resource type="Texture2D" uid="uid://b2p4uw5tho2bc" path="res://Combat/Enemies/surtscrapsprite.png" id="17_56enu"]
 [ext_resource type="Script" path="res://Combat/Enemy Instancer.gd" id="17_gf8td"]
 [ext_resource type="Script" path="res://Events/DayEvents.gd" id="17_k74v8"]
+[ext_resource type="Texture2D" uid="uid://djm0hflhsf2o4" path="res://Assets/monster_frame.tres" id="17_wrwt1"]
 [ext_resource type="AudioStream" uid="uid://c6hivghn2rok2" path="res://Assets/Sounds/forest_song.ogg" id="18_lgp4e"]
 [ext_resource type="Script" path="res://Events/ShopFiddling.gd" id="18_nys1g"]
 [ext_resource type="Script" path="res://Events/FarmEvents.gd" id="19_3rqam"]
@@ -39,10 +39,6 @@ noise = SubResource("FastNoiseLite_dggy3")
 shader = ExtResource("9_b3q6w")
 shader_parameter/melt_p = 0.0
 shader_parameter/noise = SubResource("NoiseTexture2D_u27nk")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a3rid"]
-atlas = ExtResource("17_56enu")
-region = Rect2(9, 192, 128, 96)
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -205,9 +201,9 @@ script = ExtResource("19_3rqam")
 blood_req = 13
 blood_repeat = Vector2(8, 13)
 blood_modulate_color = Color(1, 0.176471, 0.0784314, 1)
-squelch_req = 2
+squelch_req = 13
 squelch_repeat = Vector2(9, 11)
-squelch_mite_sprite = SubResource("AtlasTexture_a3rid")
+squelch_mite_sprite = ExtResource("17_wrwt1")
 
 [node name="TimedEvents" type="Node" parent="Events" node_paths=PackedStringArray("melt_filter")]
 script = ExtResource("15_re8k7")
@@ -226,6 +222,7 @@ tree_wakeup_day = 4
 crop_death_day = 13
 crop_swap_day = 6
 extra_plant_day = 4
+mite_sprite = ExtResource("17_wrwt1")
 
 [node name="UI" parent="." instance=ExtResource("14_lhew0")]
 

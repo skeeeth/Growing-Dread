@@ -4,7 +4,8 @@ extends Node
 @export var crop_death_day:int
 @export var crop_swap_day:int
 @export var extra_plant_day:int
-
+@export var mite_day:int
+@export var mite_sprite:Texture2D
 var trees_awake:bool = false
 var _trees:Array[EyeTree]
 var _home:Home
@@ -83,4 +84,14 @@ func on_house_entered():
 		
 		if dir.length() < 300: return
 		tree.global_position += dir.normalized() * 30
-		pass
+	
+	if Farming.day >= mite_day:
+		var tree = _trees.pick_random()
+		var mite = Sprite2D.new()
+		mite.texture = mite_sprite
+		mite.scale = Vector2(0.1,0.1)
+		tree.add_child(mite)
+		mite.position = randf_range(100,300) * Vector2.from_angle(randf()*TAU)
+		var move_die = create_tween()
+		move_die.tween_property(mite,"position",Vector2(0,-10.0),1.0).set_delay(0.1)
+		move_die.tween_callback(mite.queue_free)
