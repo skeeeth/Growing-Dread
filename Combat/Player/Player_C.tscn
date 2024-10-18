@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bu7tyogwauew7"]
+[gd_scene load_steps=12 format=3 uid="uid://bu7tyogwauew7"]
 
 [ext_resource type="Script" path="res://Combat/Player/Combat_Control.gd" id="1_8ajpd"]
 [ext_resource type="Script" path="res://Combat/Player/Aiming.gd" id="2_h3mtk"]
@@ -8,8 +8,12 @@
 [ext_resource type="SpriteFrames" uid="uid://dttvx0fgkcw43" path="res://Assets/Player_Sprite_Animation.tres" id="6_cf8sl"]
 [ext_resource type="Script" path="res://Farming/Character/Player/FarmInteraction.gd" id="6_yxubt"]
 [ext_resource type="PackedScene" uid="uid://b3de1d32umx1b" path="res://Farming/Character/Player/footsteps.tscn" id="7_piajw"]
+[ext_resource type="Texture2D" uid="uid://d3b5kowal7pdx" path="res://Assets/white_square.png" id="9_1hcnf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2c0l0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5eba3"]
+radius = 141.598
 
 [node name="RigidBody2D" type="CharacterBody2D" node_paths=PackedStringArray("aiming")]
 z_index = 14
@@ -43,11 +47,18 @@ texture_scale = 3.3
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_y4d7k")]
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="TorchLight" type="PointLight2D" parent="."]
+light_mask = 3
+visibility_layer = 2
+z_index = 40
 color = Color(0.568627, 0.568627, 0, 1)
-energy = 0.5
+energy = 4.0
+range_layer_min = -40
+range_layer_max = 40
+range_item_cull_mask = 3
 texture = ExtResource("3_et3yv")
-texture_scale = 0.5
+texture_scale = 1.3
+height = 5.0
 
 [node name="Interaction" type="Node" parent="." node_paths=PackedStringArray("interaction_raycast") groups=["interaction"]]
 script = ExtResource("6_yxubt")
@@ -64,3 +75,23 @@ animation = &"Aim_Up"
 
 [node name="Footsteps" parent="." node_paths=PackedStringArray("character") instance=ExtResource("7_piajw")]
 character = NodePath("..")
+
+[node name="TorchArea" type="CharacterBody2D" parent="."]
+collision_layer = 256
+collision_mask = 256
+motion_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TorchArea"]
+shape = SubResource("CircleShape2D_5eba3")
+disabled = true
+
+[node name="TorchExtinguishTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="DamageScreenCover" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 0)
+z_index = 10
+texture = ExtResource("9_1hcnf")
+
+[connection signal="timeout" from="TorchExtinguishTimer" to="." method="_on_torch_extinguish_timer_timeout"]

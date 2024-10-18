@@ -4,6 +4,7 @@ signal day_progressed
 signal inventory_updated
 signal night_fallen
 signal woke_up
+signal fell_asleep
 
 var day:int = 0
 var is_nighttime = false
@@ -33,14 +34,7 @@ var inventory:Inventory #probably bad practice to have your autoload reference a
 
 
 func go_to_sleep():
-	if (is_nighttime):
-		next_day()
-	else:
-		if (day == 2): #Wolf attack time
-			next_day()
-			#go_to_night() #disabled for now to test stamina farminga
-		else:
-			next_day()
+	fell_asleep.emit()
 
 func wake_up():
 	woke_up.emit()
