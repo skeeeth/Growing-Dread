@@ -1,25 +1,24 @@
-[gd_scene load_steps=26 format=3 uid="uid://dmnfxl8s8kgaf"]
+[gd_scene load_steps=25 format=3 uid="uid://ddee77dyus1fw"]
 
 [ext_resource type="Script" path="res://Combat/Combat_Test_Scene.gd" id="1_dt8f2"]
 [ext_resource type="PackedScene" uid="uid://bas4qnp8bdxfc" path="res://Ranching/animal_pen.tscn" id="2_6aqwp"]
 [ext_resource type="TileSet" uid="uid://ce2qp2mth753u" path="res://Assets/Tileset/FullTerrainsTileset.tres" id="3_w4lw5"]
 [ext_resource type="PackedScene" uid="uid://bhdcmdrktl4xs" path="res://Farming/FarmingTiles/farmable_tile.tscn" id="4_8rxi7"]
 [ext_resource type="PackedScene" uid="uid://b0ve77udfgeqv" path="res://Farming/home.tscn" id="5_24x7n"]
-[ext_resource type="PackedScene" path="res://Farming/tree_spawner.tscn" id="6_2gc88"]
+[ext_resource type="PackedScene" uid="uid://p7enirvefopd" path="res://Farming/tree_spawner.tscn" id="6_2gc88"]
 [ext_resource type="Script" path="res://Combat/Combat_Camera.gd" id="7_bfaw2"]
-[ext_resource type="PackedScene" uid="uid://udx0mfx073jq" path="res://Farming/Tree.tscn" id="7_el0vw"]
 [ext_resource type="Material" uid="uid://cj2ovdkyq2rbt" path="res://Assets/Shaders/Light_CRT_settings.tres" id="8_dq2fs"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Melt.gdshader" id="9_b3q6w"]
-[ext_resource type="PackedScene" path="res://ui/ui.tscn" id="14_lhew0"]
-[ext_resource type="PackedScene" path="res://Combat/Enemies/infested_wolf.tscn" id="15_7n7xr"]
+[ext_resource type="PackedScene" uid="uid://b0ero8lhdl2h3" path="res://ui/ui.tscn" id="14_lhew0"]
 [ext_resource type="Script" path="res://Events/TimedEvents.gd" id="15_re8k7"]
 [ext_resource type="PackedScene" uid="uid://dwp6k14335tjt" path="res://Farming/Character/Player/Player_F.tscn" id="15_x2t57"]
-[ext_resource type="Script" path="res://Events/DayEvents.gd" id="16_7uvvo"]
 [ext_resource type="PackedScene" uid="uid://dmdd5crrbcalb" path="res://Farming/next_day_manager.tscn" id="16_c1l12"]
+[ext_resource type="Script" path="res://DayNightEvents.gd" id="16_s7lhr"]
 [ext_resource type="Script" path="res://Combat/Enemy Instancer.gd" id="17_gf8td"]
 [ext_resource type="AudioStream" uid="uid://c6hivghn2rok2" path="res://Assets/Sounds/forest_song.ogg" id="18_lgp4e"]
 [ext_resource type="Script" path="res://Events/ShopFiddling.gd" id="18_nys1g"]
 [ext_resource type="Script" path="res://Events/FarmEvents.gd" id="19_3rqam"]
+[ext_resource type="PackedScene" uid="uid://btoqqnfx7p0ga" path="res://Combat/monster_spawner.tscn" id="19_wcp33"]
 
 [sub_resource type="Gradient" id="Gradient_17rgn"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -37,7 +36,7 @@ shader = ExtResource("9_b3q6w")
 shader_parameter/melt_p = 0.0
 shader_parameter/noise = SubResource("NoiseTexture2D_u27nk")
 
-[node name="CombatTest" type="Node2D"]
+[node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_dt8f2")
 
@@ -87,37 +86,17 @@ position = Vector2(736, -128)
 [node name="FarmTile8" parent="Level" instance=ExtResource("4_8rxi7")]
 position = Vector2(800, -128)
 
-[node name="Tree" parent="Level" instance=ExtResource("7_el0vw")]
-position = Vector2(165, 453)
-
-[node name="Tree2" parent="Level" instance=ExtResource("7_el0vw")]
-position = Vector2(715, -309)
-
-[node name="Tree3" parent="Level" instance=ExtResource("7_el0vw")]
-position = Vector2(-76, 254)
-
-[node name="Tree4" parent="Level" instance=ExtResource("7_el0vw")]
-position = Vector2(-192, -72)
-
-[node name="Tree5" parent="Level" instance=ExtResource("7_el0vw")]
-position = Vector2(192, -182)
-
-[node name="Tree6" parent="Level" instance=ExtResource("7_el0vw")]
-position = Vector2(133, 153)
-
-[node name="Tree7" parent="Level" instance=ExtResource("7_el0vw")]
-position = Vector2(846, 437)
-
-[node name="Tree8" parent="Level" instance=ExtResource("7_el0vw")]
-position = Vector2(1017, 224)
-
-[node name="Tree9" parent="Level" instance=ExtResource("7_el0vw")]
-position = Vector2(1017, 224)
-
 [node name="Moonlight" type="PointLight2D" parent="."]
 position = Vector2(-56.9999, -41.5)
 scale = Vector2(51.75, 30.5469)
 color = Color(0.682353, 0.682353, 0, 1)
+energy = 0.0
+blend_mode = 1
+texture = SubResource("GradientTexture2D_qrxl7")
+
+[node name="Darkness" type="PointLight2D" parent="."]
+position = Vector2(-56.9999, -41.5)
+scale = Vector2(51.75, 30.5469)
 energy = 0.0
 blend_mode = 1
 texture = SubResource("GradientTexture2D_qrxl7")
@@ -165,9 +144,11 @@ position = Vector2(441, -98)
 [node name="SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(211, -3)
 
-[node name="NextDayManager" parent="." node_paths=PackedStringArray("cam", "player") instance=ExtResource("16_c1l12")]
+[node name="NextDayManager" parent="." node_paths=PackedStringArray("cam", "player", "enemy_instancer", "monster_spawner") instance=ExtResource("16_c1l12")]
 cam = NodePath("../Camera2D")
 player = NodePath("../Farmer")
+enemy_instancer = NodePath("../Enemy Instancer")
+monster_spawner = NodePath("../MonsterSpawner")
 
 [node name="Enemy Instancer" type="Node" parent="."]
 script = ExtResource("17_gf8td")
@@ -201,25 +182,20 @@ melt_filter = NodePath("../../Camera2D/ScreenSpace/Meltfilter")
 wait_time = 200.0
 autostart = true
 
-[node name="DayEvents" type="Node" parent="Events"]
-script = ExtResource("16_7uvvo")
-tree_wakeup_day = 4
-crop_death_day = 5
-crop_swap_day = 3
-extra_plant_day = 2
+[node name="DayNightEvents" type="Node" parent="Events"]
+script = ExtResource("16_s7lhr")
 
 [node name="UI" parent="." instance=ExtResource("14_lhew0")]
-
-[node name="InfestedWolf" parent="." instance=ExtResource("15_7n7xr")]
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_lgp4e")
 autoplay = true
 
-[node name="Tree" parent="." instance=ExtResource("7_el0vw")]
-position = Vector2(1078, 101)
+[node name="MonsterSpawner" parent="." instance=ExtResource("19_wcp33")]
+desired_num_monsters_chasing_player = 200
 
 [connection signal="timeout" from="Events/TimedEvents/Melt" to="Events/TimedEvents" method="_on_melt_timeout"]
+[connection signal="button_down" from="UI/ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar/Can/ButtonHolder/Button" to="UI/ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar/Can" method="button_down"]
 
 [editable path="UI"]
 [editable path="UI/ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar/Can"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmc455i33nld7"]
+[gd_scene load_steps=2 format=3 uid="uid://btoqqnfx7p0ga"]
 
 [ext_resource type="Script" path="res://Combat/monster_spawner.gd" id="1_chm8e"]
 

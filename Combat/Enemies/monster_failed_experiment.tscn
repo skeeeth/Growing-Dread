@@ -1,13 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcd02v0f2tfc"]
+[gd_scene load_steps=12 format=3 uid="uid://bhkswq3xlrwki"]
 
-[ext_resource type="Shader" path="res://Assets/Shaders/Lighten.gdshader" id="1_kg12r"]
-[ext_resource type="Script" path="res://Combat/Enemies/monster.gd" id="1_w146i"]
-[ext_resource type="Texture2D" uid="uid://b2p4uw5tho2bc" path="res://Combat/Enemies/surtscrapsprite.png" id="2_ur32x"]
-[ext_resource type="PackedScene" uid="uid://duoju8d1x6bam" path="res://Combat/Components/hurtbox/hurtbox.tscn" id="6_rurvv"]
+[ext_resource type="Script" path="res://Combat/Enemies/monster.gd" id="1_hlscb"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Lighten.gdshader" id="2_spafc"]
+[ext_resource type="Texture2D" uid="uid://b2p4uw5tho2bc" path="res://Combat/Enemies/surtscrapsprite.png" id="3_30ssn"]
+[ext_resource type="PackedScene" uid="uid://duoju8d1x6bam" path="res://Combat/Components/hurtbox/hurtbox.tscn" id="4_f5fqy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g6cxm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hrsgt"]
 resource_local_to_scene = true
-shader = ExtResource("1_kg12r")
+shader = ExtResource("2_spafc")
 shader_parameter/intensity = 1.0
 
 [sub_resource type="Animation" id="Animation_bq7lq"]
@@ -56,10 +58,14 @@ height = 120.0
 radius = 35.0
 height = 120.0
 
-[node name="Monster" type="Area2D"]
-collision_layer = 0
-collision_mask = 0
-script = ExtResource("1_w146i")
+[node name="Monster" type="RigidBody2D"]
+collision_layer = 256
+collision_mask = 256
+physics_material_override = SubResource("PhysicsMaterial_g6cxm")
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 5.0
+script = ExtResource("1_hlscb")
 chasing_speed = 120.0
 attack_distance = 10.0
 
@@ -69,7 +75,7 @@ y_sort_enabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_hrsgt")
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_ur32x")
+texture = ExtResource("3_30ssn")
 offset = Vector2(0, -30)
 hframes = 6
 vframes = 3
@@ -88,13 +94,11 @@ rotation = 1.5708
 scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_ghrmr")
 
-[node name="WanderTimer" type="Timer" parent="."]
+[node name="BitingTimer" type="Timer" parent="."]
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("visual") instance=ExtResource("6_rurvv")]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("visual") instance=ExtResource("4_f5fqy")]
 collision_layer = 2
 collision_mask = 0
-monitoring = false
-monitorable = false
 health = 1.0
 visual = NodePath("../Sprite2D")
 
@@ -105,7 +109,5 @@ scale = Vector2(0.2, 0.2)
 shape = SubResource("CapsuleShape2D_et26g")
 
 [node name="PlayerChaseTimer" type="Timer" parent="."]
-
-[connection signal="timeout" from="WanderTimer" to="." method="on_wander_timer_timeout"]
 
 [editable path="Hurtbox"]

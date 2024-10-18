@@ -21,7 +21,7 @@ var state:WolfState
 
 @export var target_sheep:RigidBody2D
 
-var bite_position_adjustment = Vector2(-20.0, 3.0)
+var bite_position_adjustment = Vector2(-20.0, 10.0)
 
 var dragging_initial_sheep_displacement
 

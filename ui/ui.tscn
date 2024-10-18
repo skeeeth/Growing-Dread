@@ -87,8 +87,12 @@ inventory_image = ExtResource("12_smgeb")
 crop_name = ""
 
 [node name="UI" type="CanvasLayer"]
+layer = 100
 
 [node name="ScreenSpace" type="Control" parent="."]
+clip_children = 1
+light_mask = 4
+visibility_layer = 4
 z_index = 25
 layout_mode = 3
 anchors_preset = 15
@@ -306,5 +310,6 @@ stream = ExtResource("13_4wceb")
 volume_db = -20.558
 
 [connection signal="gui_input" from="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Money and bag icon/HBoxContainer/TextureRect" to="ScreenSpace/MarginContainer/Inventory" method="_on_texture_rect_gui_input"]
+[connection signal="button_down" from="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar/Can/ButtonHolder/Button" to="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar/Can" method="button_down"]
 
 [editable path="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar/Can"]

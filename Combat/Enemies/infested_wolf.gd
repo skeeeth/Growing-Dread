@@ -44,7 +44,7 @@ func die():
 	await get_tree().create_timer(monster_spawn_delay).timeout
 	var monster_spawner = monster_spawner_scene.instantiate()
 	monster_spawner.global_position = global_position
-	monster_spawner.init(40, 40, 2, 5)
+	monster_spawner.init(40, 40, 2, 50)
 	get_tree().current_scene.add_child(monster_spawner)
 	
 	await get_tree().create_timer(0.5).timeout

@@ -1,13 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcd02v0f2tfc"]
+[gd_scene load_steps=9 format=3 uid="uid://3sxvrq5qs3lf"]
 
-[ext_resource type="Shader" path="res://Assets/Shaders/Lighten.gdshader" id="1_kg12r"]
-[ext_resource type="Script" path="res://Combat/Enemies/monster.gd" id="1_w146i"]
-[ext_resource type="Texture2D" uid="uid://b2p4uw5tho2bc" path="res://Combat/Enemies/surtscrapsprite.png" id="2_ur32x"]
-[ext_resource type="PackedScene" uid="uid://duoju8d1x6bam" path="res://Combat/Components/hurtbox/hurtbox.tscn" id="6_rurvv"]
+[ext_resource type="Script" path="res://Combat/Enemies/lightweight_monster.gd" id="1_kcvp1"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Lighten.gdshader" id="2_6qy4b"]
+[ext_resource type="Texture2D" uid="uid://b2p4uw5tho2bc" path="res://Combat/Enemies/surtscrapsprite.png" id="3_ghxda"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hrsgt"]
 resource_local_to_scene = true
-shader = ExtResource("1_kg12r")
+shader = ExtResource("2_6qy4b")
 shader_parameter/intensity = 1.0
 
 [sub_resource type="Animation" id="Animation_bq7lq"]
@@ -52,15 +51,13 @@ _data = {
 radius = 35.0
 height = 120.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_et26g"]
-radius = 35.0
-height = 120.0
-
 [node name="Monster" type="Area2D"]
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("1_w146i")
-chasing_speed = 120.0
+monitoring = false
+monitorable = false
+script = ExtResource("1_kcvp1")
+chasing_speed = 160.0
 attack_distance = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -69,7 +66,7 @@ y_sort_enabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_hrsgt")
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_ur32x")
+texture = ExtResource("3_ghxda")
 offset = Vector2(0, -30)
 hframes = 6
 vframes = 3
@@ -90,22 +87,4 @@ shape = SubResource("CapsuleShape2D_ghrmr")
 
 [node name="WanderTimer" type="Timer" parent="."]
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("visual") instance=ExtResource("6_rurvv")]
-collision_layer = 2
-collision_mask = 0
-monitoring = false
-monitorable = false
-health = 1.0
-visual = NodePath("../Sprite2D")
-
-[node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2(0, -7)
-rotation = 1.5708
-scale = Vector2(0.2, 0.2)
-shape = SubResource("CapsuleShape2D_et26g")
-
-[node name="PlayerChaseTimer" type="Timer" parent="."]
-
 [connection signal="timeout" from="WanderTimer" to="." method="on_wander_timer_timeout"]
-
-[editable path="Hurtbox"]

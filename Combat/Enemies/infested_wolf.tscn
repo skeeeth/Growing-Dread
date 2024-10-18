@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bjgnl4mvkj5n1"]
+[gd_scene load_steps=19 format=3 uid="uid://d4e8aihcjg51m"]
 
 [ext_resource type="Script" path="res://Combat/Enemies/infested_wolf.gd" id="1_1iuyg"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Lighten.gdshader" id="2_hllnb"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://jcejhmhqnpln" path="res://Combat/Enemies/wolf_bite_right.png" id="4_w1qtx"]
 [ext_resource type="Texture2D" uid="uid://dmswhj0c6ghkh" path="res://Combat/Enemies/wolf_drag_right.png" id="5_6ddyo"]
 [ext_resource type="Texture2D" uid="uid://bmnmsrrgnodoq" path="res://Combat/Enemies/wolf_run_down.png" id="6_0s4jq"]
-[ext_resource type="Texture2D" uid="uid://84o5pdgg52cm" path="res://Combat/Enemies/wolf_explode_2.png" id="7_jiiil"]
+[ext_resource type="Texture2D" uid="uid://iebse2se4oi5" path="res://Combat/Enemies/wolf_explode_2.png" id="7_jiiil"]
 [ext_resource type="PackedScene" uid="uid://duoju8d1x6bam" path="res://Combat/Components/hurtbox/hurtbox.tscn" id="7_k7rw3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_flgrv"]

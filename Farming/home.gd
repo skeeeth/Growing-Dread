@@ -1,8 +1,6 @@
 extends StaticBody2D
 class_name Home
 
-signal entered
-signal exited
 @export var interior_start_position:Vector2
 @export var exterior_start_position:Vector2
 
@@ -40,13 +38,11 @@ func _set_is_inside(val:bool):
 
 
 func move_player_inside(player):
-	entered.emit()
 	_set_is_inside(true)
 	player.global_position = self.to_global(interior_start_position)
 	player.z_index += player_z_index_inside_adjustment
 
 func move_player_outside(player):
-	exited.emit()
 	_set_is_inside(false)
 	player.global_position = self.to_global(exterior_start_position)
 	player.z_index -= player_z_index_inside_adjustment

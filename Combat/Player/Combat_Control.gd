@@ -1,11 +1,24 @@
 extends CharacterBody2D
+class_name Combat_Control
 
 @export var movespeed:float
 @export var aiming:Aiming
 @onready var interaction_raycast = $InteractionRaycast
 @onready var sprite = $AnimatedSprite2D
 
+var torch_radius:float = 200
+var torch_radius_decay_rate:float = 0
+var minimum_torch_radius:float = 100
+var torch_light_texture_scale_to_radius_ratio = 1.3/150 #found through testing
+
 var is_sleeping = true
+
+var damage_screen_cover_opacity = 0
+var damage_screen_cover_opacity_decay_rate = 1
+
+	
+#func _ready():
+#	torch_light_texture_scale_to_radius_ratio = $TorchLight.texture_scale / torch_radius 
 
 func _physics_process(_delta):
 	if (is_sleeping):
@@ -27,6 +40,28 @@ func _physics_process(_delta):
 		interaction_raycast.target_position = velocity * 0.1
 	
 	move_and_slide()
+	
+	if (torch_radius_decay_rate > 0 and torch_radius > minimum_torch_radius):
+		torch_radius = max(minimum_torch_radius, torch_radius - (torch_radius_decay_rate * _delta))
+		$TorchLight.texture_scale = torch_radius * torch_light_texture_scale_to_radius_ratio
+		
+		if (torch_radius <= minimum_torch_radius):
+			$TorchExtinguishTimer.start(5)
+			#To-do: make the monsters kill the player when the torch goes out; display game over screen
+	
+	if (damage_screen_cover_opacity > 0):
+		damage_screen_cover_opacity = clampf(damage_screen_cover_opacity - (damage_screen_cover_opacity_decay_rate * _delta), 0, 1)
+		$DamageScreenCover.modulate = Color(1, 0, 0, damage_screen_cover_opacity)
+
+func _on_torch_extinguish_timer_timeout():
+	$TorchLight.energy = 0
+	torch_radius = -1
+
+func take_damage(amount):
+	damage_screen_cover_opacity += 0.3
+	#To-do: actually track health and kill the player when it reaches zero
+	#could immobilize them by setting is_sleeping=true
+	#then after a delay, show a game over screen
 
 func set_aim_animation():
 	var mouse_r = get_local_mouse_position()

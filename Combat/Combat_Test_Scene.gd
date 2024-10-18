@@ -5,11 +5,14 @@ const CORN = preload("res://Farming/FarmingTiles/Crops/Corn.tres")
 ##@onready var tile_map = $TileMap
 
 # Called when the node enters the scene tree for the first time.
+func _ready():
 	#for n in get_children(true):
 		#if n is FarmTile:	
 			#n.till()
 			#n.plant(CORN)
 			#Farming.next_day() #note this is the global call, will affect all planted crops
+
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
