@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3dlgcphivw45"]
+[gd_scene load_steps=13 format=3 uid="uid://d3dlgcphivw45"]
 
 [ext_resource type="Script" path="res://Farming/Tree.gd" id="1_u0fcb"]
 [ext_resource type="Texture2D" uid="uid://ntfm0q8cx2ir" path="res://Assets/birch_tree.png" id="1_wy6xc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3xye"]
-size = Vector2(20, 25)
+size = Vector2(20, 17.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btff6"]
 atlas = ExtResource("1_wy6xc")
@@ -67,22 +67,29 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t1ia2"]
-size = Vector2(9, 82)
+size = Vector2(11, 70)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8oj70"]
+polygon = PackedVector2Array(-1, 9, 8, 3, -2, -14, -11, 2)
 
 [node name="Tree" type="Area2D"]
+y_sort_enabled = true
 script = ExtResource("1_u0fcb")
 
 [node name="walk_collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 98.5)
+position = Vector2(0, -3.75)
 shape = SubResource("RectangleShape2D_t3xye")
 
 [node name="tree_image" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2mkf5")
 animation = &"Look_Straight"
-frame_progress = 0.969404
 speed_scale = 0.1
+offset = Vector2(0, -110)
 
 [node name="shoot_collision" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 71)
+position = Vector2(-0.5, -32)
 shape = SubResource("RectangleShape2D_t1ia2")
 debug_color = Color(0.995767, 0, 0.199341, 0.42)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_8oj70")
