@@ -40,6 +40,7 @@ func die():
 
 
 func on_escape():
+	died.emit(self)
 	if (state == WolfState.Dragging):
 		target_sheep.queue_free()
 		queue_free()
@@ -49,6 +50,7 @@ func on_escape():
 	
 func _ready():
 	hurtbox.died.connect(die)
+	$Footsteps.accumulated_distance += randi_range(1,13);
 	if (target_sheep != null):
 		_start_chasing()
 	else:
@@ -58,17 +60,15 @@ func _ready():
 func _start_chasing():
 	state = WolfState.Chasing
 	$Sprite2D/AnimationPlayer.play("run_right")
-
+	$Chasing.play(randf())
 
 func _start_biting():
 	state = WolfState.Biting
-	
 	$Sprite2D/AnimationPlayer.play("bite_right")
-	
+	$Bite.play()
 	#Wait until we're 70% through the bite animation, which is roughly where the bite itself happens
 	$BitingTimer.start($Sprite2D/AnimationPlayer.get_animation("bite_right").length*0.7)
 	await $BitingTimer.timeout
-	
 	if (state == WolfState.Biting):
 		target_sheep.become_immobilized(self)
 		state = WolfState.Dragging
@@ -93,7 +93,7 @@ func _physics_process(delta):
 	if (state == WolfState.Dragging):
 		target_sheep.global_position = global_position + dragging_initial_sheep_displacement #Bring the sheep along by keeping the same relative position
 		if position.x < edge:
-			queue_free()
+			on_escape()
 
-func _exit_tree():
-	died.emit(self)
+#func _exit_tree():
+	#died.emit(self)

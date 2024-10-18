@@ -75,7 +75,6 @@ func _on_wander_idle_eat_timer_timeout():
 	elif (randf() > 0.7): #If idling, 30% chance of eating
 		state = SheepState.Eating
 		$WanderIdleEatTimer.start(randi_range(min_eating_cycles, max_eating_cycles) * $SheepSprite/AnimationPlayer.get_animation("eating_" + facing_direction).length)
-		
 		linear_velocity = Vector2.ZERO
 		
 		$SheepSprite/AnimationPlayer.play("eating_" + facing_direction)
