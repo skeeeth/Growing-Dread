@@ -5,6 +5,7 @@ enum MonsterState {
 	Chasing,
 	AttackingPlayer,
 	Wandering,
+	Fleeing,
 }
 
 signal stopped_chasing_player
@@ -15,6 +16,8 @@ signal died
 var state
 var target_sheep
 var player
+
+var fleeing
 
 @export var attack_distance:float
 
@@ -35,9 +38,18 @@ func die():
 
 
 func start_chasing_player():
+	if (state == MonsterState.Fleeing):
+		return
 	state = MonsterState.AttackingPlayer
 	$WanderTimer.stop()
 
+
+func on_started_burning():
+	fleeing = true
+	$WanderTimer.stop()
+	state == MonsterState.Chilling
+	await get_tree().create_timer(3).timeout
+	state == MonsterState.Fleeing
 
 func on_wander_timer_timeout():
 	start_wandering()
@@ -75,6 +87,8 @@ func _ready():
 	$Sprite2D/AnimationPlayer.play("walk_left", -1, 3.0)
 	start_wandering()
 	
+	Farming.started_burning.connect(on_started_burning)
+	
 	torch_bravery = randi_range(-50, 0)
 
 func _infest_sheep():
@@ -84,7 +98,13 @@ func _infest_sheep():
 func _physics_process(delta):
 	var velocity = Vector2.ZERO
 	
-	if (state == MonsterState.Chasing):
+	if (fleeing):
+		if (global_position.length() > 800):
+			queue_free()
+		else:
+			velocity = global_position.normalized() * chasing_speed
+			
+	elif (state == MonsterState.Chasing):
 		var target_sheep_displacement = (target_sheep.global_position) - global_position
 		if (target_sheep_displacement.length() < attack_distance):
 			#velocity = Vector2.ZERO
@@ -117,6 +137,7 @@ func _physics_process(delta):
 		
 		if (torch_nudge_strength > 0):
 			velocity -= player_displacement.normalized() * torch_nudge_strength * chasing_speed
+		
 	
 	$Sprite2D.flip_h = velocity.x >= 0
 	position += velocity * delta

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bhdcmdrktl4xs"]
+[gd_scene load_steps=57 format=3 uid="uid://bhdcmdrktl4xs"]
 
 [ext_resource type="Script" path="res://Farming/FarmingTiles/farmable_tile.gd" id="1_lxn3k"]
 [ext_resource type="Resource" uid="uid://bxc1cyfbquibd" path="res://Farming/FarmingTiles/Crops/Blank.tres" id="2_b2nj6"]
@@ -283,10 +283,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7bw7a"]
-atlas = ExtResource("3_8wb04")
-region = Rect2(288, 0, 32, 32)
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fhk8u"]
 resource_local_to_scene = true
 polygon = PackedVector2Array(-6, -7, -6, 5, 7, 5, 8, -7)
@@ -294,6 +290,11 @@ polygon = PackedVector2Array(-6, -7, -6, 5, 7, 5, 8, -7)
 [sub_resource type="AtlasTexture" id="AtlasTexture_rketj"]
 atlas = ExtResource("5_wlp54")
 region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="Animation" id="Animation_yivhm"]
+resource_name = "Burn"
+length = 1.2
+loop_mode = 1
 
 [sub_resource type="Animation" id="Animation_x73uo"]
 resource_name = "Harvest"
@@ -374,6 +375,9 @@ tracks/3/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_t137l"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_mqves"]
 resource_name = "Till"
 tracks/0/type = "value"
@@ -430,18 +434,25 @@ resource_name = "Water"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4t07d"]
 _data = {
+"Burn": SubResource("Animation_yivhm"),
 "Harvest": SubResource("Animation_x73uo"),
 "Plant": SubResource("Animation_rxjou"),
+"RESET": SubResource("Animation_t137l"),
 "Till": SubResource("Animation_mqves"),
 "Water": SubResource("Animation_0ygim")
 }
 
-[node name="FarmTile" type="StaticBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bw7a"]
+atlas = ExtResource("3_8wb04")
+region = Rect2(288, 0, 32, 32)
+
+[node name="FarmTile" type="StaticBody2D" node_paths=PackedStringArray("border")]
 z_index = -2
 scale = Vector2(2, 2)
 collision_layer = 4
 script = ExtResource("1_lxn3k")
 crop_data = ExtResource("2_b2nj6")
+border = NodePath("Border")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_i47ax")
@@ -451,7 +462,6 @@ shape = SubResource("RectangleShape2D_i47ax")
 [node name="Pivot" type="Node2D" parent="FarmableTile"]
 visible = false
 position = Vector2(-9.5, 10.5)
-rotation = -1.0472
 
 [node name="Scythe" type="Sprite2D" parent="FarmableTile/Pivot"]
 z_index = 2
@@ -467,11 +477,6 @@ animation = &"Dead"
 
 [node name="Dirt" type="AnimatedSprite2D" parent="FarmableTile"]
 sprite_frames = SubResource("SpriteFrames_1d1s0")
-
-[node name="Border" type="Sprite2D" parent="FarmableTile"]
-visible = false
-scale = Vector2(1.13281, 1.13281)
-texture = SubResource("AtlasTexture_7bw7a")
 
 [node name="Occluder" type="LightOccluder2D" parent="FarmableTile"]
 occluder = SubResource("OccluderPolygon2D_fhk8u")
@@ -574,3 +579,8 @@ stream = ExtResource("7_er4ss")
 
 [node name="Water" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("10_b8ath")
+
+[node name="Border" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.13281, 1.13281)
+texture = SubResource("AtlasTexture_7bw7a")

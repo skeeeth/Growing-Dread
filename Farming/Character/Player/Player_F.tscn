@@ -69,5 +69,3 @@ stream = ExtResource("4_eugfp")
 
 [node name="Footsteps" parent="." node_paths=PackedStringArray("character") instance=ExtResource("5_y7xqs")]
 character = NodePath("..")
-
-[node name="AudioListener2D" type="AudioListener2D" parent="."]

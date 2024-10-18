@@ -6,6 +6,7 @@ class_name Combat_Control
 @onready var interaction_raycast = $InteractionRaycast
 @onready var sprite = $farmer_image
 
+var torch_radius_can_burn_threshold = 150
 var torch_radius:float = 200
 var torch_radius_decay_rate:float = 0
 var minimum_torch_radius:float = 100
@@ -16,8 +17,11 @@ var is_sleeping = true
 var damage_screen_cover_opacity = 0
 var damage_screen_cover_opacity_decay_rate = 1
 
-	
+var health = 100
+
+
 func _ready():
+	$Interaction.torch_equipped = true 
 	sprite.play("Aim_Horizontal")
 	sprite.speed_scale = 0
 
@@ -48,6 +52,9 @@ func _physics_process(_delta):
 		torch_radius = max(minimum_torch_radius, torch_radius - (torch_radius_decay_rate * _delta))
 		$TorchLight.texture_scale = torch_radius * torch_light_texture_scale_to_radius_ratio
 		
+		if (torch_radius < torch_radius_can_burn_threshold):
+			$Interaction.allow_player_to_burn_one_time()
+		
 		if (torch_radius <= minimum_torch_radius):
 			$TorchExtinguishTimer.start(5)
 			#To-do: make the monsters kill the player when the torch goes out; display game over screen
@@ -61,10 +68,19 @@ func _on_torch_extinguish_timer_timeout():
 	torch_radius = -1
 
 func take_damage(amount):
+	if (is_sleeping):
+		return
 	damage_screen_cover_opacity += 0.3
-	#To-do: actually track health and kill the player when it reaches zero
-	#could immobilize them by setting is_sleeping=true
-	#then after a delay, show a game over screen
+	health -= amount
+	if (health <= 0):
+		die()
+
+func die():
+	is_sleeping = true
+	#await get_tree().create_timer(2).timeout
+	#display game over screen
+	await get_tree().create_timer(3).timeout
+	get_tree().change_scene_to_file("res://title_scene.tscn")
 
 func set_aim_animation():
 	var mouse_r = get_local_mouse_position()

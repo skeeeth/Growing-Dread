@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://ce2qp2mth753u" path="res://Assets/Tileset/FullTerrainsTileset.tres" id="3_w4lw5"]
 [ext_resource type="PackedScene" uid="uid://bhdcmdrktl4xs" path="res://Farming/FarmingTiles/farmable_tile.tscn" id="4_8rxi7"]
 [ext_resource type="PackedScene" uid="uid://b0ve77udfgeqv" path="res://Farming/home.tscn" id="5_24x7n"]
-[ext_resource type="PackedScene" path="res://Farming/tree_spawner.tscn" id="6_2gc88"]
+[ext_resource type="PackedScene" uid="uid://p7enirvefopd" path="res://Farming/tree_spawner.tscn" id="6_2gc88"]
 [ext_resource type="Script" path="res://Combat/Combat_Camera.gd" id="7_bfaw2"]
 [ext_resource type="PackedScene" uid="uid://d3dlgcphivw45" path="res://Farming/Tree.tscn" id="7_tkktd"]
 [ext_resource type="Material" uid="uid://cj2ovdkyq2rbt" path="res://Assets/Shaders/Light_CRT_settings.tres" id="8_dq2fs"]

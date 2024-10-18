@@ -100,9 +100,13 @@ one_shot = true
 [node name="DamageScreenCover" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 0)
 z_index = 10
+scale = Vector2(10, 10)
 texture = ExtResource("9_1hcnf")
 
-[node name="AudioListener2D" type="AudioListener2D" parent="."]
-current = true
+[node name="SceneChangeCover" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+scale = Vector2(10, 10)
+texture = ExtResource("9_1hcnf")
 
 [connection signal="timeout" from="TorchExtinguishTimer" to="." method="_on_torch_extinguish_timer_timeout"]

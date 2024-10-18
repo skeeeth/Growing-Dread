@@ -34,7 +34,7 @@ func spawn_regular_wolves(num_wolves_to_spawn:int):
 
 func spawn_infested_wolf():
 	var infested_wolf = infested_wolf_scene.instantiate()
-	infested_wolf.global_position = Vector2(0, 500)
+	infested_wolf.global_position = Vector2(-600, 500)
 	add_child(infested_wolf)
 
 func end_night():

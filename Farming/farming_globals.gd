@@ -5,15 +5,17 @@ signal inventory_updated
 signal night_fallen
 signal woke_up
 signal fell_asleep
+signal started_burning
 
 var day:int = 0
 var is_nighttime = false
-var event_active = false
 
-enum interactions{ Till, Plant, Water, Harvest, Eat}
+enum interactions{ Till, Plant, Water, Harvest, Burn, Eat }
 enum states{ Untilled, Tilled, Planted, Growing, Ripe, Dead, }
 var money = 10
 var selected_interaction:int
+
+var event_active = false
 
 #var crop_prices: Dictionary = {
 	#"Corn": 10, 
@@ -48,6 +50,9 @@ func next_day():
 	is_nighttime = false
 	day += 1;
 	day_progressed.emit()
+	
+func burn_down_farm():
+	started_burning.emit()
 
 #func _input(event):
 	#if event.is_action_pressed("0"):

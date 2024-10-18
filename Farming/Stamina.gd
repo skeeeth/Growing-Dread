@@ -8,8 +8,8 @@ var costs:Dictionary = {
 	Farming.interactions.Water: 1,
 	Farming.interactions.Harvest: 3,
 	Farming.interactions.Plant: 2,
-	Farming.interactions.Eat: -5,
-	5: 0
+	Farming.interactions.Burn: 0,
+	Farming.interactions.Eat: 0,
 }
 var current:int = 10
 var bars:Array[ColorRect]

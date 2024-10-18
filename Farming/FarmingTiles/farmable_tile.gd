@@ -26,16 +26,36 @@ const BLANK = preload("res://Farming/FarmingTiles/Crops/Blank.tres")
 @onready var harvest_sound = $Sounds/Harvest
 @onready var water_sound = $Sounds/Water
 
+@export var border:Sprite2D
+
+@onready var parent_fire_scene = preload("res://not_cursed_fire2.tscn")
+var is_dummy_burnable_tile = false
+var burning = false
+
+func mark_as_dummy_tile():
+	is_dummy_burnable_tile = true
+	$FarmableTile.queue_free()
+	#$AnimationPlayer.queue_free()
+
 func _ready():
 	Farming.day_progressed.connect(day_progression)
 
 func interact(type,data):
+	if (burning):
+		return false
+		
 	match type:
 		Farming.interactions.Plant:return plant(data)
 		Farming.interactions.Till:return till()
 		Farming.interactions.Water:return water()
 		Farming.interactions.Harvest:return harvest()
+		Farming.interactions.Burn:return burn()
 	
+
+func burn():
+	var parent_fire = parent_fire_scene.instantiate()
+	get_tree().current_scene.add_child(parent_fire)
+	parent_fire.global_position = global_position
 
 func harvest():
 	if state == Farming.states.Ripe:

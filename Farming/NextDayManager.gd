@@ -42,10 +42,12 @@ func on_fell_asleep():
 	else: #Going to bed at the end of the day - check if it's time for a night event
 		if (Farming.day == 0):
 			go_to_night()
+			$Howl.play()
 			Farming.event_active = true
 			enemy_instancer.spawn_regular_wolves(5)
 		elif (Farming.day == 1):
 			go_to_night()
+			$Howl.play()
 			enemy_instancer.spawn_infested_wolf()
 		elif (Farming.day == 2):
 			go_to_night()
@@ -88,7 +90,6 @@ func go_to_night():
 	
 	card_text.text = "Night " + str(Farming.day)
 	day_layer.visible = false
-	$Howl.play()
 	var fade_in = create_tween()
 	fade_in.set_parallel()
 	fade_in.tween_property(crt_filter,"modulate:a",1.0,0.5) #TODO: fix this (see next_day())
