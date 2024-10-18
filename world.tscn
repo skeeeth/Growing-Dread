@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ddee77dyus1fw"]
+[gd_scene load_steps=27 format=3 uid="uid://ddee77dyus1fw"]
 
 [ext_resource type="Script" path="res://Combat/Combat_Test_Scene.gd" id="1_dt8f2"]
 [ext_resource type="PackedScene" uid="uid://bas4qnp8bdxfc" path="res://Ranching/animal_pen.tscn" id="2_6aqwp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b0ve77udfgeqv" path="res://Farming/home.tscn" id="5_24x7n"]
 [ext_resource type="PackedScene" uid="uid://p7enirvefopd" path="res://Farming/tree_spawner.tscn" id="6_2gc88"]
 [ext_resource type="Script" path="res://Combat/Combat_Camera.gd" id="7_bfaw2"]
+[ext_resource type="PackedScene" uid="uid://d3dlgcphivw45" path="res://Farming/Tree.tscn" id="7_tkktd"]
 [ext_resource type="Material" uid="uid://cj2ovdkyq2rbt" path="res://Assets/Shaders/Light_CRT_settings.tres" id="8_dq2fs"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Melt.gdshader" id="9_b3q6w"]
 [ext_resource type="PackedScene" uid="uid://b0ero8lhdl2h3" path="res://ui/ui.tscn" id="14_lhew0"]
@@ -15,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dmdd5crrbcalb" path="res://Farming/next_day_manager.tscn" id="16_c1l12"]
 [ext_resource type="Script" path="res://DayNightEvents.gd" id="16_s7lhr"]
 [ext_resource type="Script" path="res://Combat/Enemy Instancer.gd" id="17_gf8td"]
+[ext_resource type="Script" path="res://Events/DayEvents.gd" id="17_k74v8"]
 [ext_resource type="AudioStream" uid="uid://c6hivghn2rok2" path="res://Assets/Sounds/forest_song.ogg" id="18_lgp4e"]
 [ext_resource type="Script" path="res://Events/ShopFiddling.gd" id="18_nys1g"]
 [ext_resource type="Script" path="res://Events/FarmEvents.gd" id="19_3rqam"]
@@ -85,6 +87,30 @@ position = Vector2(736, -128)
 
 [node name="FarmTile8" parent="Level" instance=ExtResource("4_8rxi7")]
 position = Vector2(800, -128)
+
+[node name="Tree" parent="Level" instance=ExtResource("7_tkktd")]
+position = Vector2(-128, 0)
+
+[node name="Tree2" parent="Level" instance=ExtResource("7_tkktd")]
+position = Vector2(32, 288)
+
+[node name="Tree3" parent="Level" instance=ExtResource("7_tkktd")]
+position = Vector2(928, 32)
+
+[node name="Tree4" parent="Level" instance=ExtResource("7_tkktd")]
+position = Vector2(-350, 420)
+
+[node name="Tree5" parent="Level" instance=ExtResource("7_tkktd")]
+position = Vector2(700, -80)
+
+[node name="Tree6" parent="Level" instance=ExtResource("7_tkktd")]
+position = Vector2(160, 192)
+
+[node name="Tree7" parent="Level" instance=ExtResource("7_tkktd")]
+position = Vector2(204, -90)
+
+[node name="Tree8" parent="Level" instance=ExtResource("7_tkktd")]
+position = Vector2(896, 480)
 
 [node name="Moonlight" type="PointLight2D" parent="."]
 position = Vector2(-56.9999, -41.5)
@@ -184,6 +210,13 @@ autostart = true
 
 [node name="DayNightEvents" type="Node" parent="Events"]
 script = ExtResource("16_s7lhr")
+
+[node name="DayEvents" type="Node" parent="Events"]
+script = ExtResource("17_k74v8")
+tree_wakeup_day = 4
+crop_death_day = 13
+crop_swap_day = 6
+extra_plant_day = 4
 
 [node name="UI" parent="." instance=ExtResource("14_lhew0")]
 

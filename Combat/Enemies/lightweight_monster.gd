@@ -66,6 +66,7 @@ func start_chasing_sheep():
 	if (len(sheep) > 0):
 		target_sheep = sheep[randi_range(0, len(sheep)-1)]
 		state = MonsterState.Chasing
+		$WanderTimer.stop()
 		$Sprite2D/AnimationPlayer.play("walk_left", -1, 3.0)
 	else:
 		start_wandering()
