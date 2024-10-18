@@ -4,7 +4,6 @@ extends Node
 @onready var card_text = $NextDayCard/Label
 
 @onready var moonlight = $"../Moonlight"
-@onready var spawn_point = $"../SpawnPoint"
 @onready var crt_filter = $"../Camera2D/ScreenSpace/CRT_Filter"
 @onready var day_layer = $"../Camera2D/ScreenSpace/Day"
 var timer = 0.0
@@ -13,6 +12,8 @@ const SHOW_CARD_DURATION = 3.0
 @export var player:CharacterBody2D
 var farm_character = preload("res://Farming/Character/Player/Player_F.tscn")
 var night_character = preload("res://Combat/Player/Player_C.tscn")
+@onready var static_sound = $"../Static"
+@onready var ui = $"../UI"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,6 +38,7 @@ func next_day():
 	#TODO: I'll have to change this to instead alter the uniforms to get the desired effect
 	
 	fade_out.tween_property(moonlight,"energy",0.0,2.0)
+	fade_out.tween_property(static_sound,"volume_db",-80,2.0)
 	_replace_player(farm_character)
 	#_show_card()
 
@@ -52,11 +54,12 @@ func _process(delta):
 func go_to_night():
 	card_text.text = "Night " + str(Farming.day)
 	day_layer.visible = false
+	$Howl.play()
 	var fade_in = create_tween()
 	fade_in.set_parallel()
 	fade_in.tween_property(crt_filter,"modulate:a",1.0,0.5) #TODO: fix this (see next_day())
 	fade_in.tween_property(moonlight,"energy",0.6,3.3)
-	##TODO should probalby have some kinda sound here
+	fade_in.tween_property(static_sound,"volume_db",-15.0,3.3)
 	_replace_player(night_character)
 
 	#_show_card()
