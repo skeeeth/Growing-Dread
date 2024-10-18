@@ -1,12 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://3w35bn52gyqe"]
+[gd_scene load_steps=21 format=3 uid="uid://3w35bn52gyqe"]
 
 [ext_resource type="Script" path="res://Combat/Enemies/wolf.gd" id="1_5a6pp"]
 [ext_resource type="Texture2D" uid="uid://r1wuktwimebg" path="res://Combat/Enemies/wolf_run_right.png" id="1_23nlc"]
 [ext_resource type="Texture2D" uid="uid://bmnmsrrgnodoq" path="res://Combat/Enemies/wolf_run_down.png" id="2_182ij"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Lighten.gdshader" id="2_njfm8"]
+[ext_resource type="PackedScene" uid="uid://b3de1d32umx1b" path="res://Farming/Character/Player/footsteps.tscn" id="2_s83io"]
+[ext_resource type="AudioStream" uid="uid://bt6pvw63c7l6a" path="res://Assets/Sounds/Dirt_Footsteps/dirt_footsteps_pool.tres" id="3_07mdc"]
 [ext_resource type="Texture2D" uid="uid://jcejhmhqnpln" path="res://Combat/Enemies/wolf_bite_right.png" id="4_74msf"]
 [ext_resource type="Texture2D" uid="uid://dmswhj0c6ghkh" path="res://Combat/Enemies/wolf_drag_right.png" id="5_owbej"]
 [ext_resource type="PackedScene" uid="uid://duoju8d1x6bam" path="res://Combat/Components/hurtbox/hurtbox.tscn" id="6_gjofy"]
+[ext_resource type="AudioStream" uid="uid://c2jss2ll54g56" path="res://Assets/Sounds/bite.ogg" id="8_m52jr"]
+[ext_resource type="AudioStream" uid="uid://m8ln6p3sh0oy" path="res://Assets/Sounds/panting.ogg" id="10_oclmu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_flgrv"]
 resource_local_to_scene = true
@@ -182,6 +186,20 @@ chasing_speed = 150.0
 dragging_speed = 50.0
 edge = -500.0
 
+[node name="Footsteps" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_s83io")]
+cadence = 15.0
+character = NodePath("..")
+
+[node name="Wood" parent="Footsteps" index="0"]
+stream = ExtResource("3_07mdc")
+volume_db = -22.0
+attenuation = 1.7411
+
+[node name="Dirt" parent="Footsteps" index="1"]
+stream = ExtResource("3_07mdc")
+volume_db = -22.0
+attenuation = 1.7411
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
 texture_filter = 1
@@ -213,4 +231,14 @@ position = Vector2(5, -13)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_wnwsp")
 
+[node name="Bite" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_m52jr")
+attenuation = 2.14355
+
+[node name="Chasing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_oclmu")
+volume_db = -15.0
+attenuation = 2.37841
+
+[editable path="Footsteps"]
 [editable path="Hurtbox"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://clhceljl1ikhu"]
+[gd_scene load_steps=20 format=3 uid="uid://clhceljl1ikhu"]
 
 [ext_resource type="Script" path="res://Ranching/sheep.gd" id="1_cqfc8"]
 [ext_resource type="Texture2D" uid="uid://dccs2fh7dkcp2" path="res://Assets/sheep_walk.png" id="1_n4j6q"]
 [ext_resource type="Texture2D" uid="uid://cv1grraph2f1k" path="res://Assets/sheep dragged_right.png" id="2_gp6re"]
 [ext_resource type="Texture2D" uid="uid://d2sbss6j7k3mv" path="res://Assets/sheep_eat.png" id="3_4b4wa"]
+[ext_resource type="AudioStream" uid="uid://c82f1p6xr7qbn" path="res://Assets/Sounds/baa1.ogg" id="5_1n0uv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vora7"]
 friction = 0.0
@@ -731,6 +732,11 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ThreatDetector"]
 visible = false
 shape = SubResource("CircleShape2D_7mhsn")
+
+[node name="baa" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_1n0uv")
+volume_db = -8.0
+attenuation = 3.605
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="WanderIdleEatTimer" to="." method="_on_wander_idle_eat_timer_timeout"]
