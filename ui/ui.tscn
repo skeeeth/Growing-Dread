@@ -310,6 +310,5 @@ stream = ExtResource("13_4wceb")
 volume_db = -20.558
 
 [connection signal="gui_input" from="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Money and bag icon/HBoxContainer/TextureRect" to="ScreenSpace/MarginContainer/Inventory" method="_on_texture_rect_gui_input"]
-[connection signal="button_down" from="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar/Can/ButtonHolder/Button" to="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar/Can" method="button_down"]
 
 [editable path="ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar/Can"]

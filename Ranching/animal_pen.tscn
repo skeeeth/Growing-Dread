@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bas4qnp8bdxfc"]
 
-[ext_resource type="PackedScene" uid="uid://cf13ry04rj8ri" path="res://Ranching/fence_better.tscn" id="2_g4xje"]
+[ext_resource type="PackedScene" path="res://Ranching/fence_better.tscn" id="2_g4xje"]
 [ext_resource type="PackedScene" uid="uid://clhceljl1ikhu" path="res://Ranching/sheep.tscn" id="2_gdkjh"]
 
 [node name="AnimalPen" type="Node2D"]

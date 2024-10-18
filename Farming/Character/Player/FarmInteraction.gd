@@ -11,6 +11,7 @@ var inventory:Inventory
 @onready var error_sound = $"../Error"
 var stamina:Stamina
 
+@onready var thoughts = $Thoughts
 
 func _ready():	
 	stamina = get_tree().get_first_node_in_group("Stamina")
@@ -30,6 +31,7 @@ func interact():
 	
 	var target = interaction_raycast.get_collider()
 	if target is FarmTile:
+		if Farming.is_nighttime: return
 		if !stamina.try_use():
 			error_sound.play()
 			return
@@ -51,7 +53,17 @@ func interact():
 	if target is Door:
 		target.interact($"..")
 	if target is Bed:
-		target.interact($"..")
+		var failed = false
+		if stamina.current > 3:
+			thoughts.text = "Not tired!"
+			failed= true
+		if Farming.event_active:
+			thoughts.text = "Somethings going on..."
+			failed = true
+		if !failed:
+			target.interact($"..")
+			$"../farmer_image".play("Idle")
+		create_tween().tween_property(thoughts,"text", "",0.0).set_delay(2.0)
 	
 	
 func _process(_delta):

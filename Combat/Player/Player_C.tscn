@@ -60,18 +60,26 @@ texture = ExtResource("3_et3yv")
 texture_scale = 1.3
 height = 5.0
 
-[node name="Interaction" type="Node" parent="." node_paths=PackedStringArray("interaction_raycast") groups=["interaction"]]
+[node name="Interaction" type="Node2D" parent="." node_paths=PackedStringArray("interaction_raycast") groups=["interaction"]]
 script = ExtResource("6_yxubt")
 interaction_raycast = NodePath("../InteractionRaycast")
+
+[node name="Thoughts" type="Label" parent="Interaction"]
+offset_left = -18.0
+offset_top = -130.0
+offset_right = 22.0
+offset_bottom = -107.0
+horizontal_alignment = 1
 
 [node name="InteractionRaycast" type="RayCast2D" parent="."]
 collision_mask = 255
 hit_from_inside = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="farmer_image" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("6_cf8sl")
-animation = &"Aim_Up"
+animation = &"Aim_Horizontal"
+frame = 4
 
 [node name="Footsteps" parent="." node_paths=PackedStringArray("character") instance=ExtResource("7_piajw")]
 character = NodePath("..")

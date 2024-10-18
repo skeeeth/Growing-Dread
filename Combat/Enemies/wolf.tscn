@@ -180,6 +180,7 @@ script = ExtResource("1_5a6pp")
 bite_distance = 2.0
 chasing_speed = 150.0
 dragging_speed = 50.0
+edge = -500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true

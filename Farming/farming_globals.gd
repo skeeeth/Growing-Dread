@@ -8,6 +8,7 @@ signal fell_asleep
 
 var day:int = 0
 var is_nighttime = false
+var event_active = false
 
 enum interactions{ Till, Plant, Water, Harvest, Eat}
 enum states{ Untilled, Tilled, Planted, Growing, Ripe, Dead, }

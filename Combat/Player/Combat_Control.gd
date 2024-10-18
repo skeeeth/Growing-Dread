@@ -4,7 +4,7 @@ class_name Combat_Control
 @export var movespeed:float
 @export var aiming:Aiming
 @onready var interaction_raycast = $InteractionRaycast
-@onready var sprite = $AnimatedSprite2D
+@onready var sprite = $farmer_image
 
 var torch_radius:float = 200
 var torch_radius_decay_rate:float = 0
@@ -17,8 +17,9 @@ var damage_screen_cover_opacity = 0
 var damage_screen_cover_opacity_decay_rate = 1
 
 	
-#func _ready():
-#	torch_light_texture_scale_to_radius_ratio = $TorchLight.texture_scale / torch_radius 
+func _ready():
+	sprite.play("Aim_Horizontal")
+	sprite.speed_scale = 0
 
 func _physics_process(_delta):
 	if (is_sleeping):
@@ -29,8 +30,10 @@ func _physics_process(_delta):
 	if dir == Vector2.ZERO:
 		aiming.focused = true
 		set_aim_animation()
+		sprite.speed_scale = 0
 	else:
-		sprite.play("Walk")
+		sprite.speed_scale = 3
+		#sprite.play("Walk")
 		aiming.focused = false
 		sprite.flip_v = false
 		sprite.flip_h = dir.x > 0

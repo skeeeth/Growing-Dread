@@ -1,10 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://d3dlgcphivw45"]
+[gd_scene load_steps=12 format=3 uid="uid://d3dlgcphivw45"]
 
 [ext_resource type="Script" path="res://Farming/Tree.gd" id="1_u0fcb"]
 [ext_resource type="Texture2D" uid="uid://ntfm0q8cx2ir" path="res://Assets/birch_tree.png" id="1_wy6xc"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3xye"]
-size = Vector2(20, 17.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btff6"]
 atlas = ExtResource("1_wy6xc")
@@ -74,11 +71,8 @@ polygon = PackedVector2Array(-1, 9, 8, 3, -2, -14, -11, 2)
 
 [node name="Tree" type="Area2D"]
 y_sort_enabled = true
+collision_layer = 2
 script = ExtResource("1_u0fcb")
-
-[node name="walk_collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3.75)
-shape = SubResource("RectangleShape2D_t3xye")
 
 [node name="tree_image" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2mkf5")

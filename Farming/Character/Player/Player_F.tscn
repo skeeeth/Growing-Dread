@@ -33,9 +33,16 @@ shape = SubResource("RectangleShape2D_ew3jx")
 
 [node name="Input" type="Node" parent="."]
 
-[node name="Interaction" type="Node" parent="." node_paths=PackedStringArray("interaction_raycast") groups=["interaction"]]
+[node name="Interaction" type="Node2D" parent="." node_paths=PackedStringArray("interaction_raycast") groups=["interaction"]]
 script = ExtResource("4_d3oh0")
 interaction_raycast = NodePath("../Movement")
+
+[node name="Thoughts" type="Label" parent="Interaction"]
+offset_left = -15.0
+offset_top = -99.0
+offset_right = 25.0
+offset_bottom = -76.0
+horizontal_alignment = 1
 
 [node name="TextEdit" type="TextEdit" parent="."]
 visible = false
@@ -54,8 +61,7 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_bda5f")
 scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("3_vweaf")
-animation = &"Aim_Up"
-frame_progress = 0.00977119
+animation = &"Idle"
 offset = Vector2(0, -80)
 
 [node name="Error" type="AudioStreamPlayer2D" parent="."]

@@ -26,7 +26,7 @@ var bite_position_adjustment = Vector2(-20.0, 10.0)
 var dragging_initial_sheep_displacement
 
 @onready var hurtbox:Hurtbox = $Hurtbox
-
+@export var edge:float
 
 func assign_target_sheep(new_target_sheep):
 	target_sheep = new_target_sheep
@@ -92,3 +92,8 @@ func _physics_process(delta):
 	
 	if (state == WolfState.Dragging):
 		target_sheep.global_position = global_position + dragging_initial_sheep_displacement #Bring the sheep along by keeping the same relative position
+		if position.x < edge:
+			queue_free()
+
+func _exit_tree():
+	died.emit(self)

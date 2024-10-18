@@ -42,6 +42,7 @@ func on_fell_asleep():
 	else: #Going to bed at the end of the day - check if it's time for a night event
 		if (Farming.day == 0):
 			go_to_night()
+			Farming.event_active = true
 			enemy_instancer.spawn_regular_wolves(5)
 		elif (Farming.day == 1):
 			go_to_night()
@@ -91,7 +92,7 @@ func go_to_night():
 	var fade_in = create_tween()
 	fade_in.set_parallel()
 	fade_in.tween_property(crt_filter,"modulate:a",1.0,0.5) #TODO: fix this (see next_day())
-	fade_in.tween_property(static_sound,"volume_db",-15.0,3.3)
+	fade_in.tween_property(static_sound,"volume_db",-25.0,3.3)
 	fade_in.tween_property(moonlight,"energy",moonlight_energy,3.3)
 	fade_in.tween_property(darkness,"energy",darkness_energy,3.3)
 	##TODO should probalby have some kinda sound here

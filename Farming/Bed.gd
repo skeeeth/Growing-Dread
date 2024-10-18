@@ -6,7 +6,8 @@ class_name Bed
 
 func interact(player):
 	#Farming.next_day()
-	
+	if player.is_sleeping: #prevents player from triggering during transitions
+		return
 	player.is_sleeping = true
 	
 	get_tree().create_tween().tween_property($SleepingScreenCover, "modulate", Color.BLACK, sleep_fade_duration)

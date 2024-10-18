@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmdd5crrbcalb"]
+[gd_scene load_steps=5 format=3 uid="uid://dmdd5crrbcalb"]
 
 [ext_resource type="Script" path="res://Farming/NextDayManager.gd" id="1_pqoyc"]
+[ext_resource type="AudioStream" uid="uid://bdvw2ntrxjvlo" path="res://Assets/Sounds/Howl.mp3" id="2_2bokm"]
 
 [sub_resource type="GDScript" id="GDScript_k2n46"]
 script/source = "extends ColorRect
@@ -37,3 +38,6 @@ text = "NEXT DAY"
 label_settings = SubResource("LabelSettings_mufbw")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Howl" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2bokm")

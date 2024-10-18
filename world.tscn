@@ -1,16 +1,17 @@
-[gd_scene load_steps=27 format=3 uid="uid://ddee77dyus1fw"]
+[gd_scene load_steps=28 format=3 uid="uid://ddee77dyus1fw"]
 
 [ext_resource type="Script" path="res://Combat/Combat_Test_Scene.gd" id="1_dt8f2"]
 [ext_resource type="PackedScene" uid="uid://bas4qnp8bdxfc" path="res://Ranching/animal_pen.tscn" id="2_6aqwp"]
 [ext_resource type="TileSet" uid="uid://ce2qp2mth753u" path="res://Assets/Tileset/FullTerrainsTileset.tres" id="3_w4lw5"]
 [ext_resource type="PackedScene" uid="uid://bhdcmdrktl4xs" path="res://Farming/FarmingTiles/farmable_tile.tscn" id="4_8rxi7"]
 [ext_resource type="PackedScene" uid="uid://b0ve77udfgeqv" path="res://Farming/home.tscn" id="5_24x7n"]
-[ext_resource type="PackedScene" uid="uid://p7enirvefopd" path="res://Farming/tree_spawner.tscn" id="6_2gc88"]
+[ext_resource type="PackedScene" path="res://Farming/tree_spawner.tscn" id="6_2gc88"]
 [ext_resource type="Script" path="res://Combat/Combat_Camera.gd" id="7_bfaw2"]
 [ext_resource type="PackedScene" uid="uid://d3dlgcphivw45" path="res://Farming/Tree.tscn" id="7_tkktd"]
 [ext_resource type="Material" uid="uid://cj2ovdkyq2rbt" path="res://Assets/Shaders/Light_CRT_settings.tres" id="8_dq2fs"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Melt.gdshader" id="9_b3q6w"]
 [ext_resource type="PackedScene" uid="uid://b0ero8lhdl2h3" path="res://ui/ui.tscn" id="14_lhew0"]
+[ext_resource type="AudioStream" uid="uid://cg47ko4xcb6xs" path="res://Assets/Sounds/static.wav" id="14_pbdqc"]
 [ext_resource type="Script" path="res://Events/TimedEvents.gd" id="15_re8k7"]
 [ext_resource type="PackedScene" uid="uid://dwp6k14335tjt" path="res://Farming/Character/Player/Player_F.tscn" id="15_x2t57"]
 [ext_resource type="PackedScene" uid="uid://dmdd5crrbcalb" path="res://Farming/next_day_manager.tscn" id="16_c1l12"]
@@ -180,6 +181,8 @@ monster_spawner = NodePath("../MonsterSpawner")
 script = ExtResource("17_gf8td")
 
 [node name="Static" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_pbdqc")
+volume_db = -80.0
 autoplay = true
 
 [node name="Events" type="Node" parent="."]
@@ -228,7 +231,6 @@ autoplay = true
 desired_num_monsters_chasing_player = 200
 
 [connection signal="timeout" from="Events/TimedEvents/Melt" to="Events/TimedEvents" method="_on_melt_timeout"]
-[connection signal="button_down" from="UI/ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar/Can/ButtonHolder/Button" to="UI/ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar/Can" method="button_down"]
 
 [editable path="UI"]
 [editable path="UI/ScreenSpace/MarginContainer/Inventory/VBoxContainer/Hotbar/Can"]

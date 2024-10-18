@@ -36,6 +36,7 @@ func _ready():
 	selection_indicator.scale = Vector2(si_scale,si_scale)
 
 func _input(event):
+	if Farming.is_nighttime: return
 	if event.is_action_pressed("inventory"):
 		toggle_expand()
 	

@@ -20,7 +20,6 @@ func spawn_regular_wolves(num_wolves_to_spawn:int):
 	var sheep = get_tree().get_nodes_in_group("sheep")
 	sheep.shuffle()
 	print("Found " + str(len(sheep)) + " sheep")
-
 	num_queued_enemies = num_wolves_to_spawn
 	while num_queued_enemies > 0:
 		if (num_queued_enemies <= len(sheep)): #Only spawn a wolf if we have a sheep we can assign as its target
@@ -44,4 +43,6 @@ func end_night():
 
 func _on_enemy_death(id):
 	enemies.erase(id)
+	if enemies.size() == 0:
+		Farming.event_active = false
 	pass
