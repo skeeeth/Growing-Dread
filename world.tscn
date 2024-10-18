@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ddee77dyus1fw"]
+[gd_scene load_steps=30 format=3 uid="uid://ddee77dyus1fw"]
 
 [ext_resource type="Script" path="res://Combat/Combat_Test_Scene.gd" id="1_dt8f2"]
 [ext_resource type="PackedScene" uid="uid://bas4qnp8bdxfc" path="res://Ranching/animal_pen.tscn" id="2_6aqwp"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dwp6k14335tjt" path="res://Farming/Character/Player/Player_F.tscn" id="15_x2t57"]
 [ext_resource type="PackedScene" uid="uid://dmdd5crrbcalb" path="res://Farming/next_day_manager.tscn" id="16_c1l12"]
 [ext_resource type="Script" path="res://DayNightEvents.gd" id="16_s7lhr"]
+[ext_resource type="Texture2D" uid="uid://b2p4uw5tho2bc" path="res://Combat/Enemies/surtscrapsprite.png" id="17_56enu"]
 [ext_resource type="Script" path="res://Combat/Enemy Instancer.gd" id="17_gf8td"]
 [ext_resource type="Script" path="res://Events/DayEvents.gd" id="17_k74v8"]
 [ext_resource type="AudioStream" uid="uid://c6hivghn2rok2" path="res://Assets/Sounds/forest_song.ogg" id="18_lgp4e"]
@@ -38,6 +39,10 @@ noise = SubResource("FastNoiseLite_dggy3")
 shader = ExtResource("9_b3q6w")
 shader_parameter/melt_p = 0.0
 shader_parameter/noise = SubResource("NoiseTexture2D_u27nk")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3rid"]
+atlas = ExtResource("17_56enu")
+region = Rect2(9, 192, 128, 96)
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -187,7 +192,7 @@ autoplay = true
 
 [node name="Events" type="Node" parent="."]
 
-[node name="ShopFiddling" type="Node" parent="Events" node_paths=PackedStringArray("inv", "shop_grid")]
+[node name="ShopEvents" type="Node" parent="Events" node_paths=PackedStringArray("inv", "shop_grid")]
 script = ExtResource("18_nys1g")
 inv = NodePath("../../UI/ScreenSpace/MarginContainer/Inventory")
 shop_grid = NodePath("../../UI/ScreenSpace/MarginContainer/Inventory/VBoxContainer/Shop/ShopContents/VBoxContainer/ShopBack/Grid")
@@ -195,13 +200,14 @@ requirement = 3
 texts = Array[String](["Please", "Help", "Stop", "No more", "Get Out"])
 next = Vector2(3, 6)
 
-[node name="FarmFiddling" type="Node" parent="Events"]
+[node name="FarmEvents" type="Node" parent="Events"]
 script = ExtResource("19_3rqam")
 blood_req = 13
 blood_repeat = Vector2(8, 13)
 blood_modulate_color = Color(1, 0.176471, 0.0784314, 1)
-squelch_req = 5
+squelch_req = 2
 squelch_repeat = Vector2(9, 11)
+squelch_mite_sprite = SubResource("AtlasTexture_a3rid")
 
 [node name="TimedEvents" type="Node" parent="Events" node_paths=PackedStringArray("melt_filter")]
 script = ExtResource("15_re8k7")
