@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://wo0katfgba1p"]
+
+[ext_resource type="Texture2D" uid="uid://cm7x0na0600n5" path="res://Assets/game_over.png" id="1_qy34d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4qqr"]
+atlas = ExtResource("1_qy34d")
+region = Rect2(0, 0, 700, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6ggr"]
+atlas = ExtResource("1_qy34d")
+region = Rect2(700, 0, 700, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c6f3"]
+atlas = ExtResource("1_qy34d")
+region = Rect2(1400, 0, 700, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gjdf"]
+atlas = ExtResource("1_qy34d")
+region = Rect2(2100, 0, 700, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sgph"]
+atlas = ExtResource("1_qy34d")
+region = Rect2(2800, 0, 700, 700)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_76srx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4qqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6ggr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c6f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gjdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sgph")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GameOverScreen" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_76srx")
+frame_progress = 0.0110398
+speed_scale = 0.4
