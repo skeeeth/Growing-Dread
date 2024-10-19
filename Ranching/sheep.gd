@@ -50,6 +50,8 @@ func die():
 	$WanderIdleEatTimer.stop()
 
 func become_infested():
+	if (state != SheepState.Infested):
+		$InfestedCleanupTimer.start(20)
 	state = SheepState.Infested
 	$WanderIdleEatTimer.stop()
 	
@@ -60,8 +62,9 @@ func become_infested():
 	#Disable collisions with fence
 	collision_mask = collision_mask | (1 << 2)
 	collision_mask = collision_mask & ~(1 << 1)
+
+
 	
-	#Increase health
 
 func _ready():
 	state = SheepState.Idle
@@ -190,3 +193,7 @@ func _on_threat_detector_body_exited(body):
 			
 			desired_movement_velocity = desired_movement_velocity.normalized() * wandering_speed
 			_start_wandering()
+
+
+func _on_infested_cleanup_timer_timeout():
+	queue_free()

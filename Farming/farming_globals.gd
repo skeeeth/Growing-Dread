@@ -5,7 +5,7 @@ signal inventory_updated
 signal night_fallen
 signal woke_up
 signal fell_asleep
-signal started_burning
+signal started_burning(burn_position)
 
 var day:int = 0
 var is_nighttime = false
@@ -20,7 +20,7 @@ var fires:int = 0
 	#set(v):
 
 func _process(delta):
-	if fires > 300:
+	if fires > 200:
 		for fire in get_tree().get_nodes_in_group("Fire"):
 			fire.queue_free()
 		get_tree().change_scene_to_file.call_deferred("res://title_scene.tscn")
@@ -59,8 +59,8 @@ func next_day():
 	day += 1;
 	day_progressed.emit()
 	
-func burn_down_farm():
-	started_burning.emit()
+func burn_down_farm(burn_pos):
+	started_burning.emit(burn_pos)
 
 #func _input(event):
 	#if event.is_action_pressed("0"):

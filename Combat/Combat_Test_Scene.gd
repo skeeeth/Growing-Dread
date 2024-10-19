@@ -1,6 +1,5 @@
 extends Node2D
 
-
 const CORN = preload("res://Farming/FarmingTiles/Crops/Corn.tres")
 ##@onready var tile_map = $TileMap
 

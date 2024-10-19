@@ -44,13 +44,13 @@ func on_fell_asleep():
 	if (Farming.is_nighttime):
 		next_day()
 	else: #Going to bed at the end of the day - check if it's time for a night event
-		if (Farming.day == 2) or Farming.day == 5 or Farming.day == 7 or Farming.day == 9:
+		if (Farming.day == 2):
 			go_to_night()
 			$Howl.play()
 			Farming.event_active = true
 			await home.exited
 			enemy_instancer.spawn_regular_wolves(5)
-		elif (Farming.day == 7):
+		elif (Farming.day == 5):
 			go_to_night()
 			$Howl.play()
 			enemy_instancer.spawn_infested_wolf()
@@ -58,7 +58,7 @@ func on_fell_asleep():
 			await  home.exited
 			Farming.event_active = false
 			
-		elif (Farming.day == 0):
+		elif (Farming.day == 8):
 			go_to_night()
 			await home.exited
 			final_night()
