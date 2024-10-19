@@ -446,7 +446,7 @@ _data = {
 atlas = ExtResource("3_8wb04")
 region = Rect2(288, 0, 32, 32)
 
-[node name="FarmTile" type="StaticBody2D"]
+[node name="FarmTile2" type="StaticBody2D"]
 z_index = -2
 scale = Vector2(2, 2)
 collision_layer = 4

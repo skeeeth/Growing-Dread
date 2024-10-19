@@ -22,9 +22,9 @@ crop_name = ""
 [resource]
 script = ExtResource("1_th4lg")
 name = "Corn"
-days_to_ripen = 1
+days_to_ripen = 2
 days_to_death = -1
-max_drought = 3
+max_drought = 2
 images = ExtResource("1_lk682")
 item_data = SubResource("Resource_1pr2x")
 seed_data = ExtResource("5_p0w2k")

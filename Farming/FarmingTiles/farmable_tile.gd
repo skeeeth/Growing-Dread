@@ -77,6 +77,7 @@ func harvest():
 		animation_player.play("Harvest")
 		harvest_sound.play()
 		#await animation_player.animation_finished
+		Farming.add_item(crop_data.seed_data)
 		crop_data = BLANK;
 		state = Farming.states.Untilled
 		crop_display.visible = false
