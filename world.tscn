@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ddee77dyus1fw"]
+[gd_scene load_steps=28 format=3 uid="uid://ddee77dyus1fw"]
 
 [ext_resource type="Script" path="res://Combat/Combat_Test_Scene.gd" id="1_dt8f2"]
 [ext_resource type="PackedScene" uid="uid://bas4qnp8bdxfc" path="res://Ranching/animal_pen.tscn" id="2_6aqwp"]
@@ -15,7 +15,6 @@
 [ext_resource type="Script" path="res://Events/TimedEvents.gd" id="15_re8k7"]
 [ext_resource type="PackedScene" uid="uid://dwp6k14335tjt" path="res://Farming/Character/Player/Player_F.tscn" id="15_x2t57"]
 [ext_resource type="PackedScene" uid="uid://dmdd5crrbcalb" path="res://Farming/next_day_manager.tscn" id="16_c1l12"]
-[ext_resource type="Script" path="res://DayNightEvents.gd" id="16_s7lhr"]
 [ext_resource type="Script" path="res://Combat/Enemy Instancer.gd" id="17_gf8td"]
 [ext_resource type="Script" path="res://Events/DayEvents.gd" id="17_k74v8"]
 [ext_resource type="Texture2D" uid="uid://djm0hflhsf2o4" path="res://Assets/monster_frame.tres" id="17_wrwt1"]
@@ -213,9 +212,6 @@ melt_filter = NodePath("../../Camera2D/ScreenSpace/Meltfilter")
 [node name="Melt" type="Timer" parent="Events/TimedEvents"]
 wait_time = 200.0
 autostart = true
-
-[node name="DayNightEvents" type="Node" parent="Events"]
-script = ExtResource("16_s7lhr")
 
 [node name="DayEvents" type="Node" parent="Events"]
 script = ExtResource("17_k74v8")

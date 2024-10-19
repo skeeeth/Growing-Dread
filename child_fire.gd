@@ -17,6 +17,7 @@ var parent_fire
 
 func _ready():
 	print("I am a child fire with position: " + str(global_position))
+	Farming.fires += 1
 
 func my_init(new_parent_fire, new_spread_direction, generation=1):
 	parent_fire = new_parent_fire

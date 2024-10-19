@@ -26,8 +26,10 @@ var night_character = preload("res://Combat/Player/Player_C.tscn")
 @export var moonlight_energy:float = 0.6
 @export var darkness_energy:float = 0.3
 
+var home:Home
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	home = get_tree().get_first_node_in_group("Home")
 	#Farming.day_progressed.connect(next_day)
 	#Farming.night_fallen.connect(go_to_night)
 	Farming.woke_up.connect(wake_up_player)
@@ -42,17 +44,23 @@ func on_fell_asleep():
 	if (Farming.is_nighttime):
 		next_day()
 	else: #Going to bed at the end of the day - check if it's time for a night event
-		if (Farming.day == 9):
+		if (Farming.day == 2) or Farming.day == 5 or Farming.day == 7 or Farming.day == 9:
 			go_to_night()
 			$Howl.play()
 			Farming.event_active = true
+			await home.exited
 			enemy_instancer.spawn_regular_wolves(5)
-		elif (Farming.day == 9):
+		elif (Farming.day == 7):
 			go_to_night()
 			$Howl.play()
 			enemy_instancer.spawn_infested_wolf()
+			Farming.event_active = true
+			await  home.exited
+			Farming.event_active = false
+			
 		elif (Farming.day == 0):
 			go_to_night()
+			await home.exited
 			final_night()
 		else:
 			next_day()

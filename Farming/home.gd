@@ -15,6 +15,7 @@ var is_inside = true
 
 func _ready():
 	_set_is_inside(true)
+	#Farming.night_fallen.connect(retrigger_clear)
 
 
 
@@ -50,3 +51,13 @@ func move_player_outside(player):
 	_set_is_inside(false)
 	player.global_position = self.to_global(exterior_start_position)
 	player.z_index -= player_z_index_inside_adjustment
+
+
+#func _on_area_2d_body_entered(body):
+	#if body is FarmTile:
+		#body.queue_free()
+	#pass # Replace with function body.
+#
+#func retrigger_clear():
+	#$Interior/Door/Area2D.monitoring = false
+	#$Interior/Door/Area2D.monitoring = true

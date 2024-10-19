@@ -16,6 +16,14 @@ var money = 10
 var selected_interaction:int
 
 var event_active = false
+var fires:int = 0
+	#set(v):
+
+func _process(delta):
+	if fires > 300:
+		for fire in get_tree().get_nodes_in_group("Fire"):
+			fire.queue_free()
+		get_tree().change_scene_to_file.call_deferred("res://title_scene.tscn")
 
 #var crop_prices: Dictionary = {
 	#"Corn": 10, 

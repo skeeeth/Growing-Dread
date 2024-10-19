@@ -80,7 +80,7 @@ func die():
 	#await get_tree().create_timer(2).timeout
 	#display game over screen
 	await get_tree().create_timer(3).timeout
-	get_tree().change_scene_to_file("res://title_scene.tscn")
+	get_tree().change_scene_to_file("res://game_over_screen.tscn")
 
 func set_aim_animation():
 	var mouse_r = get_local_mouse_position()

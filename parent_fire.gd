@@ -16,6 +16,7 @@ var max_spread_distance = 40
 func _ready():
 	global_position = Vector2(200, 200)
 	my_init()
+	Farming.fires += 1
 
 
 func my_init():
@@ -47,6 +48,6 @@ func spread(_spread_direction):
 
 func spawn_fire(spawn_position, new_fire_spread_direction, generation):
 	var new_fire = child_fire_scene.instantiate()
-	get_tree().current_scene.add_child(new_fire)
+	get_parent().add_sibling(new_fire)
 	new_fire.global_position = spawn_position
 	new_fire.my_init(self, new_fire_spread_direction, generation+1)

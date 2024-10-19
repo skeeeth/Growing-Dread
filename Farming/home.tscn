@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b0ve77udfgeqv"]
+[gd_scene load_steps=21 format=3 uid="uid://b0ve77udfgeqv"]
 
 [ext_resource type="Script" path="res://Farming/home.gd" id="1_go7s6"]
 [ext_resource type="Texture2D" uid="uid://c4uv13tx8yqgv" path="res://Assets/house_crop.png" id="2_ewjnk"]
@@ -20,6 +20,9 @@ polygon = PackedVector2Array(-126, -215, -126, 15, 124, 14, 123, -214)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54jl0"]
 size = Vector2(61, 82)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jnyno"]
+size = Vector2(200, 173)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5sm5"]
 size = Vector2(46, 78)
@@ -133,6 +136,14 @@ region_rect = Rect2(64, 111, 32, 48)
 position = Vector2(0.5, -22)
 shape = SubResource("RectangleShape2D_54jl0")
 
+[node name="DoorClear" type="Area2D" parent="Interior/Door"]
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interior/Door/DoorClear"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_jnyno")
+
 [node name="Bed" type="StaticBody2D" parent="Interior"]
 position = Vector2(94, -99)
 scale = Vector2(1.1, 1.1)
@@ -178,3 +189,5 @@ shape = SubResource("RectangleShape2D_0jwur")
 
 [node name="Door" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_7jpyj")
+
+[connection signal="body_entered" from="Interior/Door/DoorClear" to="." method="_on_area_2d_body_entered"]
