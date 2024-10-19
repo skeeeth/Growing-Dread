@@ -66,10 +66,9 @@ stream_7/weight = 1.0
 stream_8/stream = ExtResource("19_n0ioj")
 stream_8/weight = 1.0
 
-[node name="Footsteps" type="Node2D" node_paths=PackedStringArray("character")]
+[node name="Footsteps" type="Node2D"]
 script = ExtResource("1_lutud")
 cadence = 20.0
-character = NodePath("")
 
 [node name="Wood" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_qpq8x")

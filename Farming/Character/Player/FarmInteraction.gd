@@ -41,36 +41,35 @@ func interact():
 	
 	var target = interaction_raycast.get_collider()
 	if target is FarmTile:
-		if (torch_equipped):
-			if (can_burn and (not target.burning)):
-				target.burn()
-				can_burn = false
-				target.border.visible = false
-				Farming.burn_down_farm()
-				await get_tree().create_timer(10).timeout
-				create_tween().tween_property($"../SceneChangeCover","modulate:a",1,15)
-				await get_tree().create_timer(15).timeout
-				get_tree().change_scene_to_file("res://title_scene.tscn") #replace with credits scene
-		elif (not target.is_dummy_burnable_tile):
-			if (Farming.is_nighttime):
-				return
-				
-			if !stamina.try_use():
-				error_sound.play()
-				return
-			var crop
-			if slot.data.crop_name != "":
-				crop = load(Farming.crop_resources[slot.data.crop_name])
-			else:
-				crop = BLANK
-				assert(type != Farming.interactions.Plant) #seeds should have a crop reference in Farming
-			if target.interact(type,crop): #interact is called here regardless
-				slot.consume() #will put non-consumables "count" to lower negatives
-				stamina.current -= stamina.cost
-			else:
-				#if interacting with wrong type
-				error_sound.play()
-		
+		#if (torch_equipped):
+			#if (can_burn and (not target.burning)):
+				#target.burn()
+				#can_burn = false
+				#target.border.visible = false
+				#Farming.burn_down_farm()
+				#await get_tree().create_timer(10).timeout
+				#create_tween().tween_property($"../SceneChangeCover","modulate:a",1,15)
+				#await get_tree().create_timer(15).timeout
+				#get_tree().change_scene_to_file("res://title_scene.tscn") #replace with credits scene
+		#elif (not target.is_dummy_burnable_tile):
+		if (Farming.is_nighttime):
+			if type != Farming.interactions.Burn: return
+			
+		if !stamina.try_use():
+			error_sound.play()
+			return
+		var crop
+		if slot.data.crop_name != "":
+			crop = load(Farming.crop_resources[slot.data.crop_name])
+		else:
+			crop = BLANK
+			assert(type != Farming.interactions.Plant) #seeds should have a crop reference in Farming
+		if target.interact(type,crop): #interact is called here regardless
+			slot.consume() #will put non-consumables "count" to lower negatives
+			stamina.current -= stamina.cost
+		else:
+			#if interacting with wrong type
+			error_sound.play()
 	if target is Home:
 		target.interact(get_parent())
 	if target is Door:
@@ -92,15 +91,9 @@ func interact():
 func _process(_delta):
 	#var interaction_text = $"../TextEdit"
 	#interaction_text.text = Farming.interactions.keys()[interaction]
-	
 	var target = interaction_raycast.get_collider()
 	if target is FarmTile:
-		if (torch_equipped): #the torch is always equipped at night, which will disable interacting with
-			if (can_burn and (not target.burning)):
-				target.border.visible = true
-		else:
-			if (not target.is_dummy_burnable_tile):
-				target.border.visible = true
+		target.border.visible = true
 	
 	if _previous_target is FarmTile:
 		if _previous_target != target:

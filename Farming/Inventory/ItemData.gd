@@ -7,6 +7,6 @@ class_name ItemData
 @export var buy_cost:int
 
 @export_group("")
-@export_enum("Till", "Plant", "Water", "Harvest","Eat", "Empty") var interation_type:int
+@export_enum("Till", "Plant", "Water", "Harvest","Burn", "Eat", "Empty") var interation_type:int
 @export var inventory_image:Texture2D
 @export var crop_name:String

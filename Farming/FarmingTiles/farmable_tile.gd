@@ -56,6 +56,7 @@ func burn():
 	var parent_fire = parent_fire_scene.instantiate()
 	get_tree().current_scene.add_child(parent_fire)
 	parent_fire.global_position = global_position
+	return true
 
 func harvest():
 	if state == Farming.states.Ripe:

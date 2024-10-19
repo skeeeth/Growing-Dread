@@ -13,6 +13,8 @@ var timer = 0.0
 const SHOW_CARD_DURATION = 3.0
 @export var cam:CRT_Cam
 @export var player:CharacterBody2D
+@export var inventory:Inventory
+
 var farm_character = preload("res://Farming/Character/Player/Player_F.tscn")
 var night_character = preload("res://Combat/Player/Player_C.tscn")
 @onready var static_sound = $"../Static"
@@ -40,19 +42,18 @@ func on_fell_asleep():
 	if (Farming.is_nighttime):
 		next_day()
 	else: #Going to bed at the end of the day - check if it's time for a night event
-		if (Farming.day == 0):
+		if (Farming.day == 9):
 			go_to_night()
 			$Howl.play()
 			Farming.event_active = true
 			enemy_instancer.spawn_regular_wolves(5)
-		elif (Farming.day == 1):
+		elif (Farming.day == 9):
 			go_to_night()
 			$Howl.play()
 			enemy_instancer.spawn_infested_wolf()
-		elif (Farming.day == 2):
+		elif (Farming.day == 0):
 			go_to_night()
-			monster_spawner.init(1200, 0, 0.1, 1000, player)
-			player.torch_radius_decay_rate = 3
+			final_night()
 		else:
 			next_day()
 
@@ -115,3 +116,23 @@ func _replace_player(new_character:PackedScene): #Swaps Player
 	cam.tracked_object = player
 	previous_player.queue_free() ##TODO: probably some kind of walk into house animation
 	add_sibling(new_player) ##TODO: should also have a walk out of house animation
+
+func final_night():
+	monster_spawner.init(1200, 0, 0.1, 1000, player)
+	player.torch_radius_decay_rate = 3
+	
+	#only torch
+	for slot in inventory.slots:
+		slot.count = -1
+		slot.data = load("res://Farming/FarmingTiles/Crops/Empty.tres")
+	inventory.slots[0].data = load("res://Farming/FarmingTiles/Crops/Torch.tres")
+	inventory.selected_slot_index = 0
+	inventory.slot_selected.emit(0)
+	
+	var dummy_tile_scene = load("res://Farming/FarmingTiles/Crops/dummy_tile.tscn")
+	#dummy tiles
+	for x in range(-1280,1280,64):
+		for y in range(-1280,1280,64): #idk the actual dimensions of the world
+			var new_tile = dummy_tile_scene.instantiate()
+			new_tile.position = Vector2(x,y)
+			add_child(new_tile)

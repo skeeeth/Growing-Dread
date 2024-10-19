@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://kdktbpe7un8p"]
+
+[ext_resource type="Script" path="res://Farming/Inventory/ItemData.gd" id="1_7pric"]
+[ext_resource type="Texture2D" uid="uid://11ewj0idm7lb" path="res://Assets/castle_lightsources.png" id="1_7yf36"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpvux"]
+atlas = ExtResource("1_7yf36")
+region = Rect2(96, 0, 64, 64)
+
+[resource]
+script = ExtResource("1_7pric")
+sellable = false
+money_value = 0
+buy_cost = 0
+interation_type = 4
+inventory_image = SubResource("AtlasTexture_fpvux")
+crop_name = ""

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg32h0khcx3gq"]
+
+[ext_resource type="Texture2D" uid="uid://c87upey770rjx" path="res://Assets/UI-Kenny_Large.png" id="2_5mkud"]
+[ext_resource type="Script" path="res://Farming/dummy_tile.gd" id="2_au84q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i47ax"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bw7a"]
+atlas = ExtResource("2_5mkud")
+region = Rect2(288, 0, 32, 32)
+
+[node name="FarmTile" type="StaticBody2D" node_paths=PackedStringArray("border")]
+z_index = -2
+scale = Vector2(2, 2)
+collision_layer = 4
+script = ExtResource("2_au84q")
+border = NodePath("Border")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i47ax")
+
+[node name="Border" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.13281, 1.13281)
+texture = SubResource("AtlasTexture_7bw7a")
