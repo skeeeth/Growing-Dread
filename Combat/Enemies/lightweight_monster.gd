@@ -27,6 +27,7 @@ var minimum_wander_duration = 2
 var maximum_wander_duration = 30
 
 var torch_bravery
+var burn_position
 
 #@export var movement_acceleration:float
 
@@ -44,7 +45,8 @@ func start_chasing_player():
 	$WanderTimer.stop()
 
 
-func on_started_burning():
+func on_started_burning(burn_pos):
+	burn_position = burn_pos
 	fleeing = true
 	$WanderTimer.stop()
 	state == MonsterState.Chilling
@@ -102,7 +104,7 @@ func _physics_process(delta):
 		if (global_position.length() > 800):
 			queue_free()
 		else:
-			velocity = global_position.normalized() * chasing_speed
+			velocity = (global_position - burn_position).normalized() * chasing_speed
 			
 	elif (state == MonsterState.Chasing):
 		var target_sheep_displacement = (target_sheep.global_position) - global_position

@@ -738,7 +738,10 @@ stream = ExtResource("5_1n0uv")
 volume_db = -8.0
 attenuation = 3.605
 
+[node name="InfestedCleanupTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="WanderIdleEatTimer" to="." method="_on_wander_idle_eat_timer_timeout"]
 [connection signal="body_entered" from="ThreatDetector" to="." method="_on_threat_detector_body_entered"]
 [connection signal="body_exited" from="ThreatDetector" to="." method="_on_threat_detector_body_exited"]
+[connection signal="timeout" from="InfestedCleanupTimer" to="." method="_on_infested_cleanup_timer_timeout"]

@@ -26,7 +26,7 @@ const BLANK = preload("res://Farming/FarmingTiles/Crops/Blank.tres")
 @onready var harvest_sound = $Sounds/Harvest
 @onready var water_sound = $Sounds/Water
 
-@export var border:Sprite2D
+@onready var border:Sprite2D = $Border
 
 @onready var parent_fire_scene = preload("res://not_cursed_fire2.tscn")
 var is_dummy_burnable_tile = false
@@ -56,6 +56,7 @@ func burn():
 	var parent_fire = parent_fire_scene.instantiate()
 	get_tree().current_scene.add_child(parent_fire)
 	parent_fire.global_position = global_position
+	Farming.burn_down_farm(global_position)
 	return true
 
 func harvest():
